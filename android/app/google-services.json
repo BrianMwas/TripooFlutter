@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "836765846667",
+    "project_id": "tripoo-2021",
+    "storage_bucket": "tripoo-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836765846667:android:67a0bbf4e2e70bf4cfd88e",
+        "android_client_info": {
+          "package_name": "com.brianmwas.tripoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836765846667-7von0ia8lu7q1mf6b9mammnvl882ogjg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.brianmwas.tripoo",
+            "certificate_hash": "2a8a71b7822245fbefbd5457f1c6127309c82e5d"
+          }
+        },
+        {
+          "client_id": "836765846667-vgp8ir7rgkr2kkf8gjulbo8noalkourh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfWbhnsk_mB3q6T9nrAf4a6hN_0kqnM4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836765846667-vgp8ir7rgkr2kkf8gjulbo8noalkourh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
