@@ -13,7 +13,7 @@ extension FirebaseUserDomainX on firebase.User {
       email: EmailAddress(email),
       emailVerified: emailVerified,
       profileImageURL: photoURL,
-      phoneNumber: PhoneNumber(phoneNumber),
+      phoneNumber: phoneNumber,
       username: Username(displayName),
       providerId: providerData[0].providerId,
       fcm_token: token,

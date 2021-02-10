@@ -5,10 +5,13 @@ import 'package:tripoo/presentation/pages/auth/login.dart';
 import 'package:tripoo/presentation/pages/auth/register.dart';
 import 'package:tripoo/presentation/pages/auth/user/init_filters.dart';
 import 'package:tripoo/presentation/pages/home/base.dart';
-import 'package:tripoo/presentation/pages/home/property/create_property.dart';
+import 'package:tripoo/presentation/pages/home/property/create_property/create_property_widget.dart';
+import 'package:tripoo/presentation/pages/home/property/property_dash/dashboard.dart';
+import 'package:tripoo/presentation/pages/home/property/start_property.dart';
 import 'package:tripoo/presentation/pages/home/property/filter_properties.dart';
 import 'package:tripoo/presentation/pages/home/property/property_detail.dart';
 import 'package:tripoo/presentation/pages/home/property/property_list.dart';
+import 'package:tripoo/presentation/pages/home/property/property_map_view.dart';
 import 'package:tripoo/presentation/pages/home/settings/change_password.dart';
 import 'package:tripoo/presentation/pages/home/settings/profile.dart';
 import 'package:tripoo/presentation/pages/onboarding/onboarding.dart';
@@ -30,6 +33,9 @@ import 'package:tripoo/presentation/pages/onboarding/onboarding.dart';
   AdaptiveRoute(page: PropertyList),
   AdaptiveRoute(page: CreateProperty),
   CupertinoRoute(page: BaseLayout),
-  CupertinoRoute(page: InitFilters)
+  CupertinoRoute(page: InitFilters),
+  CupertinoRoute(page: PropertyMapView),
+  CupertinoRoute(page: NewProperty),
+  CupertinoRoute(page: PropertyDash)
 ])
 class $Router {}

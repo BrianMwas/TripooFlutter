@@ -21,7 +21,7 @@ class _$UserTearOff {
       @required String fcm_token,
       @required bool emailVerified,
       @nullable String profileImageURL,
-      @nullable PhoneNumber phoneNumber,
+      String phoneNumber,
       @nullable DateTime joinDate,
       @required String providerId}) {
     return _User(
@@ -51,8 +51,7 @@ mixin _$User {
   bool get emailVerified;
   @nullable
   String get profileImageURL;
-  @nullable
-  PhoneNumber get phoneNumber;
+  String get phoneNumber;
   @nullable
   DateTime get joinDate;
   String get providerId;
@@ -71,7 +70,7 @@ abstract class $UserCopyWith<$Res> {
       String fcm_token,
       bool emailVerified,
       @nullable String profileImageURL,
-      @nullable PhoneNumber phoneNumber,
+      String phoneNumber,
       @nullable DateTime joinDate,
       String providerId});
 }
@@ -107,9 +106,8 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       profileImageURL: profileImageURL == freezed
           ? _value.profileImageURL
           : profileImageURL as String,
-      phoneNumber: phoneNumber == freezed
-          ? _value.phoneNumber
-          : phoneNumber as PhoneNumber,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
       joinDate: joinDate == freezed ? _value.joinDate : joinDate as DateTime,
       providerId:
           providerId == freezed ? _value.providerId : providerId as String,
@@ -129,7 +127,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String fcm_token,
       bool emailVerified,
       @nullable String profileImageURL,
-      @nullable PhoneNumber phoneNumber,
+      String phoneNumber,
       @nullable DateTime joinDate,
       String providerId});
 }
@@ -166,9 +164,8 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       profileImageURL: profileImageURL == freezed
           ? _value.profileImageURL
           : profileImageURL as String,
-      phoneNumber: phoneNumber == freezed
-          ? _value.phoneNumber
-          : phoneNumber as PhoneNumber,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
       joinDate: joinDate == freezed ? _value.joinDate : joinDate as DateTime,
       providerId:
           providerId == freezed ? _value.providerId : providerId as String,
@@ -185,7 +182,7 @@ class _$_User implements _User {
       @required this.fcm_token,
       @required this.emailVerified,
       @nullable this.profileImageURL,
-      @nullable this.phoneNumber,
+      this.phoneNumber,
       @nullable this.joinDate,
       @required this.providerId})
       : assert(id != null),
@@ -209,8 +206,7 @@ class _$_User implements _User {
   @nullable
   final String profileImageURL;
   @override
-  @nullable
-  final PhoneNumber phoneNumber;
+  final String phoneNumber;
   @override
   @nullable
   final DateTime joinDate;
@@ -279,7 +275,7 @@ abstract class _User implements User {
       @required String fcm_token,
       @required bool emailVerified,
       @nullable String profileImageURL,
-      @nullable PhoneNumber phoneNumber,
+      String phoneNumber,
       @nullable DateTime joinDate,
       @required String providerId}) = _$_User;
 
@@ -297,8 +293,7 @@ abstract class _User implements User {
   @nullable
   String get profileImageURL;
   @override
-  @nullable
-  PhoneNumber get phoneNumber;
+  String get phoneNumber;
   @override
   @nullable
   DateTime get joinDate;

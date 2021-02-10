@@ -15,11 +15,18 @@ class _$HomeUnitTearOff {
 
 // ignore: unused_element
   _HomeUnit call(
-      {String id, String name, String description, LatLng position}) {
+      {String id,
+      String name,
+      String simple_description,
+      String thumbnail,
+      String long_description,
+      LatLng position}) {
     return _HomeUnit(
       id: id,
       name: name,
-      description: description,
+      simple_description: simple_description,
+      thumbnail: thumbnail,
+      long_description: long_description,
       position: position,
     );
   }
@@ -33,7 +40,9 @@ const $HomeUnit = _$HomeUnitTearOff();
 mixin _$HomeUnit {
   String get id;
   String get name;
-  String get description;
+  String get simple_description;
+  String get thumbnail;
+  String get long_description;
   LatLng get position;
 
   $HomeUnitCopyWith<HomeUnit> get copyWith;
@@ -43,7 +52,13 @@ mixin _$HomeUnit {
 abstract class $HomeUnitCopyWith<$Res> {
   factory $HomeUnitCopyWith(HomeUnit value, $Res Function(HomeUnit) then) =
       _$HomeUnitCopyWithImpl<$Res>;
-  $Res call({String id, String name, String description, LatLng position});
+  $Res call(
+      {String id,
+      String name,
+      String simple_description,
+      String thumbnail,
+      String long_description,
+      LatLng position});
 }
 
 /// @nodoc
@@ -58,14 +73,21 @@ class _$HomeUnitCopyWithImpl<$Res> implements $HomeUnitCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object name = freezed,
-    Object description = freezed,
+    Object simple_description = freezed,
+    Object thumbnail = freezed,
+    Object long_description = freezed,
     Object position = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
-      description:
-          description == freezed ? _value.description : description as String,
+      simple_description: simple_description == freezed
+          ? _value.simple_description
+          : simple_description as String,
+      thumbnail: thumbnail == freezed ? _value.thumbnail : thumbnail as String,
+      long_description: long_description == freezed
+          ? _value.long_description
+          : long_description as String,
       position: position == freezed ? _value.position : position as LatLng,
     ));
   }
@@ -76,7 +98,13 @@ abstract class _$HomeUnitCopyWith<$Res> implements $HomeUnitCopyWith<$Res> {
   factory _$HomeUnitCopyWith(_HomeUnit value, $Res Function(_HomeUnit) then) =
       __$HomeUnitCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String description, LatLng position});
+  $Res call(
+      {String id,
+      String name,
+      String simple_description,
+      String thumbnail,
+      String long_description,
+      LatLng position});
 }
 
 /// @nodoc
@@ -92,14 +120,21 @@ class __$HomeUnitCopyWithImpl<$Res> extends _$HomeUnitCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object name = freezed,
-    Object description = freezed,
+    Object simple_description = freezed,
+    Object thumbnail = freezed,
+    Object long_description = freezed,
     Object position = freezed,
   }) {
     return _then(_HomeUnit(
       id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
-      description:
-          description == freezed ? _value.description : description as String,
+      simple_description: simple_description == freezed
+          ? _value.simple_description
+          : simple_description as String,
+      thumbnail: thumbnail == freezed ? _value.thumbnail : thumbnail as String,
+      long_description: long_description == freezed
+          ? _value.long_description
+          : long_description as String,
       position: position == freezed ? _value.position : position as LatLng,
     ));
   }
@@ -107,7 +142,13 @@ class __$HomeUnitCopyWithImpl<$Res> extends _$HomeUnitCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_HomeUnit extends _HomeUnit {
-  const _$_HomeUnit({this.id, this.name, this.description, this.position})
+  const _$_HomeUnit(
+      {this.id,
+      this.name,
+      this.simple_description,
+      this.thumbnail,
+      this.long_description,
+      this.position})
       : super._();
 
   @override
@@ -115,13 +156,17 @@ class _$_HomeUnit extends _HomeUnit {
   @override
   final String name;
   @override
-  final String description;
+  final String simple_description;
+  @override
+  final String thumbnail;
+  @override
+  final String long_description;
   @override
   final LatLng position;
 
   @override
   String toString() {
-    return 'HomeUnit(id: $id, name: $name, description: $description, position: $position)';
+    return 'HomeUnit(id: $id, name: $name, simple_description: $simple_description, thumbnail: $thumbnail, long_description: $long_description, position: $position)';
   }
 
   @override
@@ -132,9 +177,15 @@ class _$_HomeUnit extends _HomeUnit {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.description, description) ||
+            (identical(other.simple_description, simple_description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                    .equals(other.simple_description, simple_description)) &&
+            (identical(other.thumbnail, thumbnail) ||
+                const DeepCollectionEquality()
+                    .equals(other.thumbnail, thumbnail)) &&
+            (identical(other.long_description, long_description) ||
+                const DeepCollectionEquality()
+                    .equals(other.long_description, long_description)) &&
             (identical(other.position, position) ||
                 const DeepCollectionEquality()
                     .equals(other.position, position)));
@@ -145,7 +196,9 @@ class _$_HomeUnit extends _HomeUnit {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(simple_description) ^
+      const DeepCollectionEquality().hash(thumbnail) ^
+      const DeepCollectionEquality().hash(long_description) ^
       const DeepCollectionEquality().hash(position);
 
   @override
@@ -158,7 +211,9 @@ abstract class _HomeUnit extends HomeUnit {
   const factory _HomeUnit(
       {String id,
       String name,
-      String description,
+      String simple_description,
+      String thumbnail,
+      String long_description,
       LatLng position}) = _$_HomeUnit;
 
   @override
@@ -166,7 +221,11 @@ abstract class _HomeUnit extends HomeUnit {
   @override
   String get name;
   @override
-  String get description;
+  String get simple_description;
+  @override
+  String get thumbnail;
+  @override
+  String get long_description;
   @override
   LatLng get position;
   @override

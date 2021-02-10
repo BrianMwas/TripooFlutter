@@ -13,7 +13,7 @@ abstract class User with _$User {
       @required String fcm_token,
       @required bool emailVerified,
       @nullable String profileImageURL,
-      @nullable PhoneNumber phoneNumber,
+      String phoneNumber,
       @nullable DateTime joinDate,
       @required String providerId,}) = _User;
 }

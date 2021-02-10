@@ -34,6 +34,7 @@ ThemeData basicTheme() {
         )
       );
     }
+
     ButtonThemeData _basicButtonThemeData(ButtonThemeData baseBtn) {
       return baseBtn.copyWith(
         minWidth: double.infinity,
@@ -47,7 +48,8 @@ ThemeData basicTheme() {
 
     InputDecorationTheme _basicInputDecorationTheme(InputDecorationTheme base) {
       return base.copyWith(
-          floatingLabelBehavior: FloatingLabelBehavior.always,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+        isDense: true,
         labelStyle: TextStyle(
           color: Colors.black54,
           fontFamily: "Lato"
@@ -85,9 +87,10 @@ ThemeData basicTheme() {
       textTheme: _basicTextTheme(base.textTheme),
       buttonTheme: _basicButtonThemeData(base.buttonTheme),
       inputDecorationTheme: _basicInputDecorationTheme(base.inputDecorationTheme),
-      accentColor: Color(0xff00dfc8),
-      primaryColor: Color(0xff48cfaf),
-      shadowColor: Color(0xffdae4ef),
-      errorColor: Color(0xfff85c50),
+      accentColor: const Color(0xff00dfc8),
+      primaryColor: const Color(0xff48cfaf),
+      shadowColor: const Color(0xffdae4ef),
+      errorColor: const Color(0xfff85c50),
+      primaryColorDark:const Color(0xffFFC11E)
     );
 }

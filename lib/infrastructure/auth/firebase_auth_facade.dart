@@ -22,13 +22,37 @@ class FirebaseAuthFacade implements IAuthFacade {
   @override
   Future<Option<User>> getSignedInUser() async {
     final String currentUserId = _firebaseAuth.currentUser?.uid;
-
-    return _firestore.collection("user").doc(currentUserId).get().then((u) {
-      final Map<String, dynamic> userData =
-          u.data().update("id", (e) => u.id, ifAbsent: () => u.id)
-              as Map<String, dynamic>;
-      final userDto = UserDto.fromJson(userData);
-      return optionOf(userDto.toDomain());
+    final userCollection = _firestore.collection("user");
+    return userCollection
+        .doc(currentUserId)
+        .get()
+        .then((u) async {
+          if(u.exists) {
+            final newData = u.data();
+            newData['id'] = u.id;
+            final userDto = UserDto.fromJson(newData);
+            return optionOf(userDto.toDomain());
+          } else {
+            final userAuth = _firebaseAuth.currentUser;
+            if(userAuth != null) {
+              final token = await messaging.getToken();
+              final u = User(
+                  email: EmailAddress(userAuth.email),
+                  profileImageURL: userAuth.photoURL,
+                  emailVerified: userAuth.emailVerified,
+                  fcm_token: token,
+                  id: currentUserId,
+                  username: Username(userAuth.displayName),
+                  providerId: userAuth.providerData[0].providerId
+              );
+              final userJson = UserDto.fromDomain(u).toJson();
+              userCollection.doc(currentUserId)
+                  .set(userJson);
+              return optionOf(u);
+            } else {
+              return none();
+            }
+          }
     });
   }
 
@@ -107,8 +131,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         idToken: googleUserAuthentication.idToken,
         accessToken: googleUserAuthentication.accessToken
       );
-      final user = await _firebaseAuth.signInWithCredential(authCredential);
-      await createUserFromGoogle(user.user);
+      await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
     } on firebase.FirebaseAuthException catch(e) {
       return left(const AuthFailure.serverError());
@@ -122,29 +145,41 @@ class FirebaseAuthFacade implements IAuthFacade {
   ]);
   
   Future<void> createUserFromGoogle(firebase.User user) async {
-    final CollectionReference userCollection = _firestore.collection("user");
-    final userDoc = await userCollection.doc(user.uid)
-    .get();
-    final userToken = await messaging.getToken();
-
-    final userDomain = User(
-      id: user.uid,
-      providerId: "google",
-      email: EmailAddress(user.email),
-      emailVerified: true,
-      profileImageURL: user.photoURL,
-      username: Username(user.displayName),
-      fcm_token: userToken,
-      joinDate: DateTime.now()
-    );
-
-    final userJson = UserDto
-        .fromDomain(userDomain)
-        .toJson();
-
-    if(!userDoc.exists) {
+    if(user != null) {
+      final CollectionReference userCollection = _firestore.collection("user");
       userCollection.doc(user.uid)
-          .set(userJson);
-    };
+          .get()
+      .then((value) async {
+        if(!value.exists) {
+          final userToken = await messaging.getToken();
+
+          final userDomain = User(
+              id: user.uid,
+              providerId: "google",
+              email: EmailAddress(user.email),
+              emailVerified: true,
+              profileImageURL: user.photoURL,
+              username: Username(user.displayName),
+              fcm_token: userToken,
+              joinDate: DateTime.now()
+          );
+
+          final userJson = UserDto
+              .fromDomain(userDomain)
+              .toJson();
+
+          userCollection.doc(user.uid)
+              .set(userJson);
+        };
+      })
+      .catchError((error) {
+        print("error $error");
+      });
+
+
+    } else {
+      print("user is $user");
+    }
+    
   }
 }

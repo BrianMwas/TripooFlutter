@@ -18,15 +18,12 @@ class _OnBoardingState extends State<OnBoarding> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthBloc>(),
-      child: BlocListener<AuthBloc, AuthState>(
+    return BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           state.maybeMap(
             authenticated: (_) {
               ExtendedNavigator.of(context).pushBaseLayout();
             },
-            unAuthenticated: (_) => null,
             orElse: () => null,);
         },
         child: Scaffold(
@@ -92,7 +89,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         color: Theme.of(context).primaryColor,
                         padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
                         onPressed: () {
-                          ExtendedNavigator.of(context).replace(Routes.initFilters);
+                          ExtendedNavigator.of(context).replace(Routes.login);
                         },
                         child: const Text(
                           "Sign In.",
@@ -124,6 +121,13 @@ class _OnBoardingState extends State<OnBoarding> {
                           )
                         )
                       ),
+                      const SizedBox(height: 20),
+                      FlatButton(
+                        onPressed: () {
+                          ExtendedNavigator.of(context).pushBaseLayout();
+                        },
+                        child: const Text("Skip to properties", style: TextStyle(color: Colors.white))
+                      ),
                       const SizedBox(height: 40),
                     ]
                   )
@@ -132,7 +136,6 @@ class _OnBoardingState extends State<OnBoarding> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

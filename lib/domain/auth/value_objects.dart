@@ -68,7 +68,6 @@ class PhoneNumber extends ValueObject<String> {
   final Either<ValueFailure<String>, String>  value;
 
   factory PhoneNumber(String input) {
-
     return PhoneNumber._(
       validatePhoneNumber(input)
     );

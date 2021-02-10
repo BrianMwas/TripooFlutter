@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:tripoo/presentation/routes/route.gr.dart';
 
 class CreateProperty extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _CreatePropertyState extends State<CreateProperty> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       child: Container(
         padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 32),
         width: MediaQuery.of(context).size.width,
@@ -31,7 +33,7 @@ class _CreatePropertyState extends State<CreateProperty> {
                         fontFamily: "ProductSans",
                       )
                     ),
-                    Text(
+                    const Text(
                       "Choose your options"
                     )
                   ]
@@ -75,7 +77,7 @@ class _CreatePropertyState extends State<CreateProperty> {
                       padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
                       child: TextButton(
                           onPressed: () {
-                            print("Outline buttons");
+                            ExtendedNavigator.of(context).push(Routes.newProperty);
                           },
                           child: Text(
                               "Get Started",
@@ -91,7 +93,7 @@ class _CreatePropertyState extends State<CreateProperty> {
                 )
               ),
               const SizedBox(height: 10),
-              Container(
+              SizedBox(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -128,7 +130,7 @@ class _CreatePropertyState extends State<CreateProperty> {
                           padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
                           child: TextButton(
                               onPressed: () {
-                                print("Outline buttons");
+                                ExtendedNavigator.of(context).pushPropertyDash();
                               },
                               child: Text(
                                   "Get Started",

@@ -198,7 +198,7 @@ class LoginForm extends StatelessWidget {
                     icon: obscurePassword
                         ? const Icon(EvaIcons.eyeOutline)
                         : const Icon(EvaIcons.eyeOffOutline),
-                    onPressed: () => _togglePassword,
+                    onPressed: () => _togglePassword(),
                   ),
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   isDense: true,

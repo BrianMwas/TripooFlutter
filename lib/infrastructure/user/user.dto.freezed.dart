@@ -22,7 +22,7 @@ class _$UserDtoTearOff {
       @required String email,
       @required String username,
       @nullable String photoURL,
-      @nullable String phoneNumber,
+      String phoneNumber,
       @required bool emailVerified,
       @required String fcmToken,
       String providerId,
@@ -57,7 +57,6 @@ mixin _$UserDto {
   String get username;
   @nullable
   String get photoURL;
-  @nullable
   String get phoneNumber;
   bool get emailVerified;
   String get fcmToken;
@@ -77,7 +76,7 @@ abstract class $UserDtoCopyWith<$Res> {
       String email,
       String username,
       @nullable String photoURL,
-      @nullable String phoneNumber,
+      String phoneNumber,
       bool emailVerified,
       String fcmToken,
       String providerId,
@@ -132,7 +131,7 @@ abstract class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String email,
       String username,
       @nullable String photoURL,
-      @nullable String phoneNumber,
+      String phoneNumber,
       bool emailVerified,
       String fcmToken,
       String providerId,
@@ -187,7 +186,7 @@ class _$_UserDto extends _UserDto {
       @required this.email,
       @required this.username,
       @nullable this.photoURL,
-      @nullable this.phoneNumber,
+      this.phoneNumber,
       @required this.emailVerified,
       @required this.fcmToken,
       this.providerId,
@@ -211,7 +210,6 @@ class _$_UserDto extends _UserDto {
   @nullable
   final String photoURL;
   @override
-  @nullable
   final String phoneNumber;
   @override
   final bool emailVerified;
@@ -288,7 +286,7 @@ abstract class _UserDto extends UserDto {
       @required String email,
       @required String username,
       @nullable String photoURL,
-      @nullable String phoneNumber,
+      String phoneNumber,
       @required bool emailVerified,
       @required String fcmToken,
       String providerId,
@@ -306,7 +304,6 @@ abstract class _UserDto extends UserDto {
   @nullable
   String get photoURL;
   @override
-  @nullable
   String get phoneNumber;
   @override
   bool get emailVerified;

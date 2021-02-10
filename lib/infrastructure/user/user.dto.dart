@@ -12,7 +12,7 @@ abstract class UserDto implements _$UserDto {
     @required String email,
     @required String username,
     @nullable String photoURL,
-    @nullable String phoneNumber,
+    String phoneNumber,
     @required bool emailVerified,
     @required String fcmToken,
     String providerId,
@@ -27,7 +27,7 @@ abstract class UserDto implements _$UserDto {
       email: user.email.getOrCrash(),
       username: user.username.getOrCrash(),
       photoURL: user.profileImageURL,
-      phoneNumber: user.phoneNumber.getOrCrash(),
+      phoneNumber: user.phoneNumber,
       emailVerified: user.emailVerified,
       joinDate: user.joinDate,
       fcmToken: user.fcm_token,
@@ -44,7 +44,7 @@ abstract class UserDto implements _$UserDto {
       profileImageURL: photoURL,
       fcm_token: fcmToken,
       joinDate: joinDate,
-      phoneNumber: PhoneNumber(phoneNumber),
+      phoneNumber: phoneNumber,
       providerId: providerId
     );
   }

@@ -198,7 +198,7 @@ class SignupForm extends StatelessWidget {
                     icon: obscurePassword
                         ? const Icon(EvaIcons.eyeOutline)
                         : const Icon(EvaIcons.eyeOffOutline),
-                    onPressed: () => _togglePassword,
+                    onPressed: () => _togglePassword(),
                   ),
                   helperText:
                   "One uppercase letter, One special character or number and at \n least eight characters long",

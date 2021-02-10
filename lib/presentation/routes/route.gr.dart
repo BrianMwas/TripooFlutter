@@ -15,9 +15,12 @@ import '../pages/auth/login.dart';
 import '../pages/auth/register.dart';
 import '../pages/auth/user/init_filters.dart';
 import '../pages/home/base.dart';
-import '../pages/home/property/create_property.dart';
+import '../pages/home/property/create_property/create_property_widget.dart';
+import '../pages/home/property/property_dash/dashboard.dart';
 import '../pages/home/property/property_detail.dart';
 import '../pages/home/property/property_list.dart';
+import '../pages/home/property/property_map_view.dart';
+import '../pages/home/property/start_property.dart';
 import '../pages/home/settings/change_password.dart';
 import '../pages/home/settings/profile.dart';
 import '../pages/onboarding/onboarding.dart';
@@ -34,6 +37,9 @@ class Routes {
   static const String createProperty = '/create-property';
   static const String baseLayout = '/base-layout';
   static const String initFilters = '/init-filters';
+  static const String propertyMapView = '/property-map-view';
+  static const String newProperty = '/new-property';
+  static const String propertyDash = '/property-dash';
   static const all = <String>{
     onBoarding,
     login,
@@ -46,6 +52,9 @@ class Routes {
     createProperty,
     baseLayout,
     initFilters,
+    propertyMapView,
+    newProperty,
+    propertyDash,
   };
 }
 
@@ -64,6 +73,9 @@ class Router extends RouterBase {
     RouteDef(Routes.createProperty, page: CreateProperty),
     RouteDef(Routes.baseLayout, page: BaseLayout),
     RouteDef(Routes.initFilters, page: InitFilters),
+    RouteDef(Routes.propertyMapView, page: PropertyMapView),
+    RouteDef(Routes.newProperty, page: NewProperty),
+    RouteDef(Routes.propertyDash, page: PropertyDash),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -143,6 +155,24 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    PropertyMapView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => PropertyMapView(),
+        settings: data,
+      );
+    },
+    NewProperty: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => NewProperty(),
+        settings: data,
+      );
+    },
+    PropertyDash: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => PropertyDash(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -172,4 +202,11 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushBaseLayout() => push<dynamic>(Routes.baseLayout);
 
   Future<dynamic> pushInitFilters() => push<dynamic>(Routes.initFilters);
+
+  Future<dynamic> pushPropertyMapView() =>
+      push<dynamic>(Routes.propertyMapView);
+
+  Future<dynamic> pushNewProperty() => push<dynamic>(Routes.newProperty);
+
+  Future<dynamic> pushPropertyDash() => push<dynamic>(Routes.propertyDash);
 }

@@ -38,225 +38,229 @@ class _InitFiltersState extends State<InitFilters> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Color(0xffF2F8FD)
-              ]
-            )
-          ),
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.topRight,
-                child: FlatButton(
-                  onPressed: () {},
-                  child: const Text("Skip",
-                    style: TextStyle(
-                      fontFamily: "ProductSans",
-                      fontSize: 20.0,
-                    ),
-                  )
-                )
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height - 20.0,
-                child: PageView(
-                  physics: const ClampingScrollPhysics(),
-                  controller: _controller,
-                  onPageChanged: (page) {
-                    setState(() {
-                      _currentPage = page;
-                    });
-                  },
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Lottie
-                                .asset(
-                                "assets/images/rocket.json",
-                                height: 250,
-                                width: 250,
-                                fit: BoxFit.fill,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            "Let's get started",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w800,
-                              fontSize: Theme.of(context).textTheme.headline4.fontSize,
-                              color: Colors.black87
-                            ),
-                          ),
-                          const Text("Please choose your preferences."),
-                          const SizedBox(height: 20),
-                          CustomCheckBoxGroup(
-                            horizontal: true,
-                            buttonTextStyle: const ButtonTextStyle(
-                              selectedColor: Color(0xff00CF91),
-                              unSelectedColor: Color(0xffF2F8FD),
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            buttonLables:const [
-                              "Rent",
-                              "Buy"
-                            ],
-                            buttonValuesList:const [
-                              "RENT",
-                              "BUY"
-                            ],
-                            defaultSelected: "RENT",
-                            padding: 12,
-                            width: 40,
-                            enableButtonWrap: false,
-                            checkBoxButtonValues: (values) {
-                              print("values $values");
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Lottie
-                                .asset(
-                              "assets/images/rocket.json",
-                              height: 250,
-                              width: 250,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            "Let's get started",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: Theme.of(context).textTheme.headline4.fontSize,
-                                color: Colors.black87
-                            ),
-                          ),
-                          const Text("Please choose your preferences."),
-                          const SizedBox(height: 20),
-                          CustomCheckBoxGroup(
-                            horizontal: true,
-                            buttonTextStyle: const ButtonTextStyle(
-                              selectedColor: Color(0xff00CF91),
-                              unSelectedColor: Color(0xffF2F8FD),
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            buttonLables:const [
-                              "Rent",
-                              "Buy"
-                            ],
-                            buttonValuesList:const [
-                              "RENT",
-                              "BUY"
-                            ],
-                            defaultSelected: "RENT",
-                            padding: 12,
-                            width: 40,
-                            enableButtonWrap: false,
-                            checkBoxButtonValues: (values) {
-                              print("values $values");
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Lottie
-                                .asset(
-                              "assets/images/rocket.json",
-                              height: 250,
-                              width: 250,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            "Let's get started",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: Theme.of(context).textTheme.headline4.fontSize,
-                                color: Colors.black87
-                            ),
-                          ),
-                          const Text("Please choose your preferences."),
-                          const SizedBox(height: 20),
-                          CustomCheckBoxGroup(
-                            horizontal: true,
-                            buttonTextStyle: const ButtonTextStyle(
-                              selectedColor: Color(0xff00CF91),
-                              unSelectedColor: Color(0xffF2F8FD),
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            buttonLables:const [
-                              "Rent",
-                              "Buy"
-                            ],
-                            buttonValuesList:const [
-                              "RENT",
-                              "BUY"
-                            ],
-                            defaultSelected: "RENT",
-                            padding: 12,
-                            width: 40,
-                            enableButtonWrap: false,
-                            checkBoxButtonValues: (values) {
-                              print("values $values");
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                  ]
-                )
-              ),
-              if (_currentPage != _noOfPages - 1) Expanded(
-                  child: Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: FlatButton(
-                      onPressed: () {
-                        print("Next");
-                        _controller.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.ease,
-                        );
-                      },
-                      child: const Text("Next", style: TextStyle(fontSize: 22.0,),),
-                    )
-                  ),
-              ) else Container()
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.transparent,
+              Color(0xffF2F8FD)
             ]
           )
         ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.topRight,
+              child: FlatButton(
+                onPressed: () {},
+                child: const Text("Skip",
+                  style: TextStyle(
+                    fontFamily: "ProductSans",
+                    fontSize: 20.0,
+                  ),
+                )
+              )
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height - 20.0,
+              child: PageView(
+                physics: const ClampingScrollPhysics(),
+                controller: _controller,
+                onPageChanged: (page) {
+                  setState(() {
+                    _currentPage = page;
+                  });
+                },
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Lottie
+                              .asset(
+                              "assets/images/rocket.json",
+                              height: 250,
+                              width: 250,
+                              fit: BoxFit.fill,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          "Let's get started",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: Theme.of(context).textTheme.headline4.fontSize,
+                            color: Colors.black87
+                          ),
+                        ),
+                        const Text("Please choose your preferences."),
+                        const SizedBox(height: 20),
+                        // CustomCheckBoxGroup(
+                        //   horizontal: true,
+                        //   unSelectedColor: Colors.black26,
+                        //   selectedColor: Theme.of(context).primaryColor,
+                        //   buttonTextStyle: const ButtonTextStyle(
+                        //     selectedColor: Color(0xff00CF91),
+                        //     unSelectedColor: Color(0xffF2F8FD),
+                        //     textStyle: TextStyle(
+                        //       fontSize: 16,
+                        //     ),
+                        //   ),
+                        //   buttonLables:const [
+                        //     "Rent",
+                        //     "Buy"
+                        //   ],
+                        //   buttonValuesList:const [
+                        //     "RENT",
+                        //     "BUY"
+                        //   ],
+                        //   defaultSelected: "Rent",
+                        //   padding: 12,
+                        //   width: 40,
+                        //   enableButtonWrap: false,
+                        //   checkBoxButtonValues: (values) {
+                        //     print("values $values");
+                        //   },
+                        // )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Lottie
+                              .asset(
+                            "assets/images/rocket.json",
+                            height: 250,
+                            width: 250,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          "Let's get started",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: Theme.of(context).textTheme.headline4.fontSize,
+                              color: Colors.black87
+                          ),
+                        ),
+                        const Text("Please choose your preferences."),
+                        const SizedBox(height: 20),
+                        // CustomCheckBoxGroup(
+                        //   horizontal: true,
+                        //   unSelectedColor: Colors.black26,
+                        //   selectedColor: Theme.of(context).primaryColor,
+                        //
+                        //   buttonTextStyle: const ButtonTextStyle(
+                        //     selectedColor: Color(0xff00CF91),
+                        //     unSelectedColor: Color(0xffF2F8FD),
+                        //     textStyle: TextStyle(
+                        //       fontSize: 16,
+                        //     ),
+                        //   ),
+                        //   buttonLables:const [
+                        //     "Rent",
+                        //     "Buy"
+                        //   ],
+                        //   buttonValuesList:const [
+                        //     "RENT",
+                        //     "BUY"
+                        //   ],
+                        //   defaultSelected: "Rent",
+                        //   padding: 12,
+                        //   width: 40,
+                        //   enableButtonWrap: false,
+                        //   checkBoxButtonValues: (values) {
+                        //     print("values $values");
+                        //   },
+                        // )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Lottie
+                              .asset(
+                            "assets/images/rocket.json",
+                            height: 250,
+                            width: 250,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          "Let's get started",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: Theme.of(context).textTheme.headline4.fontSize,
+                              color: Colors.black87
+                          ),
+                        ),
+                        const Text("Please choose your preferences."),
+                        const SizedBox(height: 20),
+                        // CustomCheckBoxGroup(
+                        //   horizontal: true,
+                        //   unSelectedColor: Colors.black26,
+                        //   selectedColor: Theme.of(context).primaryColor,
+                        //   buttonTextStyle: const ButtonTextStyle(
+                        //     selectedColor: Color(0xff00CF91),
+                        //     unSelectedColor: Color(0xffF2F8FD),
+                        //     textStyle: TextStyle(
+                        //       fontSize: 16,
+                        //     ),
+                        //   ),
+                        //   buttonLables:const [
+                        //     "Rent",
+                        //     "Buy"
+                        //   ],
+                        //   buttonValuesList:const [
+                        //     "RENT",
+                        //     "BUY"
+                        //   ],
+                        //   defaultSelected: "Rent",
+                        //   padding: 12,
+                        //   width: 40,
+                        //   enableButtonWrap: false,
+                        //   checkBoxButtonValues: (values) {
+                        //     print("values $values");
+                        //   },
+                        // )
+                      ],
+                    ),
+                  ),
+                ]
+              )
+            ),
+            if (_currentPage != _noOfPages - 1) Expanded(
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: FlatButton(
+                    onPressed: () {
+                      print("Next");
+                      _controller.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                      );
+                    },
+                    child: const Text("Next", style: TextStyle(fontSize: 22.0,),),
+                  )
+                ),
+            ) else Container()
+          ]
+        )
       ),
       bottomSheet: _currentPage == _noOfPages - 1 ? Container(
         height: 100,
