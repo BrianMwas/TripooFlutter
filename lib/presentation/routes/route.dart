@@ -36,6 +36,6 @@ import 'package:tripoo/presentation/pages/onboarding/onboarding.dart';
   CupertinoRoute(page: InitFilters),
   CupertinoRoute(page: PropertyMapView),
   CupertinoRoute(page: NewProperty),
-  CupertinoRoute(page: PropertyDash)
+  CupertinoRoute(page: PropertyDash),
 ])
 class $Router {}

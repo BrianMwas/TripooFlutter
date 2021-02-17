@@ -35,9 +35,17 @@ class _BaseLayoutState extends State<BaseLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => getIt<AuthBloc>())
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              state.maybeMap(
+                authenticated: (v) {
+                  print("user is authenticated");
+                },
+                orElse: () => null,);
+            }
+        )
       ],
       child: Scaffold(
         extendBodyBehindAppBar: true,
