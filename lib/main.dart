@@ -52,22 +52,23 @@ class _AppState extends State<App> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return BlocProvider(
+      // Ignites immediately preventing navigation to auth routes without logging in.
       create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
       child: Wiredash(
         projectId: "tripoo-xg1ppe9",
         secret: "8n4yas7tx0hdqmkooar5x4j6wm709rpju6vdzdkr5n5d6xas",
         navigatorKey: _navigatorKey,
         child: MaterialApp(
-                title: "Tripoo",
-                debugShowCheckedModeBanner: Provider.of<bool>(context),
-                theme: basicTheme(),
-                builder: ExtendedNavigator(
-                  router: auto_route.Router(),
-                  navigatorKey: _navigatorKey,
-                )),
+            title: "Tripoo",
+            debugShowCheckedModeBanner: Provider.of<bool>(context),
+            theme: basicTheme(),
 
+            builder: ExtendedNavigator(
+              router: auto_route.Router(),
+              navigatorKey: _navigatorKey,
+            ),
+          ),
         ),
       );
-
   }
 }

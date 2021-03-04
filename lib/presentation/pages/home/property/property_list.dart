@@ -13,7 +13,7 @@ import 'filter_properties.dart';
 import 'property_card_widget.dart';
 
 class PropertyList extends HookWidget {
-  PropertyList({ Key key }): super(key: key);
+  const PropertyList({ Key key }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -104,16 +104,15 @@ class PropertyList extends HookWidget {
                                         placeholder: (context, url) =>
                                             const Icon(EvaIcons.person,
                                                 size: 20),
-                                        imageUrl:
-                                        currentUser.value.photoURL ?? "https://picsum.photos/250?image=9",
+                                        imageUrl: "https://picsum.photos/250?image=9",
                                         width: 50,
                                         height: 50,
                                         fit: BoxFit.fill),
                                   ),
-                                  title: Text(currentUser.value.displayName,
+                                  title: Text("Brian",
                                       style: const TextStyle(
                                           fontFamily: "ProductSans")),
-                                  subtitle: Text(currentUser.value.email)),
+                                  subtitle: Text("brnmwas@gmail.com")),
                             ),
                             Align(
                                 child: ButtonTheme(
@@ -133,7 +132,7 @@ class PropertyList extends HookWidget {
                             const Divider(),
                             ListTile(
                                 onTap: () {
-                                  print("Go to settings");
+                                  ExtendedNavigator.of(context).push(Routes.settings);
                                 },
                                 leading: const Icon(EvaIcons.settingsOutline,
                                     color: Colors.black54),
@@ -259,7 +258,7 @@ class PropertyList extends HookWidget {
                         SizedBox(
                             height: 250,
                             child: ListView.builder(
-                              physics: BouncingScrollPhysics(),
+                              physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: 4,
                               scrollDirection: Axis.horizontal,

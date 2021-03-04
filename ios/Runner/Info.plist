@@ -14,6 +14,10 @@
 	<string>tripoo</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Photo access.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Access camera for unit photos</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>

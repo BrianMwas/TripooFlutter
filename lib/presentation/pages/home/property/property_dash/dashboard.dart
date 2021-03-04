@@ -1,6 +1,10 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:md2_tab_indicator/md2_tab_indicator.dart';
+import 'package:supercharged/supercharged.dart';
+import 'package:tripoo/presentation/routes/route.gr.dart';
+
 
 class PropertyDash extends StatefulWidget {
 
@@ -9,59 +13,331 @@ class PropertyDash extends StatefulWidget {
 }
 
 class _PropertyDashState extends State<PropertyDash> {
+  // Height for the animated container,
+  double _propertySize = 100.0;
+
+  _onStartScroll(ScrollMetrics metrics) {
+    print("Scroll Start");
+    setState(() {
+      if(_propertySize <= 0) {
+        _propertySize = 100.0;
+      } else {
+        _propertySize = 0;
+      }
+    });
+  }
+
+  _onUpdateScroll(ScrollMetrics metrics) {
+    print("Scroll Update");
+    setState(() {
+      _propertySize = 0;
+    });
+  }
+
+  _onEndScroll(ScrollMetrics metrics) {
+    setState(() {
+      _propertySize = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text(
-              "My Property",
-              style:
-                  TextStyle(fontFamily: "ProductSans", color: Colors.black87),
-            ),
-            iconTheme: const IconThemeData(color: Colors.black87),
-            bottom: TabBar(
-                indicatorColor: Theme.of(context).primaryColorDark,
-                labelColor: Colors.black87,
-                indicatorWeight: 4.0,
-                unselectedLabelColor: Colors.black54,
-                indicatorSize: TabBarIndicatorSize.label,
-                labelStyle: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "ProductSans",
-                ),
-                indicator: MD2Indicator(
-                  indicatorHeight: 3,
-                  indicatorSize: MD2IndicatorSize.normal,
-                  indicatorColor: Theme.of(context).primaryColorDark,
-                ),
-                tabs: const [
-                  Tab(
-                    text: "Open",
-                  ),
-                  Tab(text: "Closed")
-                ]),
-          ),
+    return Scaffold(
+        appBar: AppBar(
           backgroundColor: Colors.white,
-          body: TabBarView(
+          iconTheme: const IconThemeData(color: Colors.black87),
+          elevation: 0,
+        ),
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: const Center(
-                  child: Text("Open properties"),
+                child: RichText(
+                  text: TextSpan(
+                    text: "Hello, \n",
+                    style: TextStyle(
+                      fontFamily: "Lato",
+                      color: Colors.black54,
+                      fontSize: 16,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "Brian",
+                        style: TextStyle(
+                          fontFamily: "ProductSans",
+                          fontSize: 25,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w600,
+                        )
+                      )
+                    ]
+                  )
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(16.0),
-                child: const Center(
-                  child: Text("Closed properties"),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  "Overview",
+                  style: TextStyle(
+                      fontFamily: "ProductSans",
+                  ),
                 ),
               ),
-            ],
-          )),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      height: 100,
+                      width: MediaQuery.of(context).size.width * 0.5 - 21,
+                      decoration: BoxDecoration(
+
+                        borderRadius: BorderRadius.circular(8.0),
+                        gradient: LinearGradient(
+                          colors: [
+                            "#F2F8FD".toColor(),
+                            "#D7E1E9".toColor(),
+                          ]
+                        )
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "15 %",
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 32,
+                              fontFamily: "ProductSans"
+                            )
+                          ),
+                          const Spacer(),
+                          Text("Percentage unit live.", style: TextStyle(
+                            color: Colors.black54
+                          ),),
+                        Text(
+                          'Manage units.',
+                          style: TextStyle(
+                            color: Colors.red[400],
+                            fontSize: 12,
+                          )
+                          )
+                        ]
+                      )
+                    ),
+                    const SizedBox(width: 10),
+                    Container(
+                        padding: const EdgeInsets.all(8.0),
+                        height: 100,
+                        width: MediaQuery.of(context).size.width * 0.5 - 21,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          gradient: LinearGradient(
+                            colors: [
+                              "#51EAFF".toColor(),
+                              "#64C7FF".toColor(),
+                            ],
+                          ),
+                        ),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "2",
+                                  style: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 32,
+                                      fontFamily: "ProductSans"
+                                  )
+                              ),
+                              const Spacer(),
+                              Text("Associates.", style: TextStyle(
+                                  color: Colors.black54
+                              ),),
+                              Text(
+                                'Manage associates.',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                )
+                              )
+                            ]
+                        )
+                    )
+                  ]
+                ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0, left: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("My Properties", style: TextStyle(fontFamily: "ProductSans"),),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: TextButton(
+                        child: Text("Add new"),
+                        onPressed: () {
+                          ExtendedNavigator.of(context).pushNewProperty();
+                        }
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 210,
+                child: ListView.builder(
+                       scrollDirection: Axis.horizontal,
+                       itemCount: 1,
+                       physics: const BouncingScrollPhysics(),
+                       itemBuilder: (context, index) {
+                         final String photo = "https://source.unsplash.com/weekly?apartment";
+
+                         return InkWell(
+                           onTap: () {
+                            ExtendedNavigator.of(context).push(Routes.propertyDetail);
+                           },
+                           child: Padding(
+                             padding: const EdgeInsets.all(8.0),
+                             child: Stack(
+                               children : [
+                                 Container(
+                                   width: 180,
+                                   decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(8.0),
+                                     image: DecorationImage(
+                                         image: NetworkImage(
+                                           photo
+                                         ),
+                                       fit: BoxFit.fill,
+                                     ),
+                                   ),
+                                 ),
+                                 Container(
+                                   width: 180,
+                                   padding: const EdgeInsets.all(8.0),
+                                   decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(8.0),
+                                     gradient: const LinearGradient(
+                                       begin: Alignment.topRight,
+                                       end: Alignment.bottomLeft,
+                                       colors: [
+                                         Colors.transparent,
+                                         Colors.black
+                                       ]
+                                     ),
+                                   ),
+                                   child: Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Align(
+                                         alignment: Alignment.topRight,
+                                         child: IconButton(
+                                           icon: const Icon(EvaIcons.arrowForwardOutline),
+                                           onPressed: () {
+                                             print("Press the arrow forward");
+                                           }
+                                         )
+                                       ),
+                                       const Spacer(),
+
+                                    Text("Muindi Homes", style: TextStyle(
+                                             fontFamily: "ProductSans",
+                                             color: Colors.white, fontSize: 20,),),
+
+                                       Text("12 Units", style: TextStyle(color: Colors.white),)
+                                     ]
+                                   )
+                                 ),
+                             ]
+                             ),
+                           ),
+                         );
+                       },
+                     ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:  [
+                          Text(
+                              "My Calendar",
+                              style: TextStyle(
+                              fontFamily: "ProductSans",
+                                color: Colors.black87,
+                                fontSize: 24,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text("View your calendar for bookings"),
+                          TextButton(
+                            onPressed: () {
+                              ExtendedNavigator.of(context).pushBookings();
+                            },
+                            child: Text(
+                              "View my calendar",
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColorDark,
+                              )
+                            ),
+                          )
+                        ]
+                      ),
+                    ),
+                    Image.asset("assets/images/calendar.png", height: 120, width: 120, fit: BoxFit.fill)
+                  ]
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 8.0),
+                child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:  [
+                              Text(
+                                "Notifications",
+                                style: TextStyle(
+                                  fontFamily: "ProductSans",
+                                  color: Colors.black87,
+                                  fontSize: 24,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text("All notifications on bookings or information about any changes."),
+                              TextButton(
+                                onPressed: () {
+                                  ExtendedNavigator.of(context).push(Routes.notifications);
+                                },
+                                child: Text(
+                                    "Get started.",
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColorDark,
+                                    )
+                                ),
+                              )
+                            ]
+                        ),
+                      ),
+                      Image.asset("assets/images/pr.png", height: 120, width: 120, fit: BoxFit.fill)
+                    ]
+                ),
+              ),
+            ]
+          ),
+        )
     );
   }
 }

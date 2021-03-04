@@ -10,23 +10,32 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/auth/check_auth.dart';
 import '../pages/auth/forgot_password.dart';
 import '../pages/auth/login.dart';
 import '../pages/auth/register.dart';
 import '../pages/auth/user/init_filters.dart';
 import '../pages/home/base.dart';
 import '../pages/home/property/create_property/create_property_widget.dart';
+import '../pages/home/property/homeunits/create_new_unit.dart';
+import '../pages/home/property/homeunits/edit_unit_view.dart';
+import '../pages/home/property/homeunits/single_unit_view.dart';
 import '../pages/home/property/property_dash/dashboard.dart';
 import '../pages/home/property/property_detail.dart';
 import '../pages/home/property/property_list.dart';
 import '../pages/home/property/property_map_view.dart';
 import '../pages/home/property/start_property.dart';
+import '../pages/home/settings/bookings.dart';
 import '../pages/home/settings/change_password.dart';
+import '../pages/home/settings/notifications.dart';
 import '../pages/home/settings/profile.dart';
+import '../pages/home/settings/settings.dart';
+import '../pages/marketing/marketing.dart';
 import '../pages/onboarding/onboarding.dart';
 
 class Routes {
-  static const String onBoarding = '/';
+  static const String checkAuth = '/';
+  static const String onBoarding = '/on-boarding';
   static const String login = '/Login';
   static const String register = '/Register';
   static const String forgotPassword = '/forgot-password';
@@ -40,7 +49,15 @@ class Routes {
   static const String propertyMapView = '/property-map-view';
   static const String newProperty = '/new-property';
   static const String propertyDash = '/property-dash';
+  static const String notifications = '/Notifications';
+  static const String bookings = '/Bookings';
+  static const String settings = '/Settings';
+  static const String singleUnitView = '/single-unit-view';
+  static const String editUnitView = '/edit-unit-view';
+  static const String marketing = '/Marketing';
+  static const String createUnitView = '/create-unit-view';
   static const all = <String>{
+    checkAuth,
     onBoarding,
     login,
     register,
@@ -55,6 +72,13 @@ class Routes {
     propertyMapView,
     newProperty,
     propertyDash,
+    notifications,
+    bookings,
+    settings,
+    singleUnitView,
+    editUnitView,
+    marketing,
+    createUnitView,
   };
 }
 
@@ -62,6 +86,7 @@ class Router extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
+    RouteDef(Routes.checkAuth, page: CheckAuth),
     RouteDef(Routes.onBoarding, page: OnBoarding),
     RouteDef(Routes.login, page: Login),
     RouteDef(Routes.register, page: Register),
@@ -76,10 +101,23 @@ class Router extends RouterBase {
     RouteDef(Routes.propertyMapView, page: PropertyMapView),
     RouteDef(Routes.newProperty, page: NewProperty),
     RouteDef(Routes.propertyDash, page: PropertyDash),
+    RouteDef(Routes.notifications, page: Notifications),
+    RouteDef(Routes.bookings, page: Bookings),
+    RouteDef(Routes.settings, page: Settings),
+    RouteDef(Routes.singleUnitView, page: SingleUnitView),
+    RouteDef(Routes.editUnitView, page: EditUnitView),
+    RouteDef(Routes.marketing, page: Marketing),
+    RouteDef(Routes.createUnitView, page: CreateUnitView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
+    CheckAuth: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CheckAuth(),
+        settings: data,
+      );
+    },
     OnBoarding: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => OnBoarding(),
@@ -133,7 +171,7 @@ class Router extends RouterBase {
     },
     PropertyList: (data) {
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => PropertyList(),
+        builder: (context) => const PropertyList(),
         settings: data,
       );
     },
@@ -173,6 +211,48 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    Notifications: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => Notifications(),
+        settings: data,
+      );
+    },
+    Bookings: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => Bookings(),
+        settings: data,
+      );
+    },
+    Settings: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => Settings(),
+        settings: data,
+      );
+    },
+    SingleUnitView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => SingleUnitView(),
+        settings: data,
+      );
+    },
+    EditUnitView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => EditUnitView(),
+        settings: data,
+      );
+    },
+    Marketing: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => Marketing(),
+        settings: data,
+      );
+    },
+    CreateUnitView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => CreateUnitView(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -181,6 +261,8 @@ class Router extends RouterBase {
 /// *************************************************************************
 
 extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
+  Future<dynamic> pushCheckAuth() => push<dynamic>(Routes.checkAuth);
+
   Future<dynamic> pushOnBoarding() => push<dynamic>(Routes.onBoarding);
 
   Future<dynamic> pushLogin() => push<dynamic>(Routes.login);
@@ -209,4 +291,18 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushNewProperty() => push<dynamic>(Routes.newProperty);
 
   Future<dynamic> pushPropertyDash() => push<dynamic>(Routes.propertyDash);
+
+  Future<dynamic> pushNotifications() => push<dynamic>(Routes.notifications);
+
+  Future<dynamic> pushBookings() => push<dynamic>(Routes.bookings);
+
+  Future<dynamic> pushSettings() => push<dynamic>(Routes.settings);
+
+  Future<dynamic> pushSingleUnitView() => push<dynamic>(Routes.singleUnitView);
+
+  Future<dynamic> pushEditUnitView() => push<dynamic>(Routes.editUnitView);
+
+  Future<dynamic> pushMarketing() => push<dynamic>(Routes.marketing);
+
+  Future<dynamic> pushCreateUnitView() => push<dynamic>(Routes.createUnitView);
 }

@@ -29,19 +29,27 @@ class FilterForm extends HookWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Filter",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12,
-                        color: Colors.black87,
-                        fontFamily: "ProductSans")),
+                const Text(
+                  "Filter",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Colors.black87,
+                    fontFamily: "ProductSans",
+                  ),
+                ),
                 TextButton(
-                    onPressed: () {
-                      print("filters cleared");
-                    },
-                    child: Text("Clear filters",
-                        style: TextStyle(color: Colors.red[400])))
+                  onPressed: () {
+                    print("filters cleared");
+                  },
+                  child: Text(
+                    "Clear filters",
+                    style: TextStyle(
+                      color: Colors.red[400],
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 5),
@@ -53,7 +61,7 @@ class FilterForm extends HookWidget {
               elevation: 0,
               isExpanded: true,
               isDense: true,
-              items: ["Any", "Apartment", "Business Stall"]
+              items: ["Any", "Apartment", "Business Stall", "Office Space"]
                   .map(
                     (e) => DropdownMenuItem(
                       child: Text(e),

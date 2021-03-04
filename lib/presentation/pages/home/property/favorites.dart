@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class Favorites extends StatefulWidget {
   @override
@@ -11,8 +12,20 @@ class _FavoritesState extends State<Favorites> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
-      child: const Center(
-        child: Text("Favorite")
+      child:  Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+                "assets/images/empty_box_animation.json",
+                height: 250,
+                width: 250,
+                fit: BoxFit.fill,
+            ),
+            const SizedBox(height: 50),
+            Text("You dont have any favorites")
+          ],
+        )
       )
     );
   }

@@ -87,7 +87,8 @@ class _BaseLayoutState extends State<BaseLayout> {
           selectedLabelStyle: const TextStyle(
             fontWeight: FontWeight.w800,
             fontFamily: "ProductSans",
-              fontSize: 11, height: 2
+              fontSize: 11,
+              height: 2,
           ),
           onTap: (i) => _onTapTab(i),
         ),

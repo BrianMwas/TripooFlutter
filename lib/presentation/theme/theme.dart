@@ -87,6 +87,7 @@ ThemeData basicTheme() {
       textTheme: _basicTextTheme(base.textTheme),
       buttonTheme: _basicButtonThemeData(base.buttonTheme),
       inputDecorationTheme: _basicInputDecorationTheme(base.inputDecorationTheme),
+      visualDensity: VisualDensity.comfortable,
       accentColor: const Color(0xff00dfc8),
       primaryColor: const Color(0xff48cfaf),
       shadowColor: const Color(0xffdae4ef),
