@@ -165,7 +165,7 @@ class _NewPropertyState extends State<NewProperty> {
                               EvaIcons.pinOutline,
                               size: 50
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                           Text("Get location", style: TextStyle(color: Colors.black54, fontFamily: "ProductSans")),
                         ]
                     )

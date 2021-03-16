@@ -19,6 +19,21 @@ class _CreateUnitViewState extends State<CreateUnitView> {
   List<String> _feature = [];
   ThemeData get theme => Theme.of(context);
 
+
+  @override
+  void initState() {
+    super.initState();
+    _features = [
+      S2Choice<String>(value: "parking", title: "Parking", meta: Icon(EvaIcons.car, color: Colors.green)),
+      S2Choice<String>(value: "secure", title: "Security",  meta: Icon(EvaIcons.car, color: Colors.green)),
+      S2Choice<String>(value: "hotwater", title: "Hot water",  meta: Icon(EvaIcons.car, color: Colors.green)),
+      S2Choice<String>(value: "wifi", title: "Wifi",  meta: Icon(EvaIcons.car, color: Colors.green)),
+      S2Choice<String>(value: "24HrWater", title: "24/7 Water",  meta: Icon(EvaIcons.car, color: Colors.green)),
+      S2Choice<String>(value: "tokens", title: "Electricity Tokens",  meta: Icon(EvaIcons.car, color: Colors.green)),
+      S2Choice<String>(value: "wardrobes", title: "Wardrobes",  meta: Icon(EvaIcons.car, color: Colors.green)),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +41,11 @@ class _CreateUnitViewState extends State<CreateUnitView> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text("Create new unit", style: TextStyle(
+        title: const Text("Create new unit", style: TextStyle(
           fontFamily: "ProductSans",
           color: Colors.black87,
         ),),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black87,
         ),
       ),
@@ -42,8 +57,8 @@ class _CreateUnitViewState extends State<CreateUnitView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                  child: Text("Unit name"),
+                  padding: EdgeInsets.only(left: 16.0, right: 16.0),
+                  child: const Text("Unit name"),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -127,7 +142,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                             items: [
                               "Apartment",
                               "Business Stall",
-                              "Godown",
+                              "Go down",
                               "Bedsitter",
                             ]
                                 .map((e) =>
@@ -149,6 +164,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: ListTile(
                     onTap: () {
+                      // Location modal bottom sheet.
                       showModalBottomSheet(
                           context: context,
                           shape: const RoundedRectangleBorder(
@@ -178,6 +194,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                     onTap: () {
                       showModalBottomSheet(
                         context: context,
+                        isScrollControlled: true,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(topLeft: Radius
                               .circular(10.0), topRight: Radius.circular(
@@ -191,6 +208,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                                 child: Column(
                                     crossAxisAlignment: CrossAxisAlignment
                                         .start,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       const SizedBox(height: 16),
                                       Text(
@@ -208,7 +226,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                                         child: TextFormField(
                                           cursorColor: Colors.black87,
                                           keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               floatingLabelBehavior: FloatingLabelBehavior
                                                   .never,
                                               labelText: "Space size",
@@ -223,7 +241,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                                         child: TextFormField(
                                           cursorColor: Colors.black87,
                                           keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               floatingLabelBehavior: FloatingLabelBehavior
                                                   .never,
                                               labelText: "Number of bedrooms",
@@ -238,7 +256,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                                         child: TextFormField(
                                           cursorColor: Colors.black87,
                                           keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               floatingLabelBehavior: FloatingLabelBehavior
                                                   .never,
                                               labelText: "Bathrooms",
@@ -282,51 +300,40 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: ListTile(
                     onTap: () {
-                      SmartSelect<String>.multiple(
-                        onChange: (selected) => setState(() => _feature = selected.value),
-                        value: _feature,
-                        modalFilter: true,
-                        choiceItems: _features,
-                        modalType: S2ModalType.bottomSheet,
-                        choiceLayout: S2ChoiceLayout.wrap,
-                        choiceDirection: Axis.horizontal,
-                        choiceGrouped: true,
-                        choiceGrid: const SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisSpacing: 5,
-                          crossAxisSpacing: 5,
-                          crossAxisCount: 3,
-                        ),
-                        title: "Unit features",
-                        modalHeader: false,
-                        choiceBuilder: (context, choice, _) {
-
-                          return Card(
-                            color: choice.selected ? theme.primaryColor : theme.cardColor,
-                            child: InkWell(
-                              onTap: () => choice.select(!choice.selected),
-                              child: Container(
-                                padding: const EdgeInsets.all(7),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-
-                                  children: <Widget>[
-                                    Text(
-                                      choice.title,
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        color: choice.selected ? Colors.white : null,
-                                        height: 1,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                      // Unit features.
+                      showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0)
+                            )
+                          ),
+                          builder: (context) => SmartSelect<String>.multiple(
+                              onChange: (selected) => setState(() => _feature = selected.value),
+                              value: _feature,
+                              modalFilter: true,
+                              modalStyle: const S2ModalStyle(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius
+                                      .only(
+                                    topLeft: Radius.circular(10.0),
+                                    topRight: Radius.circular(10.0),
+                                  )
+                                )
                               ),
-                            ),
-                          );
-                        }
-
+                              choiceItems: _features,
+                              modalType: S2ModalType.bottomSheet,
+                              title: "Unit features",
+                              modalHeader: false,
+                              tileBuilder: (context, state) {
+                                return S2Tile.fromState(
+                                  state,
+                                  isTwoLine: true,
+                                );
+                              }
+                          ),
                       );
                     },
                     leading: const Icon(
@@ -335,7 +342,7 @@ class _CreateUnitViewState extends State<CreateUnitView> {
                     trailing: const Icon(
                         EvaIcons.arrowIosForwardOutline
                     ),
-                    title: Text("Add unit features", style: TextStyle(
+                    title: const Text("Add unit features", style: TextStyle(
                       color: Colors.black87,
                       fontFamily: "ProductSans",
                     ),),
@@ -421,7 +428,9 @@ class _ImageShowAndPickerWidgetState extends State<ImageShowAndPickerWidget> {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onDoubleTap: () {
-                  _files.removeAt(index);
+                  setState(() {
+                    _files.removeAt(index);
+                  });
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -502,29 +511,30 @@ class _ImageShowAndPickerWidgetState extends State<ImageShowAndPickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(
-            16.0
-        ),
+    return SizedBox(
+
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ListTile(
-                  title: Text("Upload Images",
-                    style: TextStyle(
-                      fontFamily: "ProductSans",
-                      color: Colors.black,
-                    ),),
-                  subtitle: Text(
-                      "Maximum number is four. Please select clear photos. Double tap a photo to remove it.")
+              const Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ListTile(
+                    title: Text("Upload Images",
+                      style: TextStyle(
+                        fontFamily: "ProductSans",
+                        color: Colors.black,
+                      ),),
+                    subtitle: Text(
+                        "Maximum number is four. Please select clear photos. Double tap a photo to remove it.")
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 28.0),
                 child: RaisedButton(
                     elevation: 0,
                     color: Colors.black87,
                     onPressed: loadAssets,
-                    child: Text("Upload",
+                    child: const Text("Upload",
                         style: TextStyle(color: Colors.white, fontSize: 16,))
                 ),
               ),

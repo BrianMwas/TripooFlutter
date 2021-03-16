@@ -19,7 +19,21 @@ class _MarketingState extends State<Marketing> {
       ),
       body: Container(
         child: Center(
-          child: Text("Marketing class")
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                "assets/images/coming_soon.png",
+                height: 200,
+                width: 200,
+                fit: BoxFit.fill,
+              ),
+              Text("Marketing", style: TextStyle(fontFamily: "ProductSans", fontSize: 25,)),
+              Text("Coming Soon", style: TextStyle(
+                fontFamily: "ProductSans"
+              ),)
+            ]
+          )
         )
       )
     );

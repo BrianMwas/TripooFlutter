@@ -85,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.7.0-rc.4"
+  bezier_chart:
+    dependency: "direct main"
+    description:
+      name: bezier_chart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.17+1"
   bloc:
     dependency: "direct main"
     description:
