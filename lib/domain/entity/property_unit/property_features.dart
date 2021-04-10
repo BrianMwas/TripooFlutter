@@ -1,6 +1,6 @@
 
 
-enum  HomeFeatures {
+enum  PropertyFeatures {
   parking,
   security,
   hotWater,

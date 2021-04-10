@@ -10,14 +10,14 @@ part of 'property_details.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$HomeDetailsTearOff {
-  const _$HomeDetailsTearOff();
+class _$PropertyDetailsTearOff {
+  const _$PropertyDetailsTearOff();
 
 // ignore: unused_element
-  _HomeDetails call({double spaceSize, int bedrooms, int bathrooms}) {
-    return _HomeDetails(
+  _PropertyDetails call({double spaceSize, int rooms, int bathrooms}) {
+    return _PropertyDetails(
       spaceSize: spaceSize,
-      bedrooms: bedrooms,
+      rooms: rooms,
       bathrooms: bathrooms,
     );
   }
@@ -25,108 +25,110 @@ class _$HomeDetailsTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $HomeDetails = _$HomeDetailsTearOff();
+const $PropertyDetails = _$PropertyDetailsTearOff();
 
 /// @nodoc
-mixin _$HomeDetails {
+mixin _$PropertyDetails {
   double get spaceSize;
-  int get bedrooms;
+  int get rooms;
   int get bathrooms;
 
-  $HomeDetailsCopyWith<HomeDetails> get copyWith;
+  @JsonKey(ignore: true)
+  $PropertyDetailsCopyWith<PropertyDetails> get copyWith;
 }
 
 /// @nodoc
-abstract class $HomeDetailsCopyWith<$Res> {
-  factory $HomeDetailsCopyWith(
-          HomeDetails value, $Res Function(HomeDetails) then) =
-      _$HomeDetailsCopyWithImpl<$Res>;
-  $Res call({double spaceSize, int bedrooms, int bathrooms});
+abstract class $PropertyDetailsCopyWith<$Res> {
+  factory $PropertyDetailsCopyWith(
+          PropertyDetails value, $Res Function(PropertyDetails) then) =
+      _$PropertyDetailsCopyWithImpl<$Res>;
+  $Res call({double spaceSize, int rooms, int bathrooms});
 }
 
 /// @nodoc
-class _$HomeDetailsCopyWithImpl<$Res> implements $HomeDetailsCopyWith<$Res> {
-  _$HomeDetailsCopyWithImpl(this._value, this._then);
+class _$PropertyDetailsCopyWithImpl<$Res>
+    implements $PropertyDetailsCopyWith<$Res> {
+  _$PropertyDetailsCopyWithImpl(this._value, this._then);
 
-  final HomeDetails _value;
+  final PropertyDetails _value;
   // ignore: unused_field
-  final $Res Function(HomeDetails) _then;
+  final $Res Function(PropertyDetails) _then;
 
   @override
   $Res call({
     Object spaceSize = freezed,
-    Object bedrooms = freezed,
+    Object rooms = freezed,
     Object bathrooms = freezed,
   }) {
     return _then(_value.copyWith(
       spaceSize: spaceSize == freezed ? _value.spaceSize : spaceSize as double,
-      bedrooms: bedrooms == freezed ? _value.bedrooms : bedrooms as int,
+      rooms: rooms == freezed ? _value.rooms : rooms as int,
       bathrooms: bathrooms == freezed ? _value.bathrooms : bathrooms as int,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$HomeDetailsCopyWith<$Res>
-    implements $HomeDetailsCopyWith<$Res> {
-  factory _$HomeDetailsCopyWith(
-          _HomeDetails value, $Res Function(_HomeDetails) then) =
-      __$HomeDetailsCopyWithImpl<$Res>;
+abstract class _$PropertyDetailsCopyWith<$Res>
+    implements $PropertyDetailsCopyWith<$Res> {
+  factory _$PropertyDetailsCopyWith(
+          _PropertyDetails value, $Res Function(_PropertyDetails) then) =
+      __$PropertyDetailsCopyWithImpl<$Res>;
   @override
-  $Res call({double spaceSize, int bedrooms, int bathrooms});
+  $Res call({double spaceSize, int rooms, int bathrooms});
 }
 
 /// @nodoc
-class __$HomeDetailsCopyWithImpl<$Res> extends _$HomeDetailsCopyWithImpl<$Res>
-    implements _$HomeDetailsCopyWith<$Res> {
-  __$HomeDetailsCopyWithImpl(
-      _HomeDetails _value, $Res Function(_HomeDetails) _then)
-      : super(_value, (v) => _then(v as _HomeDetails));
+class __$PropertyDetailsCopyWithImpl<$Res>
+    extends _$PropertyDetailsCopyWithImpl<$Res>
+    implements _$PropertyDetailsCopyWith<$Res> {
+  __$PropertyDetailsCopyWithImpl(
+      _PropertyDetails _value, $Res Function(_PropertyDetails) _then)
+      : super(_value, (v) => _then(v as _PropertyDetails));
 
   @override
-  _HomeDetails get _value => super._value as _HomeDetails;
+  _PropertyDetails get _value => super._value as _PropertyDetails;
 
   @override
   $Res call({
     Object spaceSize = freezed,
-    Object bedrooms = freezed,
+    Object rooms = freezed,
     Object bathrooms = freezed,
   }) {
-    return _then(_HomeDetails(
+    return _then(_PropertyDetails(
       spaceSize: spaceSize == freezed ? _value.spaceSize : spaceSize as double,
-      bedrooms: bedrooms == freezed ? _value.bedrooms : bedrooms as int,
+      rooms: rooms == freezed ? _value.rooms : rooms as int,
       bathrooms: bathrooms == freezed ? _value.bathrooms : bathrooms as int,
     ));
   }
 }
 
 /// @nodoc
-class _$_HomeDetails extends _HomeDetails {
-  const _$_HomeDetails({this.spaceSize, this.bedrooms, this.bathrooms})
+class _$_PropertyDetails extends _PropertyDetails {
+  const _$_PropertyDetails({this.spaceSize, this.rooms, this.bathrooms})
       : super._();
 
   @override
   final double spaceSize;
   @override
-  final int bedrooms;
+  final int rooms;
   @override
   final int bathrooms;
 
   @override
   String toString() {
-    return 'HomeDetails(spaceSize: $spaceSize, bedrooms: $bedrooms, bathrooms: $bathrooms)';
+    return 'PropertyDetails(spaceSize: $spaceSize, rooms: $rooms, bathrooms: $bathrooms)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _HomeDetails &&
+        (other is _PropertyDetails &&
             (identical(other.spaceSize, spaceSize) ||
                 const DeepCollectionEquality()
                     .equals(other.spaceSize, spaceSize)) &&
-            (identical(other.bedrooms, bedrooms) ||
-                const DeepCollectionEquality()
-                    .equals(other.bedrooms, bedrooms)) &&
+            (identical(other.rooms, rooms) ||
+                const DeepCollectionEquality().equals(other.rooms, rooms)) &&
             (identical(other.bathrooms, bathrooms) ||
                 const DeepCollectionEquality()
                     .equals(other.bathrooms, bathrooms)));
@@ -136,25 +138,27 @@ class _$_HomeDetails extends _HomeDetails {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(spaceSize) ^
-      const DeepCollectionEquality().hash(bedrooms) ^
+      const DeepCollectionEquality().hash(rooms) ^
       const DeepCollectionEquality().hash(bathrooms);
 
+  @JsonKey(ignore: true)
   @override
-  _$HomeDetailsCopyWith<_HomeDetails> get copyWith =>
-      __$HomeDetailsCopyWithImpl<_HomeDetails>(this, _$identity);
+  _$PropertyDetailsCopyWith<_PropertyDetails> get copyWith =>
+      __$PropertyDetailsCopyWithImpl<_PropertyDetails>(this, _$identity);
 }
 
-abstract class _HomeDetails extends HomeDetails {
-  const _HomeDetails._() : super._();
-  const factory _HomeDetails({double spaceSize, int bedrooms, int bathrooms}) =
-      _$_HomeDetails;
+abstract class _PropertyDetails extends PropertyDetails {
+  const _PropertyDetails._() : super._();
+  const factory _PropertyDetails({double spaceSize, int rooms, int bathrooms}) =
+      _$_PropertyDetails;
 
   @override
   double get spaceSize;
   @override
-  int get bedrooms;
+  int get rooms;
   @override
   int get bathrooms;
   @override
-  _$HomeDetailsCopyWith<_HomeDetails> get copyWith;
+  @JsonKey(ignore: true)
+  _$PropertyDetailsCopyWith<_PropertyDetails> get copyWith;
 }

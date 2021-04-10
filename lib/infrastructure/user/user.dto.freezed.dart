@@ -64,6 +64,7 @@ mixin _$UserDto {
   DateTime get joinDate;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $UserDtoCopyWith<UserDto> get copyWith;
 }
 
@@ -269,6 +270,7 @@ class _$_UserDto extends _UserDto {
       const DeepCollectionEquality().hash(providerId) ^
       const DeepCollectionEquality().hash(joinDate);
 
+  @JsonKey(ignore: true)
   @override
   _$UserDtoCopyWith<_UserDto> get copyWith =>
       __$UserDtoCopyWithImpl<_UserDto>(this, _$identity);
@@ -314,5 +316,6 @@ abstract class _UserDto extends UserDto {
   @override
   DateTime get joinDate;
   @override
+  @JsonKey(ignore: true)
   _$UserDtoCopyWith<_UserDto> get copyWith;
 }

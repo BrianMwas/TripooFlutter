@@ -18,20 +18,24 @@ class _$PropertyTearOff {
       {String id,
       String name,
       String description,
-      List<PropertyUnit> unit,
+      List<PropertyUnit> units,
       String imageURL,
       List<Analytics> analytics,
       List<PropertyAgent> agents,
-      DateTime createdAt}) {
+      DateTime createdAt,
+      bool hidden,
+      LatLng position}) {
     return _Property(
       id: id,
       name: name,
       description: description,
-      unit: unit,
+      units: units,
       imageURL: imageURL,
       analytics: analytics,
       agents: agents,
       createdAt: createdAt,
+      hidden: hidden,
+      position: position,
     );
   }
 }
@@ -45,12 +49,15 @@ mixin _$Property {
   String get id;
   String get name;
   String get description;
-  List<PropertyUnit> get unit;
+  List<PropertyUnit> get units;
   String get imageURL;
   List<Analytics> get analytics;
   List<PropertyAgent> get agents;
   DateTime get createdAt;
+  bool get hidden;
+  LatLng get position;
 
+  @JsonKey(ignore: true)
   $PropertyCopyWith<Property> get copyWith;
 }
 
@@ -62,11 +69,13 @@ abstract class $PropertyCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      List<PropertyUnit> unit,
+      List<PropertyUnit> units,
       String imageURL,
       List<Analytics> analytics,
       List<PropertyAgent> agents,
-      DateTime createdAt});
+      DateTime createdAt,
+      bool hidden,
+      LatLng position});
 }
 
 /// @nodoc
@@ -82,18 +91,20 @@ class _$PropertyCopyWithImpl<$Res> implements $PropertyCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
-    Object unit = freezed,
+    Object units = freezed,
     Object imageURL = freezed,
     Object analytics = freezed,
     Object agents = freezed,
     Object createdAt = freezed,
+    Object hidden = freezed,
+    Object position = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
-      unit: unit == freezed ? _value.unit : unit as List<PropertyUnit>,
+      units: units == freezed ? _value.units : units as List<PropertyUnit>,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
       analytics: analytics == freezed
           ? _value.analytics
@@ -101,6 +112,8 @@ class _$PropertyCopyWithImpl<$Res> implements $PropertyCopyWith<$Res> {
       agents: agents == freezed ? _value.agents : agents as List<PropertyAgent>,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      hidden: hidden == freezed ? _value.hidden : hidden as bool,
+      position: position == freezed ? _value.position : position as LatLng,
     ));
   }
 }
@@ -114,11 +127,13 @@ abstract class _$PropertyCopyWith<$Res> implements $PropertyCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      List<PropertyUnit> unit,
+      List<PropertyUnit> units,
       String imageURL,
       List<Analytics> analytics,
       List<PropertyAgent> agents,
-      DateTime createdAt});
+      DateTime createdAt,
+      bool hidden,
+      LatLng position});
 }
 
 /// @nodoc
@@ -135,18 +150,20 @@ class __$PropertyCopyWithImpl<$Res> extends _$PropertyCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
-    Object unit = freezed,
+    Object units = freezed,
     Object imageURL = freezed,
     Object analytics = freezed,
     Object agents = freezed,
     Object createdAt = freezed,
+    Object hidden = freezed,
+    Object position = freezed,
   }) {
     return _then(_Property(
       id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
-      unit: unit == freezed ? _value.unit : unit as List<PropertyUnit>,
+      units: units == freezed ? _value.units : units as List<PropertyUnit>,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
       analytics: analytics == freezed
           ? _value.analytics
@@ -154,6 +171,8 @@ class __$PropertyCopyWithImpl<$Res> extends _$PropertyCopyWithImpl<$Res>
       agents: agents == freezed ? _value.agents : agents as List<PropertyAgent>,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      hidden: hidden == freezed ? _value.hidden : hidden as bool,
+      position: position == freezed ? _value.position : position as LatLng,
     ));
   }
 }
@@ -164,11 +183,13 @@ class _$_Property extends _Property {
       {this.id,
       this.name,
       this.description,
-      this.unit,
+      this.units,
       this.imageURL,
       this.analytics,
       this.agents,
-      this.createdAt})
+      this.createdAt,
+      this.hidden,
+      this.position})
       : super._();
 
   @override
@@ -178,7 +199,7 @@ class _$_Property extends _Property {
   @override
   final String description;
   @override
-  final List<PropertyUnit> unit;
+  final List<PropertyUnit> units;
   @override
   final String imageURL;
   @override
@@ -187,10 +208,14 @@ class _$_Property extends _Property {
   final List<PropertyAgent> agents;
   @override
   final DateTime createdAt;
+  @override
+  final bool hidden;
+  @override
+  final LatLng position;
 
   @override
   String toString() {
-    return 'Property(id: $id, name: $name, description: $description, unit: $unit, imageURL: $imageURL, analytics: $analytics, agents: $agents, createdAt: $createdAt)';
+    return 'Property(id: $id, name: $name, description: $description, units: $units, imageURL: $imageURL, analytics: $analytics, agents: $agents, createdAt: $createdAt, hidden: $hidden, position: $position)';
   }
 
   @override
@@ -204,8 +229,8 @@ class _$_Property extends _Property {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.units, units) ||
+                const DeepCollectionEquality().equals(other.units, units)) &&
             (identical(other.imageURL, imageURL) ||
                 const DeepCollectionEquality()
                     .equals(other.imageURL, imageURL)) &&
@@ -216,7 +241,12 @@ class _$_Property extends _Property {
                 const DeepCollectionEquality().equals(other.agents, agents)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.hidden, hidden) ||
+                const DeepCollectionEquality().equals(other.hidden, hidden)) &&
+            (identical(other.position, position) ||
+                const DeepCollectionEquality()
+                    .equals(other.position, position)));
   }
 
   @override
@@ -225,12 +255,15 @@ class _$_Property extends _Property {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(units) ^
       const DeepCollectionEquality().hash(imageURL) ^
       const DeepCollectionEquality().hash(analytics) ^
       const DeepCollectionEquality().hash(agents) ^
-      const DeepCollectionEquality().hash(createdAt);
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(hidden) ^
+      const DeepCollectionEquality().hash(position);
 
+  @JsonKey(ignore: true)
   @override
   _$PropertyCopyWith<_Property> get copyWith =>
       __$PropertyCopyWithImpl<_Property>(this, _$identity);
@@ -242,11 +275,13 @@ abstract class _Property extends Property {
       {String id,
       String name,
       String description,
-      List<PropertyUnit> unit,
+      List<PropertyUnit> units,
       String imageURL,
       List<Analytics> analytics,
       List<PropertyAgent> agents,
-      DateTime createdAt}) = _$_Property;
+      DateTime createdAt,
+      bool hidden,
+      LatLng position}) = _$_Property;
 
   @override
   String get id;
@@ -255,7 +290,7 @@ abstract class _Property extends Property {
   @override
   String get description;
   @override
-  List<PropertyUnit> get unit;
+  List<PropertyUnit> get units;
   @override
   String get imageURL;
   @override
@@ -265,5 +300,10 @@ abstract class _Property extends Property {
   @override
   DateTime get createdAt;
   @override
+  bool get hidden;
+  @override
+  LatLng get position;
+  @override
+  @JsonKey(ignore: true)
   _$PropertyCopyWith<_Property> get copyWith;
 }

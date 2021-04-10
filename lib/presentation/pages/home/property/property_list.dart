@@ -109,10 +109,10 @@ class PropertyList extends HookWidget {
                                         height: 50,
                                         fit: BoxFit.fill),
                                   ),
-                                  title: Text("Brian",
-                                      style: const TextStyle(
+                                  title: const Text("Brian",
+                                      style: TextStyle(
                                           fontFamily: "ProductSans")),
-                                  subtitle: Text("brnmwas@gmail.com")),
+                                  subtitle: const Text("brnmwas@gmail.com")),
                             ),
                             Align(
                                 child: ButtonTheme(

@@ -1,19 +1,14 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'home_details.freezed.dart';
+part 'property_details.freezed.dart';
 
 @freezed
-abstract class HomeDetails {
-  const factory HomeDetails({
-    double spaceSize,
-    int bedrooms,
-    int bathrooms
-  }) = _HomeDetails;
+abstract class PropertyDetails implements _$PropertyDetails {
+  const factory PropertyDetails({double spaceSize, int rooms, int bathrooms}) =
+      _PropertyDetails;
 
-  factory HomeDetails.empty() => const HomeDetails(
-      spaceSize: 0.0,
-      bathrooms: 1,
-      bedrooms: 1
-  );
+  const PropertyDetails._();
+
+  factory PropertyDetails.empty() =>
+      const PropertyDetails(spaceSize: 0.0, bathrooms: 1, rooms: 1);
 }

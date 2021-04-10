@@ -36,6 +36,7 @@ mixin _$Notification {
   String get description;
   PriorityLevel get level;
 
+  @JsonKey(ignore: true)
   $NotificationCopyWith<Notification> get copyWith;
 }
 
@@ -151,6 +152,7 @@ class _$_Notification extends _Notification {
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(level);
 
+  @JsonKey(ignore: true)
   @override
   _$NotificationCopyWith<_Notification> get copyWith =>
       __$NotificationCopyWithImpl<_Notification>(this, _$identity);
@@ -173,5 +175,6 @@ abstract class _Notification extends Notification {
   @override
   PriorityLevel get level;
   @override
+  @JsonKey(ignore: true)
   _$NotificationCopyWith<_Notification> get copyWith;
 }

@@ -573,6 +573,7 @@ class _$Authenticated implements Authenticated {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   $AuthenticatedCopyWith<Authenticated> get copyWith =>
       _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
@@ -638,5 +639,6 @@ abstract class Authenticated implements AuthState {
   const factory Authenticated(User user) = _$Authenticated;
 
   User get user;
+  @JsonKey(ignore: true)
   $AuthenticatedCopyWith<Authenticated> get copyWith;
 }

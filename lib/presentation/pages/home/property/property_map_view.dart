@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lottie/lottie.dart' as l;
-import 'package:tripoo/domain/entity/home_unit.dart';
+import 'package:tripoo/domain/entity/property_unit/example_unit.dart';
 
 class PropertyMapView extends StatefulWidget {
   @override
@@ -229,7 +229,7 @@ class _PropertyMapViewState extends State<PropertyMapView> {
                               padding: const EdgeInsets.only(right: 8.0),
                               child: Align(
                                 alignment: Alignment.bottomRight,
-                                child:  InkWell(
+                                child: InkWell(
                                   onTap: () {
                                     print("details $index");
                                   },
@@ -237,7 +237,8 @@ class _PropertyMapViewState extends State<PropertyMapView> {
                                     "Details",
                                     textAlign: TextAlign.right,
                                     style: TextStyle(
-                                        fontSize: 14, color: Colors.black54,
+                                      fontSize: 14,
+                                      color: Colors.black54,
                                       decoration: TextDecoration.underline,
                                     ),
                                   ),

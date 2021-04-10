@@ -26,8 +26,7 @@ abstract class PropertyUnitDTO implements _$PropertyUnitDTO {
       List<AnalyticsDTO> analytics,
       PropertyUnitDetailDTO details,
       List<String> features,
-      double lat,
-      double long,
+      GeoPoint location,
       List<BookingDTO> bookings}) = _PropertyUnitDTO;
 
   const PropertyUnitDTO._();
@@ -38,8 +37,7 @@ abstract class PropertyUnitDTO implements _$PropertyUnitDTO {
         description: unit.description,
         live: unit.live,
         used: unit.used,
-        lat: unit.position.latitude,
-        long: unit.position.longitude,
+        location: GeoPoint(unit.position.latitude, unit.position.longitude),
         images: unit.images,
         features:
             unit.features.map((f) => f.toString().split(".").first).toList(),
@@ -70,7 +68,7 @@ abstract class PropertyUnitDTO implements _$PropertyUnitDTO {
           .map((f) => PropertyFeatures.values
               .firstWhere((p) => p.toString().split('.').first == f))
           .toList(),
-      position: LatLng(lat, long),
+      position: location,
       bookings: bookings.map((b) => b.toDomain()).toList(),
     );
   }

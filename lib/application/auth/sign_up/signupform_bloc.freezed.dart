@@ -149,6 +149,7 @@ class _$EmailChanged implements EmailChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(emailAddress);
 
+  @JsonKey(ignore: true)
   @override
   $EmailChangedCopyWith<EmailChanged> get copyWith =>
       _$EmailChangedCopyWithImpl<EmailChanged>(this, _$identity);
@@ -220,6 +221,7 @@ abstract class EmailChanged implements SignupformEvent {
   const factory EmailChanged(String emailAddress) = _$EmailChanged;
 
   String get emailAddress;
+  @JsonKey(ignore: true)
   $EmailChangedCopyWith<EmailChanged> get copyWith;
 }
 
@@ -277,6 +279,7 @@ class _$PasswordChanged implements PasswordChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
 
+  @JsonKey(ignore: true)
   @override
   $PasswordChangedCopyWith<PasswordChanged> get copyWith =>
       _$PasswordChangedCopyWithImpl<PasswordChanged>(this, _$identity);
@@ -348,6 +351,7 @@ abstract class PasswordChanged implements SignupformEvent {
   const factory PasswordChanged(String password) = _$PasswordChanged;
 
   String get password;
+  @JsonKey(ignore: true)
   $PasswordChangedCopyWith<PasswordChanged> get copyWith;
 }
 
@@ -405,6 +409,7 @@ class _$UsernameChanged implements UsernameChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(username);
 
+  @JsonKey(ignore: true)
   @override
   $UsernameChangedCopyWith<UsernameChanged> get copyWith =>
       _$UsernameChangedCopyWithImpl<UsernameChanged>(this, _$identity);
@@ -476,6 +481,7 @@ abstract class UsernameChanged implements SignupformEvent {
   const factory UsernameChanged(String username) = _$UsernameChanged;
 
   String get username;
+  @JsonKey(ignore: true)
   $UsernameChangedCopyWith<UsernameChanged> get copyWith;
 }
 
@@ -618,6 +624,7 @@ mixin _$SignupformState {
   bool get showErrorMessages;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
 
+  @JsonKey(ignore: true)
   $SignupformStateCopyWith<SignupformState> get copyWith;
 }
 
@@ -788,6 +795,7 @@ class _$_SignupformState implements _SignupformState {
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(authFailureOrSuccess);
 
+  @JsonKey(ignore: true)
   @override
   _$SignupformStateCopyWith<_SignupformState> get copyWith =>
       __$SignupformStateCopyWithImpl<_SignupformState>(this, _$identity);
@@ -816,5 +824,6 @@ abstract class _SignupformState implements SignupformState {
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
   @override
+  @JsonKey(ignore: true)
   _$SignupformStateCopyWith<_SignupformState> get copyWith;
 }

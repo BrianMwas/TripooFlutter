@@ -146,8 +146,8 @@ class _NewPropertyState extends State<NewProperty> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(bottom:8.0),
+                const Padding(
+                  padding:  EdgeInsets.only(bottom:8.0),
                   child: Text("Property location"),
                 ),
                 Container(
@@ -212,7 +212,7 @@ class _NewPropertyState extends State<NewProperty> {
                     onPressed: () {
                       ExtendedNavigator.of(context).push(Routes.propertyDetail);
                     },
-                    child: Text(
+                    child: const Text(
                       "Add property",
                       style: TextStyle(
                         color: Colors.white,

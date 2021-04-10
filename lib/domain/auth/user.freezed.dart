@@ -56,6 +56,7 @@ mixin _$User {
   DateTime get joinDate;
   String get providerId;
 
+  @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith;
 }
 
@@ -262,6 +263,7 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(joinDate) ^
       const DeepCollectionEquality().hash(providerId);
 
+  @JsonKey(ignore: true)
   @override
   _$UserCopyWith<_User> get copyWith =>
       __$UserCopyWithImpl<_User>(this, _$identity);
@@ -300,5 +302,6 @@ abstract class _User implements User {
   @override
   String get providerId;
   @override
+  @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith;
 }

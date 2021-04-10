@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:badges/badges.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,6 @@ class _PropertyDashState extends State<PropertyDash> {
   double _propertySize = 100.0;
 
   _onStartScroll(ScrollMetrics metrics) {
-    print("Scroll Start");
     setState(() {
       if(_propertySize <= 0) {
         _propertySize = 100.0;
@@ -55,26 +55,43 @@ class _PropertyDashState extends State<PropertyDash> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: RichText(
-                  text: TextSpan(
-                    text: "Hello, \n",
-                    style: TextStyle(
-                      fontFamily: "Lato",
-                      color: Colors.black54,
-                      fontSize: 16,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "Brian",
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        text: "Hello, \n",
                         style: TextStyle(
-                          fontFamily: "ProductSans",
-                          fontSize: 25,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w600,
-                        )
+                          fontFamily: "Lato",
+                          color: Colors.black54,
+                          fontSize: 16,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Brian",
+                            style: TextStyle(
+                              fontFamily: "ProductSans",
+                              fontSize: 25,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w600,
+                            )
+                          )
+                        ]
                       )
-                    ]
-                  )
+                    ),
+                    Badge(
+                      badgeContent: const Text("1", style: TextStyle(color: Colors.white,),),
+                      child: IconButton(
+                        icon: const Icon(
+                          EvaIcons.bellOutline,
+                          color: Colors.black87,
+                        ),
+                        onPressed: () {
+                          ExtendedNavigator.of(context).push(Routes.notifications);
+                        }
+                      ),
+                    )
+                  ],
                 ),
               ),
               Padding(
@@ -297,42 +314,6 @@ class _PropertyDashState extends State<PropertyDash> {
                     ),
                     Image.asset("assets/images/calendar.png", height: 120, width: 120, fit: BoxFit.fill)
                   ]
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 8.0),
-                child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children:  [
-                              Text(
-                                "Notifications",
-                                style: TextStyle(
-                                  fontFamily: "ProductSans",
-                                  color: Colors.black87,
-                                  fontSize: 24,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Text("All notifications on bookings or information about any changes."),
-                              TextButton(
-                                onPressed: () {
-                                  ExtendedNavigator.of(context).push(Routes.notifications);
-                                },
-                                child: Text(
-                                    "Get started.",
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColorDark,
-                                    )
-                                ),
-                              )
-                            ]
-                        ),
-                      ),
-                      Image.asset("assets/images/pr.png", height: 120, width: 120, fit: BoxFit.fill)
-                    ]
                 ),
               ),
             ]

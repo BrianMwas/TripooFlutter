@@ -3,62 +3,61 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:supercharged/supercharged.dart';
 import 'package:lottie/lottie.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:tripoo/presentation/pages/home/property/property_card_widget.dart';
 
-class SingleUnitView extends StatefulWidget {
-  @override
-  _SingleUnitViewState createState() => _SingleUnitViewState();
-}
-
-class _SingleUnitViewState extends State<SingleUnitView> {
-  List<String> _images;
-  bool _showAppBar;
-
-  @override
-  void initState() {
-    _images = [
-      "https://source.unsplash.com/weekly?furniture",
-      "https://source.unsplash.com/weekly?home",
-      "https://source.unsplash.com/weekly?couch"
-    ];
-    _showAppBar = false;
-    super.initState();
-  }
+class SingleUnitView extends HookWidget {
+  final _bookingFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final _images = useState([
+      "https://source.unsplash.com/weekly?furniture",
+      "https://source.unsplash.com/weekly?home",
+      "https://source.unsplash.com/weekly?couch"
+    ]);
+    final _dateController = useTextEditingController();
+    final _showAppBar = useState(false);
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _showAppBar
-          ? AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(
-          color: Colors.black87,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: AnimatedOpacity(
+          opacity: _showAppBar.value ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 1200),
+          child: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            iconTheme: const IconThemeData(
+              color: Colors.black87,
+            ),
+            title: RichText(
+              text: TextSpan(
+                  text: "KSH 3500 \n",
+                  style: TextStyle(
+                    fontFamily: "ProductSans",
+                    color: Theme
+                        .of(context)
+                        .primaryColor,
+                  ),
+                  children: [
+                    TextSpan(
+                        text: "BedSitter",
+                        style: TextStyle(
+                          fontFamily: "Lato",
+                          color: Colors.black87,
+                          fontSize: 12,
+                        ))
+                  ]),
+            ),
+          ),
         ),
-        title: RichText(
-          text: TextSpan(
-              text: "KSH 3500 \n",
-              style: TextStyle(
-                fontFamily: "ProductSans",
-                color: Theme
-                    .of(context)
-                    .primaryColor,
-              ),
-              children: [
-                TextSpan(
-                    text: "BedSitter",
-                    style: TextStyle(
-                      fontFamily: "Lato",
-                      color: Colors.black87,
-                      fontSize: 12,
-                    ))
-              ]),
-        ),
-      )
-          : null,
+      ),
       body: SafeArea(
         child: NotificationListener<ScrollNotification>(
           onNotification: (scrollNotification) {
@@ -68,15 +67,11 @@ class _SingleUnitViewState extends State<SingleUnitView> {
               print("we updated scroll ${scrollNotification.metrics.pixels}");
               var offsetPx = scrollNotification.metrics.pixels;
               if (offsetPx >= 180) {
-                setState(() {
-                  _showAppBar = true;
-                });
+
+                  _showAppBar.value = true;
+
               } else {
-                setState(() {
-                  setState(() {
-                    _showAppBar = false;
-                  });
-                });
+                _showAppBar.value = false;
               }
             } else if (scrollNotification is ScrollEndNotification) {
               print("we have reached the end");
@@ -92,50 +87,26 @@ class _SingleUnitViewState extends State<SingleUnitView> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child: Stack(
-                    children: [
-                      CarouselSlider.builder(
-                        itemCount: 3,
-                        itemBuilder: (context, itemIndex, _) {
-                          return Container(
-                            height: 250,
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
-                            padding: const EdgeInsets.only(bottom: 5),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                image: DecorationImage(
-                                  image: NetworkImage(_images[itemIndex]),
-                                  fit: BoxFit.cover,
-                                )),
-                          );
-                        },
-                        options: CarouselOptions(
-                            height: 220, enlargeCenterPage: true),
-                      ),
-                      if (_showAppBar)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16.0, left: 12),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.black87,
-                            radius: 24,
-                            child: IconButton(
-                              visualDensity: VisualDensity.compact,
-                              color: Colors.white,
-                              focusColor: Colors.black,
-                              highlightColor: Colors.black87,
-                              icon: const Icon(EvaIcons.arrowBackOutline),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ),
-                        )
-                      else
-                        Container(),
-                    ],
+                  child: CarouselSlider.builder(
+                    itemCount: 3,
+                    itemBuilder: (context, itemIndex, _) {
+                      return Container(
+                        height: 250,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
+                        padding: const EdgeInsets.only(bottom: 5),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            image: DecorationImage(
+                              image: NetworkImage(_images.value[itemIndex]),
+                              fit: BoxFit.cover,
+                            )),
+                      );
+                    },
+                    options: CarouselOptions(
+                        height: 220, enlargeCenterPage: true),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -153,14 +124,7 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                               .of(context)
                               .primaryColor,
                         ),
-                        children: [
-                          TextSpan(
-                            text: "Muindi Springs \n",
-                            style: TextStyle(
-                                fontFamily: "Lato",
-                                fontSize: 12,
-                                color: Colors.black54),
-                          ),
+                        children: const [
                           TextSpan(
                             text: "BedSitter",
                             style: TextStyle(
@@ -178,11 +142,11 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                         Flushbar(
                           message: "Property saved to favorites.",
                           borderRadius: 8.0,
-                          backgroundColor: Color(0xff45D09E),
+                          backgroundColor: const Color(0xff45D09E),
                           margin: const EdgeInsets.all(8.0),
                         ).show(context);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         EvaIcons.bookmarkOutline,
                         color: Colors.orangeAccent,
                         size: 32,
@@ -208,8 +172,8 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                   ]),
                 ),
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     "RENT",
                     style: TextStyle(
@@ -220,8 +184,8 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(left: 16.0),
                   child: Text(
                     "Description",
                     style: TextStyle(
@@ -231,8 +195,8 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                       "This is a simple description about the property and more info about what it might have and the rules. It can be abit longer but can be shorter too. But a more comprehensive description would be nice"),
                 ),
@@ -262,7 +226,7 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                       },
                     )
                   ],
-                  child: ListTile(
+                  child: const ListTile(
                     leading: CircleAvatar(
                         backgroundImage: NetworkImage(
                             "https://source.unsplash.com/user/erondu")),
@@ -275,18 +239,22 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text("Features",
                       style: TextStyle(
                         color: Colors.black54,
-                      )),
+                        fontSize: 12,
+                      ),
+                  ),
                 ),
                 SizedBox(
-                  height: 120,
+                  height: 200,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
+                    child: Wrap(
+                      spacing: 2.0,
+                      runSpacing: 10.0,
                       children: [
                         Container(
                             width: MediaQuery
@@ -294,36 +262,44 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                                 .size
                                 .width * 0.3 - 10,
                             margin: const EdgeInsets.all(5.0),
-                            child: Column(children: const [
-                              Icon(
-                                EvaIcons.cropOutline,
-                                color: Color(0xff6D6E71),
-                                size: 50,
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                "250 sq2",
-                                style: TextStyle(fontFamily: "ProductSans"),
-                              )
-                            ])),
+                            child: Column(
+                              children: const [
+                                  Icon(
+                                    EvaIcons.cropOutline,
+                                    color: Color(0xff6D6E71),
+                                    size: 50,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    "250 sq2",
+                                    style: TextStyle(fontFamily: "ProductSans"),
+                                  ),
+                              ],
+                            ),
+                        ),
                         Container(
                             width: MediaQuery
                                 .of(context)
                                 .size
                                 .width * 0.3 - 10,
                             margin: const EdgeInsets.all(5.0),
-                            child: Column(children: const [
-                              Icon(
-                                EvaIcons.copyOutline,
-                                color: Color(0xff6D6E71),
-                                size: 50,
+                            child: Column(
+                                children: [
+                              Badge(
+                                badgeColor: Colors.black87,
+                                badgeContent: Text("1", style: TextStyle(color: Colors.white),),
+                                child: Icon(
+                                  EvaIcons.copyOutline,
+                                  color: Color(0xff6D6E71),
+                                  size: 50,
+                                ),
                               ),
                               const SizedBox(height: 5),
                               Text(
                                 "BedSitter",
                                 style: TextStyle(fontFamily: "ProductSans"),
                               )
-                            ])),
+                            ],),),
                         Container(
                           width: MediaQuery
                               .of(context)
@@ -331,16 +307,46 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                               .width * 0.3 - 10,
                           margin: const EdgeInsets.all(5.0),
                           child: Column(
-                            children: const [
-                              Icon(
-                                EvaIcons.awardOutline,
-                                color: Color(0xff6D6E71),
-                                size: 50,
+                            children:  [
+                              Badge(
+                                badgeColor: Colors.black87,
+                                badgeContent: const Text("1", style: TextStyle(color: Colors.white,),),
+                                child: const Icon(
+                                  EvaIcons.awardOutline,
+                                  color: Color(0xff6D6E71),
+                                  size: 50,
+                                ),
                               ),
                               const SizedBox(height: 5),
-                              Text(
+                              const Text(
                                 "Bathroom/Toilet",
                                 style: TextStyle(fontFamily: "ProductSans"),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery
+                              .of(context)
+                              .size
+                              .width * 0.3 - 10,
+                          margin: const EdgeInsets.all(5.0),
+                          child: Column(
+                            children: [
+                              Badge(
+                                badgeColor: Colors.black87,
+                                badgeContent: Text("2020", style: TextStyle(color: Colors.white, fontSize: 12),),
+                                padding: const EdgeInsets.all(8),
+                                child: Icon(
+                                  EvaIcons.calendarOutline,
+                                  color: Color(0xff6D6E71),
+                                  size: 50,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                "Built",
+                                style: TextStyle(fontFamily: "ProductSans",),
                               )
                             ],
                           ),
@@ -356,6 +362,7 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                     "Amenities",
                     style: TextStyle(
                       color: Colors.black54,
+                      fontSize: 12,
                     ),
                   ),
                 ),
@@ -477,7 +484,9 @@ class _SingleUnitViewState extends State<SingleUnitView> {
                   child: Text("Location",
                       style: TextStyle(
                         color: Colors.black54,
-                      )),
+                        fontSize: 12,
+                      ),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -580,30 +589,158 @@ class _SingleUnitViewState extends State<SingleUnitView> {
           ),
         ),
       ),
-      floatingActionButton: _showAppBar
-          ? FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(10.0),
-                  topRight: const Radius.circular(10.0),),
-              ),
-              builder: (context) =>
-                  Container(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Center(
-                          child: Text("Booking details")
-                      )
-                  )
-          );
-        },
-        backgroundColor: Colors.black87,
-        child: const Icon(EvaIcons.calendarOutline, color: Colors.white),
-      )
-          : null,
+      floatingActionButton: AnimatedOpacity(
+        opacity: _showAppBar.value ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 1500),
+        child: FloatingActionButton(
+          onPressed: () {
+            showBarModalBottomSheet(
+                context: context,
+                bounce: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                  ),
+                ),
+                builder: (context) =>
+                    Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Booking",
+                              style:  TextStyle(
+                                fontSize: 18,
+                                fontFamily: "ProductSans",
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                            ),),
+                            const Text("Plan your visit by booking"),
+                            const SizedBox(height: 40),
+                            Expanded(
+                              child: BookingFormWidget(bookingFormKey: _bookingFormKey, dateController: _dateController),
+                            )
+                          ]
+                        )
+                    )
+            );
+          },
+          backgroundColor: Colors.black87,
+          child: const Icon(EvaIcons.calendarOutline, color: Colors.white),
+        ),
+      ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+    );
+  }
+}
+
+class BookingFormWidget extends StatelessWidget {
+  const BookingFormWidget({
+    Key key,
+    @required GlobalKey<FormState> bookingFormKey,
+    @required TextEditingController dateController,
+  }) : _bookingFormKey = bookingFormKey, _dateController = dateController, super(key: key);
+
+  final GlobalKey<FormState> _bookingFormKey;
+  final TextEditingController _dateController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _bookingFormKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            cursorColor: Theme.of(context).primaryColor,
+            decoration: const InputDecoration(
+              labelText: "Name",
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+            )
+          ),
+          const SizedBox(height: 13),
+          TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              cursorColor: Theme.of(context).primaryColor,
+              decoration: const InputDecoration(
+                labelText: "Email",
+                helperText: "We won't share your email.",
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+              )
+          ),
+          const SizedBox(height: 15),
+          TextFormField(
+              keyboardType: TextInputType.number,
+              cursorColor: Theme.of(context).primaryColor,
+              decoration: const InputDecoration(
+                labelText: "Phone number",
+                helperText: "We won't share your phone number.",
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+              )
+          ),
+          const SizedBox(height: 15),
+          TextFormField(
+              maxLines: 5,
+              cursorColor: Theme.of(context).primaryColor,
+              decoration: const InputDecoration(
+                labelText: "Message",
+                helperText: "Just before I come...",
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+              )
+          ),
+          const SizedBox(height: 15),
+          TextFormField(
+            readOnly: true,
+            onTap: () async {
+              DateTime date = DateTime(2009);
+              date = await showDatePicker(
+                  context: context,
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData.light().copyWith(
+                          colorScheme: const ColorScheme
+                              .light(
+                            primary: Color(0xff48cfaf),
+                            surface: Color(0xff48cfaf),
+                            onSurface: Colors.black87,
+                            onBackground: Colors.white,
+                          )
+                      ),
+                      child: child,
+                    );
+                  },
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1995),
+                  lastDate: DateTime.now().add(const Duration(days: 1))
+              );
+              _dateController.text = date.toIso8601String().allBefore("T");
+            },
+            controller: _dateController,
+            decoration: const InputDecoration(
+              labelText: "Date of arrival",
+              prefixIcon: Icon(EvaIcons.calendar),
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: RaisedButton(
+              color: Colors.black87,
+              padding: const EdgeInsets.only(top: 16, bottom: 16),
+              onPressed: () {
+                print("Booked");
+              }, elevation: 0.0,
+              child: Text("Book",
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.white,))
+            ),
+          )
+        ]
+      )
     );
   }
 }

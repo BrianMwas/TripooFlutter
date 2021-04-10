@@ -40,6 +40,7 @@ class _EditUnitViewState extends State<EditUnitView> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.black,
@@ -67,13 +68,16 @@ class _EditUnitViewState extends State<EditUnitView> {
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
+                  isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0),),
                   ),
-                  builder: (context) => Padding(
+                  builder: (context) => Container(
                     padding: const EdgeInsets.all(16.0),
+                    margin: const EdgeInsets.only(top: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         const Text("Update unit",
                           style: TextStyle(
@@ -82,45 +86,48 @@ class _EditUnitViewState extends State<EditUnitView> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        Form(
-                          key: _updateUnitKey,
-                          child : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextFormField(
-                                cursorColor: Colors.black87,
-                                decoration: const InputDecoration(
-                                  labelText: "Unit name",
-                                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                        Padding(
+                          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
+                          child: Form(
+                            key: _updateUnitKey,
+                            child : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextFormField(
+                                  cursorColor: Colors.black87,
+                                  decoration: const InputDecoration(
+                                    labelText: "Unit name",
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 10),
-                              TextFormField(
-                                cursorColor: Colors.black87,
-                                maxLines: 8,
-                                decoration: const InputDecoration(
-                                  labelText: "Unit description",
-                                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                                const SizedBox(height: 10),
+                                TextFormField(
+                                  cursorColor: Colors.black87,
+                                  maxLines: 8,
+                                  decoration: const InputDecoration(
+                                    labelText: "Unit description",
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 40),
-                              RaisedButton(
-                                onPressed: () {
-                                  print("Saved information");
-                                },
-                                color: Colors.black87,
-                                elevation: 0.0,
-                                child: const Text(
-                                  "Save",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    letterSpacing: 0.95
+                                const SizedBox(height: 40),
+                                RaisedButton(
+                                  onPressed: () {
+                                    print("Saved information");
+                                  },
+                                  color: Colors.black87,
+                                  elevation: 0.0,
+                                  child: const Text(
+                                    "Save",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      letterSpacing: 0.95
+                                    )
                                   )
                                 )
-                              )
-                            ]
-                          )
+                              ]
+                            )
+                          ),
                         ),
                       ],
                     ),

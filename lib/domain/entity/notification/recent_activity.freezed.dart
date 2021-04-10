@@ -33,6 +33,7 @@ mixin _$RecentActivity {
   String get title;
   String get description;
 
+  @JsonKey(ignore: true)
   $RecentActivityCopyWith<RecentActivity> get copyWith;
 }
 
@@ -140,6 +141,7 @@ class _$_RecentActivity extends _RecentActivity {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description);
 
+  @JsonKey(ignore: true)
   @override
   _$RecentActivityCopyWith<_RecentActivity> get copyWith =>
       __$RecentActivityCopyWithImpl<_RecentActivity>(this, _$identity);
@@ -157,5 +159,6 @@ abstract class _RecentActivity extends RecentActivity {
   @override
   String get description;
   @override
+  @JsonKey(ignore: true)
   _$RecentActivityCopyWith<_RecentActivity> get copyWith;
 }

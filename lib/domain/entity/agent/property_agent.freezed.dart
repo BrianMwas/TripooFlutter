@@ -15,12 +15,19 @@ class _$PropertyAgentTearOff {
 
 // ignore: unused_element
   _PropertyAgent call(
-      {String name, String imageURL, String emailAddress, String phoneNumber}) {
+      {String id,
+      String name,
+      String imageURL,
+      String emailAddress,
+      String phoneNumber,
+      DateTime createdAt}) {
     return _PropertyAgent(
+      id: id,
       name: name,
       imageURL: imageURL,
       emailAddress: emailAddress,
       phoneNumber: phoneNumber,
+      createdAt: createdAt,
     );
   }
 }
@@ -31,11 +38,14 @@ const $PropertyAgent = _$PropertyAgentTearOff();
 
 /// @nodoc
 mixin _$PropertyAgent {
+  String get id;
   String get name;
   String get imageURL;
   String get emailAddress;
   String get phoneNumber;
+  DateTime get createdAt;
 
+  @JsonKey(ignore: true)
   $PropertyAgentCopyWith<PropertyAgent> get copyWith;
 }
 
@@ -45,7 +55,12 @@ abstract class $PropertyAgentCopyWith<$Res> {
           PropertyAgent value, $Res Function(PropertyAgent) then) =
       _$PropertyAgentCopyWithImpl<$Res>;
   $Res call(
-      {String name, String imageURL, String emailAddress, String phoneNumber});
+      {String id,
+      String name,
+      String imageURL,
+      String emailAddress,
+      String phoneNumber,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -59,12 +74,15 @@ class _$PropertyAgentCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object id = freezed,
     Object name = freezed,
     Object imageURL = freezed,
     Object emailAddress = freezed,
     Object phoneNumber = freezed,
+    Object createdAt = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
       emailAddress: emailAddress == freezed
@@ -72,6 +90,8 @@ class _$PropertyAgentCopyWithImpl<$Res>
           : emailAddress as String,
       phoneNumber:
           phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
     ));
   }
 }
@@ -84,7 +104,12 @@ abstract class _$PropertyAgentCopyWith<$Res>
       __$PropertyAgentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name, String imageURL, String emailAddress, String phoneNumber});
+      {String id,
+      String name,
+      String imageURL,
+      String emailAddress,
+      String phoneNumber,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -100,12 +125,15 @@ class __$PropertyAgentCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object id = freezed,
     Object name = freezed,
     Object imageURL = freezed,
     Object emailAddress = freezed,
     Object phoneNumber = freezed,
+    Object createdAt = freezed,
   }) {
     return _then(_PropertyAgent(
+      id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
       emailAddress: emailAddress == freezed
@@ -113,6 +141,8 @@ class __$PropertyAgentCopyWithImpl<$Res>
           : emailAddress as String,
       phoneNumber:
           phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
     ));
   }
 }
@@ -120,9 +150,16 @@ class __$PropertyAgentCopyWithImpl<$Res>
 /// @nodoc
 class _$_PropertyAgent extends _PropertyAgent {
   const _$_PropertyAgent(
-      {this.name, this.imageURL, this.emailAddress, this.phoneNumber})
+      {this.id,
+      this.name,
+      this.imageURL,
+      this.emailAddress,
+      this.phoneNumber,
+      this.createdAt})
       : super._();
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -131,16 +168,20 @@ class _$_PropertyAgent extends _PropertyAgent {
   final String emailAddress;
   @override
   final String phoneNumber;
+  @override
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'PropertyAgent(name: $name, imageURL: $imageURL, emailAddress: $emailAddress, phoneNumber: $phoneNumber)';
+    return 'PropertyAgent(id: $id, name: $name, imageURL: $imageURL, emailAddress: $emailAddress, phoneNumber: $phoneNumber, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PropertyAgent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.imageURL, imageURL) ||
@@ -151,17 +192,23 @@ class _$_PropertyAgent extends _PropertyAgent {
                     .equals(other.emailAddress, emailAddress)) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)));
+                    .equals(other.phoneNumber, phoneNumber)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(imageURL) ^
       const DeepCollectionEquality().hash(emailAddress) ^
-      const DeepCollectionEquality().hash(phoneNumber);
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      const DeepCollectionEquality().hash(createdAt);
 
+  @JsonKey(ignore: true)
   @override
   _$PropertyAgentCopyWith<_PropertyAgent> get copyWith =>
       __$PropertyAgentCopyWithImpl<_PropertyAgent>(this, _$identity);
@@ -170,11 +217,15 @@ class _$_PropertyAgent extends _PropertyAgent {
 abstract class _PropertyAgent extends PropertyAgent {
   const _PropertyAgent._() : super._();
   const factory _PropertyAgent(
-      {String name,
+      {String id,
+      String name,
       String imageURL,
       String emailAddress,
-      String phoneNumber}) = _$_PropertyAgent;
+      String phoneNumber,
+      DateTime createdAt}) = _$_PropertyAgent;
 
+  @override
+  String get id;
   @override
   String get name;
   @override
@@ -184,5 +235,8 @@ abstract class _PropertyAgent extends PropertyAgent {
   @override
   String get phoneNumber;
   @override
+  DateTime get createdAt;
+  @override
+  @JsonKey(ignore: true)
   _$PropertyAgentCopyWith<_PropertyAgent> get copyWith;
 }

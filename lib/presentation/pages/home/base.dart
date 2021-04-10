@@ -8,7 +8,6 @@ import 'package:tripoo/presentation/pages/home/property/start_property.dart';
 import 'package:tripoo/presentation/pages/home/property/favorites.dart';
 import 'package:tripoo/presentation/routes/route.gr.dart';
 // Property widgets
-import '../../../injection.dart';
 import 'property/property_list.dart';
 
 class BaseLayout extends StatefulWidget {
@@ -22,7 +21,7 @@ class _BaseLayoutState extends State<BaseLayout> {
 
   // The pages that will be shown by tapping the bottom nav icons.
   final List<Widget> _pages = [
-    PropertyList(),
+    const PropertyList(),
     CreateProperty(),
     Favorites(),
   ];

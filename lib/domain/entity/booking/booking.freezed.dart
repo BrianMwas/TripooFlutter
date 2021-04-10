@@ -48,6 +48,7 @@ mixin _$Booking {
   DateTime get date;
   String get message;
 
+  @JsonKey(ignore: true)
   $BookingCopyWith<Booking> get copyWith;
 }
 
@@ -216,6 +217,7 @@ class _$_Booking extends _Booking {
       const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(message);
 
+  @JsonKey(ignore: true)
   @override
   _$BookingCopyWith<_Booking> get copyWith =>
       __$BookingCopyWithImpl<_Booking>(this, _$identity);
@@ -247,5 +249,6 @@ abstract class _Booking extends Booking {
   @override
   String get message;
   @override
+  @JsonKey(ignore: true)
   _$BookingCopyWith<_Booking> get copyWith;
 }

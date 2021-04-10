@@ -19,8 +19,7 @@ abstract class PropertyDTO with _$PropertyDTO {
       String imageURL,
       List<AnalyticsDTO> analytics,
       List<PropertyAgentDTO> agents,
-      double lat,
-      double long,
+      GeoPoint location,
       DateTime createdAt}) = _PropertyDTO;
 
   const PropertyDTO._();
@@ -29,15 +28,14 @@ abstract class PropertyDTO with _$PropertyDTO {
     return PropertyDTO(
       name: property.name,
       description: property.description,
-      units: property.unit.map((u) => PropertyUnitDTO.fromDomain(u)).toList(),
+      units: property.units.map((u) => PropertyUnitDTO.fromDomain(u)).toList(),
       imageURL: property.imageURL,
       createdAt: property.createdAt,
       analytics:
           property.analytics.map((a) => AnalyticsDTO.fromDomain(a)).toList(),
       agents:
           property.agents.map((ag) => PropertyAgentDTO.fromDomain(ag)).toList(),
-      lat: property.position.latitude,
-      long: property.position.longitude,
+      location: property.location,
     );
   }
 
@@ -51,7 +49,7 @@ abstract class PropertyDTO with _$PropertyDTO {
       analytics: analytics.map((a) => a.toDomain()).toList(),
       agents: agents.map((a) => a.toDomain()).toList(),
       createdAt: createdAt,
-      position: LatLng(lat, long),
+      location: location,
     );
   }
 

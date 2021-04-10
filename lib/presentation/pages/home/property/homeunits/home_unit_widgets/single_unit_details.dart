@@ -36,7 +36,7 @@ class EditUnitDetails extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 160,
+              height: 180,
               child: ListView.builder(
                   itemCount: 4,
                   scrollDirection: Axis.horizontal,
@@ -44,37 +44,26 @@ class EditUnitDetails extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0, left: 4),
-                      child: Stack(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(5.0),
                             child: CachedNetworkImage(
                                 imageUrl: "https://source.unsplash.com/random?forest",
-                                  height: 150,
+                                  height: 130,
                                   width: 130,
                                   fit: BoxFit.cover,
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Container(
-                              margin: const EdgeInsets.all(3.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.black26,
+                          IconButton(
+                              icon: const Icon(
+                                EvaIcons.trash,
+                                size: 18,
                               ),
-                              child: IconButton(
-                                color: Colors.black26,
-                                icon: Icon(
-                                  EvaIcons.trashOutline,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                                onPressed: () {
-                                  print("print this");
-                                }
-                              ),
-                            ),
+                              onPressed: () {
+                                print("print this");
+                              }
                           )
                         ],
                       ),
@@ -82,23 +71,25 @@ class EditUnitDetails extends StatelessWidget {
                   },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text("Location"),
+            ),
+            const ListTile(
+                leading: Icon(
+                    EvaIcons.map
+                ),
+                title: Text("Nairobi, Kenya", style: TextStyle(
+                    fontFamily: "ProductSans"
+                )),
+                subtitle: Text("Location can't change.")
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text("Update"),
             ),
-            ListTile(
-              leading: Icon(
-                EvaIcons.map
-              ),
-              trailing: Icon(
-                EvaIcons.arrowIosForwardOutline
-              ),
-              title: Text("Update location", style: TextStyle(
-                fontFamily: "ProductSans"
-              )),
-              subtitle: Text("Nairobi, Kenya")
-            ),
-            ListTile(
+
+            const ListTile(
                 leading: Icon(
                     EvaIcons.listOutline
                 ),
@@ -107,9 +98,10 @@ class EditUnitDetails extends StatelessWidget {
                 ),
                 title: Text("Update Unit features", style: TextStyle(
                     fontFamily: "ProductSans"
-                )),
+                ),
+                ),
             ),
-            ListTile(
+            const ListTile(
                 leading: Icon(
                     EvaIcons.bulbOutline
                 ),
@@ -121,7 +113,7 @@ class EditUnitDetails extends StatelessWidget {
                 )),
             ),
             const SizedBox(height: 20),
-            ListTile(
+            const ListTile(
                 leading: Icon(
                     EvaIcons.trash,
                   color: Colors.red

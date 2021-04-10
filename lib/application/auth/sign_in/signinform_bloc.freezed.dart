@@ -146,6 +146,7 @@ class _$EmailChanged implements EmailChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(email);
 
+  @JsonKey(ignore: true)
   @override
   $EmailChangedCopyWith<EmailChanged> get copyWith =>
       _$EmailChangedCopyWithImpl<EmailChanged>(this, _$identity);
@@ -217,6 +218,7 @@ abstract class EmailChanged implements SigninformEvent {
   const factory EmailChanged(String email) = _$EmailChanged;
 
   String get email;
+  @JsonKey(ignore: true)
   $EmailChangedCopyWith<EmailChanged> get copyWith;
 }
 
@@ -274,6 +276,7 @@ class _$PasswordChanged implements PasswordChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
 
+  @JsonKey(ignore: true)
   @override
   $PasswordChangedCopyWith<PasswordChanged> get copyWith =>
       _$PasswordChangedCopyWithImpl<PasswordChanged>(this, _$identity);
@@ -345,6 +348,7 @@ abstract class PasswordChanged implements SigninformEvent {
   const factory PasswordChanged(String password) = _$PasswordChanged;
 
   String get password;
+  @JsonKey(ignore: true)
   $PasswordChangedCopyWith<PasswordChanged> get copyWith;
 }
 
@@ -590,6 +594,7 @@ mixin _$SigninformState {
   bool get showErrorMessages;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
 
+  @JsonKey(ignore: true)
   $SigninformStateCopyWith<SigninformState> get copyWith;
 }
 
@@ -764,6 +769,7 @@ class _$_SigninformState implements _SigninformState {
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(authFailureOrSuccess);
 
+  @JsonKey(ignore: true)
   @override
   _$SigninformStateCopyWith<_SigninformState> get copyWith =>
       __$SigninformStateCopyWithImpl<_SigninformState>(this, _$identity);
@@ -792,5 +798,6 @@ abstract class _SigninformState implements SigninformState {
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
   @override
+  @JsonKey(ignore: true)
   _$SigninformStateCopyWith<_SigninformState> get copyWith;
 }

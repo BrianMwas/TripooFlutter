@@ -18,20 +18,22 @@ class _$PropertyUnitTearOff {
       {String id,
       String name,
       String description,
+      bool used,
       String thumbnail,
       UnitType unitType,
       int numberOfUnits,
       List<String> images,
       bool live,
-      HomeDetails details,
-      List<HomeFeatures> features,
+      PropertyDetails details,
+      List<PropertyFeatures> features,
       LatLng position,
-      Analytics analytics,
+      List<Analytics> analytics,
       List<Booking> bookings}) {
     return _PropertyUnit(
       id: id,
       name: name,
       description: description,
+      used: used,
       thumbnail: thumbnail,
       unitType: unitType,
       numberOfUnits: numberOfUnits,
@@ -55,17 +57,19 @@ mixin _$PropertyUnit {
   String get id;
   String get name;
   String get description;
+  bool get used;
   String get thumbnail;
   UnitType get unitType;
   int get numberOfUnits;
   List<String> get images;
   bool get live;
-  HomeDetails get details;
-  List<HomeFeatures> get features;
+  PropertyDetails get details;
+  List<PropertyFeatures> get features;
   LatLng get position;
-  Analytics get analytics;
+  List<Analytics> get analytics;
   List<Booking> get bookings;
 
+  @JsonKey(ignore: true)
   $PropertyUnitCopyWith<PropertyUnit> get copyWith;
 }
 
@@ -78,19 +82,19 @@ abstract class $PropertyUnitCopyWith<$Res> {
       {String id,
       String name,
       String description,
+      bool used,
       String thumbnail,
       UnitType unitType,
       int numberOfUnits,
       List<String> images,
       bool live,
-      HomeDetails details,
-      List<HomeFeatures> features,
+      PropertyDetails details,
+      List<PropertyFeatures> features,
       LatLng position,
-      Analytics analytics,
+      List<Analytics> analytics,
       List<Booking> bookings});
 
-  $HomeDetailsCopyWith<$Res> get details;
-  $AnalyticsCopyWith<$Res> get analytics;
+  $PropertyDetailsCopyWith<$Res> get details;
 }
 
 /// @nodoc
@@ -106,6 +110,7 @@ class _$PropertyUnitCopyWithImpl<$Res> implements $PropertyUnitCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
+    Object used = freezed,
     Object thumbnail = freezed,
     Object unitType = freezed,
     Object numberOfUnits = freezed,
@@ -122,6 +127,7 @@ class _$PropertyUnitCopyWithImpl<$Res> implements $PropertyUnitCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
+      used: used == freezed ? _value.used : used as bool,
       thumbnail: thumbnail == freezed ? _value.thumbnail : thumbnail as String,
       unitType: unitType == freezed ? _value.unitType : unitType as UnitType,
       numberOfUnits: numberOfUnits == freezed
@@ -129,35 +135,26 @@ class _$PropertyUnitCopyWithImpl<$Res> implements $PropertyUnitCopyWith<$Res> {
           : numberOfUnits as int,
       images: images == freezed ? _value.images : images as List<String>,
       live: live == freezed ? _value.live : live as bool,
-      details: details == freezed ? _value.details : details as HomeDetails,
+      details: details == freezed ? _value.details : details as PropertyDetails,
       features: features == freezed
           ? _value.features
-          : features as List<HomeFeatures>,
+          : features as List<PropertyFeatures>,
       position: position == freezed ? _value.position : position as LatLng,
-      analytics:
-          analytics == freezed ? _value.analytics : analytics as Analytics,
+      analytics: analytics == freezed
+          ? _value.analytics
+          : analytics as List<Analytics>,
       bookings:
           bookings == freezed ? _value.bookings : bookings as List<Booking>,
     ));
   }
 
   @override
-  $HomeDetailsCopyWith<$Res> get details {
+  $PropertyDetailsCopyWith<$Res> get details {
     if (_value.details == null) {
       return null;
     }
-    return $HomeDetailsCopyWith<$Res>(_value.details, (value) {
+    return $PropertyDetailsCopyWith<$Res>(_value.details, (value) {
       return _then(_value.copyWith(details: value));
-    });
-  }
-
-  @override
-  $AnalyticsCopyWith<$Res> get analytics {
-    if (_value.analytics == null) {
-      return null;
-    }
-    return $AnalyticsCopyWith<$Res>(_value.analytics, (value) {
-      return _then(_value.copyWith(analytics: value));
     });
   }
 }
@@ -173,21 +170,20 @@ abstract class _$PropertyUnitCopyWith<$Res>
       {String id,
       String name,
       String description,
+      bool used,
       String thumbnail,
       UnitType unitType,
       int numberOfUnits,
       List<String> images,
       bool live,
-      HomeDetails details,
-      List<HomeFeatures> features,
+      PropertyDetails details,
+      List<PropertyFeatures> features,
       LatLng position,
-      Analytics analytics,
+      List<Analytics> analytics,
       List<Booking> bookings});
 
   @override
-  $HomeDetailsCopyWith<$Res> get details;
-  @override
-  $AnalyticsCopyWith<$Res> get analytics;
+  $PropertyDetailsCopyWith<$Res> get details;
 }
 
 /// @nodoc
@@ -205,6 +201,7 @@ class __$PropertyUnitCopyWithImpl<$Res> extends _$PropertyUnitCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
+    Object used = freezed,
     Object thumbnail = freezed,
     Object unitType = freezed,
     Object numberOfUnits = freezed,
@@ -221,6 +218,7 @@ class __$PropertyUnitCopyWithImpl<$Res> extends _$PropertyUnitCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
+      used: used == freezed ? _value.used : used as bool,
       thumbnail: thumbnail == freezed ? _value.thumbnail : thumbnail as String,
       unitType: unitType == freezed ? _value.unitType : unitType as UnitType,
       numberOfUnits: numberOfUnits == freezed
@@ -228,13 +226,14 @@ class __$PropertyUnitCopyWithImpl<$Res> extends _$PropertyUnitCopyWithImpl<$Res>
           : numberOfUnits as int,
       images: images == freezed ? _value.images : images as List<String>,
       live: live == freezed ? _value.live : live as bool,
-      details: details == freezed ? _value.details : details as HomeDetails,
+      details: details == freezed ? _value.details : details as PropertyDetails,
       features: features == freezed
           ? _value.features
-          : features as List<HomeFeatures>,
+          : features as List<PropertyFeatures>,
       position: position == freezed ? _value.position : position as LatLng,
-      analytics:
-          analytics == freezed ? _value.analytics : analytics as Analytics,
+      analytics: analytics == freezed
+          ? _value.analytics
+          : analytics as List<Analytics>,
       bookings:
           bookings == freezed ? _value.bookings : bookings as List<Booking>,
     ));
@@ -247,6 +246,7 @@ class _$_PropertyUnit extends _PropertyUnit {
       {this.id,
       this.name,
       this.description,
+      this.used,
       this.thumbnail,
       this.unitType,
       this.numberOfUnits,
@@ -266,6 +266,8 @@ class _$_PropertyUnit extends _PropertyUnit {
   @override
   final String description;
   @override
+  final bool used;
+  @override
   final String thumbnail;
   @override
   final UnitType unitType;
@@ -276,19 +278,19 @@ class _$_PropertyUnit extends _PropertyUnit {
   @override
   final bool live;
   @override
-  final HomeDetails details;
+  final PropertyDetails details;
   @override
-  final List<HomeFeatures> features;
+  final List<PropertyFeatures> features;
   @override
   final LatLng position;
   @override
-  final Analytics analytics;
+  final List<Analytics> analytics;
   @override
   final List<Booking> bookings;
 
   @override
   String toString() {
-    return 'PropertyUnit(id: $id, name: $name, description: $description, thumbnail: $thumbnail, unitType: $unitType, numberOfUnits: $numberOfUnits, images: $images, live: $live, details: $details, features: $features, position: $position, analytics: $analytics, bookings: $bookings)';
+    return 'PropertyUnit(id: $id, name: $name, description: $description, used: $used, thumbnail: $thumbnail, unitType: $unitType, numberOfUnits: $numberOfUnits, images: $images, live: $live, details: $details, features: $features, position: $position, analytics: $analytics, bookings: $bookings)';
   }
 
   @override
@@ -302,6 +304,8 @@ class _$_PropertyUnit extends _PropertyUnit {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
+            (identical(other.used, used) ||
+                const DeepCollectionEquality().equals(other.used, used)) &&
             (identical(other.thumbnail, thumbnail) ||
                 const DeepCollectionEquality()
                     .equals(other.thumbnail, thumbnail)) &&
@@ -338,6 +342,7 @@ class _$_PropertyUnit extends _PropertyUnit {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(used) ^
       const DeepCollectionEquality().hash(thumbnail) ^
       const DeepCollectionEquality().hash(unitType) ^
       const DeepCollectionEquality().hash(numberOfUnits) ^
@@ -349,6 +354,7 @@ class _$_PropertyUnit extends _PropertyUnit {
       const DeepCollectionEquality().hash(analytics) ^
       const DeepCollectionEquality().hash(bookings);
 
+  @JsonKey(ignore: true)
   @override
   _$PropertyUnitCopyWith<_PropertyUnit> get copyWith =>
       __$PropertyUnitCopyWithImpl<_PropertyUnit>(this, _$identity);
@@ -360,15 +366,16 @@ abstract class _PropertyUnit extends PropertyUnit {
       {String id,
       String name,
       String description,
+      bool used,
       String thumbnail,
       UnitType unitType,
       int numberOfUnits,
       List<String> images,
       bool live,
-      HomeDetails details,
-      List<HomeFeatures> features,
+      PropertyDetails details,
+      List<PropertyFeatures> features,
       LatLng position,
-      Analytics analytics,
+      List<Analytics> analytics,
       List<Booking> bookings}) = _$_PropertyUnit;
 
   @override
@@ -377,6 +384,8 @@ abstract class _PropertyUnit extends PropertyUnit {
   String get name;
   @override
   String get description;
+  @override
+  bool get used;
   @override
   String get thumbnail;
   @override
@@ -388,15 +397,16 @@ abstract class _PropertyUnit extends PropertyUnit {
   @override
   bool get live;
   @override
-  HomeDetails get details;
+  PropertyDetails get details;
   @override
-  List<HomeFeatures> get features;
+  List<PropertyFeatures> get features;
   @override
   LatLng get position;
   @override
-  Analytics get analytics;
+  List<Analytics> get analytics;
   @override
   List<Booking> get bookings;
   @override
+  @JsonKey(ignore: true)
   _$PropertyUnitCopyWith<_PropertyUnit> get copyWith;
 }

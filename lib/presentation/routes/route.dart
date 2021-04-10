@@ -54,5 +54,6 @@ import 'package:tripoo/presentation/pages/onboarding/onboarding.dart';
       CupertinoRoute(page: EditUnitView),
       CupertinoRoute(page: Marketing),
       CupertinoRoute(page: CreateUnitView),
+
     ])
 class $Router {}
