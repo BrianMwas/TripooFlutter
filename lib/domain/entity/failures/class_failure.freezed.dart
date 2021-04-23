@@ -24,6 +24,11 @@ class _$PropertyFailureTearOff {
   }
 
 // ignore: unused_element
+  _UploadFileFailed uploadFileFailed() {
+    return const _UploadFileFailed();
+  }
+
+// ignore: unused_element
   _InsufficientPermission insufficientPermission() {
     return const _InsufficientPermission();
   }
@@ -31,6 +36,16 @@ class _$PropertyFailureTearOff {
 // ignore: unused_element
   _UnableToUpdate unableToUpdate() {
     return const _UnableToUpdate();
+  }
+
+// ignore: unused_element
+  _WrongFormat wrongFormat() {
+    return const _WrongFormat();
+  }
+
+// ignore: unused_element
+  _EmptyDocuments emptyDocuments() {
+    return const _EmptyDocuments();
   }
 }
 
@@ -44,30 +59,42 @@ mixin _$PropertyFailure {
   TResult when<TResult extends Object>({
     @required TResult serverError(),
     @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult serverError(),
     TResult unExpected(),
+    TResult uploadFileFailed(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult serverError(_ServerError value),
     @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult serverError(_ServerError value),
     TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
     @required TResult orElse(),
   });
 }
@@ -130,13 +157,19 @@ class _$_ServerError implements _ServerError {
   TResult when<TResult extends Object>({
     @required TResult serverError(),
     @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return serverError();
   }
 
@@ -145,8 +178,11 @@ class _$_ServerError implements _ServerError {
   TResult maybeWhen<TResult extends Object>({
     TResult serverError(),
     TResult unExpected(),
+    TResult uploadFileFailed(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -161,13 +197,19 @@ class _$_ServerError implements _ServerError {
   TResult map<TResult extends Object>({
     @required TResult serverError(_ServerError value),
     @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return serverError(this);
   }
 
@@ -176,8 +218,11 @@ class _$_ServerError implements _ServerError {
   TResult maybeMap<TResult extends Object>({
     TResult serverError(_ServerError value),
     TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -233,13 +278,19 @@ class _$_UnExpected implements _UnExpected {
   TResult when<TResult extends Object>({
     @required TResult serverError(),
     @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return unExpected();
   }
 
@@ -248,8 +299,11 @@ class _$_UnExpected implements _UnExpected {
   TResult maybeWhen<TResult extends Object>({
     TResult serverError(),
     TResult unExpected(),
+    TResult uploadFileFailed(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -264,13 +318,19 @@ class _$_UnExpected implements _UnExpected {
   TResult map<TResult extends Object>({
     @required TResult serverError(_ServerError value),
     @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return unExpected(this);
   }
 
@@ -279,8 +339,11 @@ class _$_UnExpected implements _UnExpected {
   TResult maybeMap<TResult extends Object>({
     TResult serverError(_ServerError value),
     TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -293,6 +356,127 @@ class _$_UnExpected implements _UnExpected {
 
 abstract class _UnExpected implements PropertyFailure {
   const factory _UnExpected() = _$_UnExpected;
+}
+
+/// @nodoc
+abstract class _$UploadFileFailedCopyWith<$Res> {
+  factory _$UploadFileFailedCopyWith(
+          _UploadFileFailed value, $Res Function(_UploadFileFailed) then) =
+      __$UploadFileFailedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UploadFileFailedCopyWithImpl<$Res>
+    extends _$PropertyFailureCopyWithImpl<$Res>
+    implements _$UploadFileFailedCopyWith<$Res> {
+  __$UploadFileFailedCopyWithImpl(
+      _UploadFileFailed _value, $Res Function(_UploadFileFailed) _then)
+      : super(_value, (v) => _then(v as _UploadFileFailed));
+
+  @override
+  _UploadFileFailed get _value => super._value as _UploadFileFailed;
+}
+
+/// @nodoc
+class _$_UploadFileFailed implements _UploadFileFailed {
+  const _$_UploadFileFailed();
+
+  @override
+  String toString() {
+    return 'PropertyFailure.uploadFileFailed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _UploadFileFailed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult serverError(),
+    @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
+    @required TResult insufficientPermission(),
+    @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
+  }) {
+    assert(serverError != null);
+    assert(unExpected != null);
+    assert(uploadFileFailed != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
+    return uploadFileFailed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult serverError(),
+    TResult unExpected(),
+    TResult uploadFileFailed(),
+    TResult insufficientPermission(),
+    TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (uploadFileFailed != null) {
+      return uploadFileFailed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult serverError(_ServerError value),
+    @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
+    @required TResult insufficientPermission(_InsufficientPermission value),
+    @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
+  }) {
+    assert(serverError != null);
+    assert(unExpected != null);
+    assert(uploadFileFailed != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
+    return uploadFileFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult serverError(_ServerError value),
+    TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
+    TResult insufficientPermission(_InsufficientPermission value),
+    TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (uploadFileFailed != null) {
+      return uploadFileFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadFileFailed implements PropertyFailure {
+  const factory _UploadFileFailed() = _$_UploadFileFailed;
 }
 
 /// @nodoc
@@ -336,13 +520,19 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   TResult when<TResult extends Object>({
     @required TResult serverError(),
     @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return insufficientPermission();
   }
 
@@ -351,8 +541,11 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   TResult maybeWhen<TResult extends Object>({
     TResult serverError(),
     TResult unExpected(),
+    TResult uploadFileFailed(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -367,13 +560,19 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   TResult map<TResult extends Object>({
     @required TResult serverError(_ServerError value),
     @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return insufficientPermission(this);
   }
 
@@ -382,8 +581,11 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   TResult maybeMap<TResult extends Object>({
     TResult serverError(_ServerError value),
     TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -439,13 +641,19 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   TResult when<TResult extends Object>({
     @required TResult serverError(),
     @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return unableToUpdate();
   }
 
@@ -454,8 +662,11 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   TResult maybeWhen<TResult extends Object>({
     TResult serverError(),
     TResult unExpected(),
+    TResult uploadFileFailed(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -470,13 +681,19 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   TResult map<TResult extends Object>({
     @required TResult serverError(_ServerError value),
     @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
   }) {
     assert(serverError != null);
     assert(unExpected != null);
+    assert(uploadFileFailed != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
     return unableToUpdate(this);
   }
 
@@ -485,8 +702,11 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   TResult maybeMap<TResult extends Object>({
     TResult serverError(_ServerError value),
     TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -499,4 +719,246 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 
 abstract class _UnableToUpdate implements PropertyFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
+}
+
+/// @nodoc
+abstract class _$WrongFormatCopyWith<$Res> {
+  factory _$WrongFormatCopyWith(
+          _WrongFormat value, $Res Function(_WrongFormat) then) =
+      __$WrongFormatCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$WrongFormatCopyWithImpl<$Res>
+    extends _$PropertyFailureCopyWithImpl<$Res>
+    implements _$WrongFormatCopyWith<$Res> {
+  __$WrongFormatCopyWithImpl(
+      _WrongFormat _value, $Res Function(_WrongFormat) _then)
+      : super(_value, (v) => _then(v as _WrongFormat));
+
+  @override
+  _WrongFormat get _value => super._value as _WrongFormat;
+}
+
+/// @nodoc
+class _$_WrongFormat implements _WrongFormat {
+  const _$_WrongFormat();
+
+  @override
+  String toString() {
+    return 'PropertyFailure.wrongFormat()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _WrongFormat);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult serverError(),
+    @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
+    @required TResult insufficientPermission(),
+    @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
+  }) {
+    assert(serverError != null);
+    assert(unExpected != null);
+    assert(uploadFileFailed != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
+    return wrongFormat();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult serverError(),
+    TResult unExpected(),
+    TResult uploadFileFailed(),
+    TResult insufficientPermission(),
+    TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongFormat != null) {
+      return wrongFormat();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult serverError(_ServerError value),
+    @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
+    @required TResult insufficientPermission(_InsufficientPermission value),
+    @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
+  }) {
+    assert(serverError != null);
+    assert(unExpected != null);
+    assert(uploadFileFailed != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
+    return wrongFormat(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult serverError(_ServerError value),
+    TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
+    TResult insufficientPermission(_InsufficientPermission value),
+    TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongFormat != null) {
+      return wrongFormat(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WrongFormat implements PropertyFailure {
+  const factory _WrongFormat() = _$_WrongFormat;
+}
+
+/// @nodoc
+abstract class _$EmptyDocumentsCopyWith<$Res> {
+  factory _$EmptyDocumentsCopyWith(
+          _EmptyDocuments value, $Res Function(_EmptyDocuments) then) =
+      __$EmptyDocumentsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$EmptyDocumentsCopyWithImpl<$Res>
+    extends _$PropertyFailureCopyWithImpl<$Res>
+    implements _$EmptyDocumentsCopyWith<$Res> {
+  __$EmptyDocumentsCopyWithImpl(
+      _EmptyDocuments _value, $Res Function(_EmptyDocuments) _then)
+      : super(_value, (v) => _then(v as _EmptyDocuments));
+
+  @override
+  _EmptyDocuments get _value => super._value as _EmptyDocuments;
+}
+
+/// @nodoc
+class _$_EmptyDocuments implements _EmptyDocuments {
+  const _$_EmptyDocuments();
+
+  @override
+  String toString() {
+    return 'PropertyFailure.emptyDocuments()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _EmptyDocuments);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult serverError(),
+    @required TResult unExpected(),
+    @required TResult uploadFileFailed(),
+    @required TResult insufficientPermission(),
+    @required TResult unableToUpdate(),
+    @required TResult wrongFormat(),
+    @required TResult emptyDocuments(),
+  }) {
+    assert(serverError != null);
+    assert(unExpected != null);
+    assert(uploadFileFailed != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
+    return emptyDocuments();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult serverError(),
+    TResult unExpected(),
+    TResult uploadFileFailed(),
+    TResult insufficientPermission(),
+    TResult unableToUpdate(),
+    TResult wrongFormat(),
+    TResult emptyDocuments(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (emptyDocuments != null) {
+      return emptyDocuments();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult serverError(_ServerError value),
+    @required TResult unExpected(_UnExpected value),
+    @required TResult uploadFileFailed(_UploadFileFailed value),
+    @required TResult insufficientPermission(_InsufficientPermission value),
+    @required TResult unableToUpdate(_UnableToUpdate value),
+    @required TResult wrongFormat(_WrongFormat value),
+    @required TResult emptyDocuments(_EmptyDocuments value),
+  }) {
+    assert(serverError != null);
+    assert(unExpected != null);
+    assert(uploadFileFailed != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(wrongFormat != null);
+    assert(emptyDocuments != null);
+    return emptyDocuments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult serverError(_ServerError value),
+    TResult unExpected(_UnExpected value),
+    TResult uploadFileFailed(_UploadFileFailed value),
+    TResult insufficientPermission(_InsufficientPermission value),
+    TResult unableToUpdate(_UnableToUpdate value),
+    TResult wrongFormat(_WrongFormat value),
+    TResult emptyDocuments(_EmptyDocuments value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (emptyDocuments != null) {
+      return emptyDocuments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyDocuments implements PropertyFailure {
+  const factory _EmptyDocuments() = _$_EmptyDocuments;
 }

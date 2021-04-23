@@ -23,13 +23,13 @@ class SigninformBloc extends Bloc<SigninformEvent, SigninformState> {
   ) async* {
     yield* event.map(
       emailChanged: (e) async* {
-        state.copyWith(
+        yield state.copyWith(
           email: EmailAddress(e.email),
           authFailureOrSuccess: none(),
         );
       },
       passwordChanged: (e) async* {
-        state.copyWith(
+       yield state.copyWith(
           password: Password(e.password),
           authFailureOrSuccess: none(),
         );
@@ -56,6 +56,7 @@ class SigninformBloc extends Bloc<SigninformEvent, SigninformState> {
         Either<AuthFailure, Unit> failureOrSuccess;
 
         if (state.email.isValid() && state.password.isValid()) {
+          print("yes");
           yield state.copyWith(
               isSubmitting: true, authFailureOrSuccess: none());
 

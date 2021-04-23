@@ -50,28 +50,27 @@ ThemeData basicTheme() {
       return base.copyWith(
           floatingLabelBehavior: FloatingLabelBehavior.never,
         isDense: true,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           color: Colors.black54,
           fontFamily: "Lato"
         ),
-        helperStyle: TextStyle(
+        helperStyle: const TextStyle(
           fontFamily: "Lato"
         ),
-        errorStyle: TextStyle(
+        errorStyle: const TextStyle(
           color: Color(0xfff85c50),
           fontFamily: "Lato",
         ),
         filled: true,
-        fillColor: Color(0xffF2F8FD),
+        fillColor: const Color(0xffE5F0FF),
         focusColor: Colors.white,
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           borderSide: BorderSide(
-            color: Color(0xffBBC9DD),
-            width: 1
+            color: Colors.transparent,
           )
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           borderSide: BorderSide(color: Color(0xff00dfc8), width: 0.67),
         )

@@ -14,6 +14,18 @@ class _$AuthEventTearOff {
   const _$AuthEventTearOff();
 
 // ignore: unused_element
+  WatchAuthChange watchAuthChange() {
+    return const WatchAuthChange();
+  }
+
+// ignore: unused_element
+  WatchAuthState watchAuthState(User user) {
+    return WatchAuthState(
+      user,
+    );
+  }
+
+// ignore: unused_element
   AuthCheckRequested authCheckRequested() {
     return const AuthCheckRequested();
   }
@@ -32,22 +44,30 @@ const $AuthEvent = _$AuthEventTearOff();
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult watchAuthChange(),
+    @required TResult watchAuthState(User user),
     @required TResult authCheckRequested(),
     @required TResult signedOut(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult watchAuthChange(),
+    TResult watchAuthState(User user),
     TResult authCheckRequested(),
     TResult signedOut(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult watchAuthChange(WatchAuthChange value),
+    @required TResult watchAuthState(WatchAuthState value),
     @required TResult authCheckRequested(AuthCheckRequested value),
     @required TResult signedOut(SignedOut value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult watchAuthChange(WatchAuthChange value),
+    TResult watchAuthState(WatchAuthState value),
     TResult authCheckRequested(AuthCheckRequested value),
     TResult signedOut(SignedOut value),
     @required TResult orElse(),
@@ -67,6 +87,248 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
   final AuthEvent _value;
   // ignore: unused_field
   final $Res Function(AuthEvent) _then;
+}
+
+/// @nodoc
+abstract class $WatchAuthChangeCopyWith<$Res> {
+  factory $WatchAuthChangeCopyWith(
+          WatchAuthChange value, $Res Function(WatchAuthChange) then) =
+      _$WatchAuthChangeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$WatchAuthChangeCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements $WatchAuthChangeCopyWith<$Res> {
+  _$WatchAuthChangeCopyWithImpl(
+      WatchAuthChange _value, $Res Function(WatchAuthChange) _then)
+      : super(_value, (v) => _then(v as WatchAuthChange));
+
+  @override
+  WatchAuthChange get _value => super._value as WatchAuthChange;
+}
+
+/// @nodoc
+class _$WatchAuthChange implements WatchAuthChange {
+  const _$WatchAuthChange();
+
+  @override
+  String toString() {
+    return 'AuthEvent.watchAuthChange()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WatchAuthChange);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult watchAuthChange(),
+    @required TResult watchAuthState(User user),
+    @required TResult authCheckRequested(),
+    @required TResult signedOut(),
+  }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
+    assert(authCheckRequested != null);
+    assert(signedOut != null);
+    return watchAuthChange();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult watchAuthChange(),
+    TResult watchAuthState(User user),
+    TResult authCheckRequested(),
+    TResult signedOut(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchAuthChange != null) {
+      return watchAuthChange();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult watchAuthChange(WatchAuthChange value),
+    @required TResult watchAuthState(WatchAuthState value),
+    @required TResult authCheckRequested(AuthCheckRequested value),
+    @required TResult signedOut(SignedOut value),
+  }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
+    assert(authCheckRequested != null);
+    assert(signedOut != null);
+    return watchAuthChange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult watchAuthChange(WatchAuthChange value),
+    TResult watchAuthState(WatchAuthState value),
+    TResult authCheckRequested(AuthCheckRequested value),
+    TResult signedOut(SignedOut value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchAuthChange != null) {
+      return watchAuthChange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WatchAuthChange implements AuthEvent {
+  const factory WatchAuthChange() = _$WatchAuthChange;
+}
+
+/// @nodoc
+abstract class $WatchAuthStateCopyWith<$Res> {
+  factory $WatchAuthStateCopyWith(
+          WatchAuthState value, $Res Function(WatchAuthState) then) =
+      _$WatchAuthStateCopyWithImpl<$Res>;
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$WatchAuthStateCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements $WatchAuthStateCopyWith<$Res> {
+  _$WatchAuthStateCopyWithImpl(
+      WatchAuthState _value, $Res Function(WatchAuthState) _then)
+      : super(_value, (v) => _then(v as WatchAuthState));
+
+  @override
+  WatchAuthState get _value => super._value as WatchAuthState;
+
+  @override
+  $Res call({
+    Object user = freezed,
+  }) {
+    return _then(WatchAuthState(
+      user == freezed ? _value.user : user as User,
+    ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$WatchAuthState implements WatchAuthState {
+  const _$WatchAuthState(this.user) : assert(user != null);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'AuthEvent.watchAuthState(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WatchAuthState &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @JsonKey(ignore: true)
+  @override
+  $WatchAuthStateCopyWith<WatchAuthState> get copyWith =>
+      _$WatchAuthStateCopyWithImpl<WatchAuthState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult watchAuthChange(),
+    @required TResult watchAuthState(User user),
+    @required TResult authCheckRequested(),
+    @required TResult signedOut(),
+  }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
+    assert(authCheckRequested != null);
+    assert(signedOut != null);
+    return watchAuthState(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult watchAuthChange(),
+    TResult watchAuthState(User user),
+    TResult authCheckRequested(),
+    TResult signedOut(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchAuthState != null) {
+      return watchAuthState(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult watchAuthChange(WatchAuthChange value),
+    @required TResult watchAuthState(WatchAuthState value),
+    @required TResult authCheckRequested(AuthCheckRequested value),
+    @required TResult signedOut(SignedOut value),
+  }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
+    assert(authCheckRequested != null);
+    assert(signedOut != null);
+    return watchAuthState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult watchAuthChange(WatchAuthChange value),
+    TResult watchAuthState(WatchAuthState value),
+    TResult authCheckRequested(AuthCheckRequested value),
+    TResult signedOut(SignedOut value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchAuthState != null) {
+      return watchAuthState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WatchAuthState implements AuthEvent {
+  const factory WatchAuthState(User user) = _$WatchAuthState;
+
+  User get user;
+  @JsonKey(ignore: true)
+  $WatchAuthStateCopyWith<WatchAuthState> get copyWith;
 }
 
 /// @nodoc
@@ -108,9 +370,13 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult watchAuthChange(),
+    @required TResult watchAuthState(User user),
     @required TResult authCheckRequested(),
     @required TResult signedOut(),
   }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
     assert(authCheckRequested != null);
     assert(signedOut != null);
     return authCheckRequested();
@@ -119,6 +385,8 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult watchAuthChange(),
+    TResult watchAuthState(User user),
     TResult authCheckRequested(),
     TResult signedOut(),
     @required TResult orElse(),
@@ -133,9 +401,13 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult watchAuthChange(WatchAuthChange value),
+    @required TResult watchAuthState(WatchAuthState value),
     @required TResult authCheckRequested(AuthCheckRequested value),
     @required TResult signedOut(SignedOut value),
   }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
     assert(authCheckRequested != null);
     assert(signedOut != null);
     return authCheckRequested(this);
@@ -144,6 +416,8 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult watchAuthChange(WatchAuthChange value),
+    TResult watchAuthState(WatchAuthState value),
     TResult authCheckRequested(AuthCheckRequested value),
     TResult signedOut(SignedOut value),
     @required TResult orElse(),
@@ -196,9 +470,13 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult watchAuthChange(),
+    @required TResult watchAuthState(User user),
     @required TResult authCheckRequested(),
     @required TResult signedOut(),
   }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
     assert(authCheckRequested != null);
     assert(signedOut != null);
     return signedOut();
@@ -207,6 +485,8 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult watchAuthChange(),
+    TResult watchAuthState(User user),
     TResult authCheckRequested(),
     TResult signedOut(),
     @required TResult orElse(),
@@ -221,9 +501,13 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult watchAuthChange(WatchAuthChange value),
+    @required TResult watchAuthState(WatchAuthState value),
     @required TResult authCheckRequested(AuthCheckRequested value),
     @required TResult signedOut(SignedOut value),
   }) {
+    assert(watchAuthChange != null);
+    assert(watchAuthState != null);
     assert(authCheckRequested != null);
     assert(signedOut != null);
     return signedOut(this);
@@ -232,6 +516,8 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult watchAuthChange(WatchAuthChange value),
+    TResult watchAuthState(WatchAuthState value),
     TResult authCheckRequested(AuthCheckRequested value),
     TResult signedOut(SignedOut value),
     @required TResult orElse(),

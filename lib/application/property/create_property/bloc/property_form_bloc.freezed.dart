@@ -42,6 +42,25 @@ class _$PropertyFormEventTearOff {
   }
 
 // ignore: unused_element
+  _LiveStatusChanged liveStatusChanged() {
+    return const _LiveStatusChanged();
+  }
+
+// ignore: unused_element
+  _ImageChanged imageChanged(String image) {
+    return _ImageChanged(
+      image,
+    );
+  }
+
+// ignore: unused_element
+  _LocationChanged locationChanged(GeoPoint location) {
+    return _LocationChanged(
+      location,
+    );
+  }
+
+// ignore: unused_element
   _SaveBtnPressed save() {
     return const _SaveBtnPressed();
   }
@@ -59,6 +78,9 @@ mixin _$PropertyFormEvent {
     @required TResult nameChanged(String name),
     @required TResult descriptionChanged(String description),
     @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
     @required TResult save(),
   });
   @optionalTypeArgs
@@ -67,6 +89,9 @@ mixin _$PropertyFormEvent {
     TResult nameChanged(String name),
     TResult descriptionChanged(String description),
     TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
     TResult save(),
     @required TResult orElse(),
   });
@@ -76,6 +101,9 @@ mixin _$PropertyFormEvent {
     @required TResult nameChanged(_NameChanged value),
     @required TResult descriptionChanged(_DescriptionEvent value),
     @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
     @required TResult save(_SaveBtnPressed value),
   });
   @optionalTypeArgs
@@ -84,6 +112,9 @@ mixin _$PropertyFormEvent {
     TResult nameChanged(_NameChanged value),
     TResult descriptionChanged(_DescriptionEvent value),
     TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
     TResult save(_SaveBtnPressed value),
     @required TResult orElse(),
   });
@@ -175,12 +206,18 @@ class _$_Initialized implements _Initialized {
     @required TResult nameChanged(String name),
     @required TResult descriptionChanged(String description),
     @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
     @required TResult save(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return initialized(initialProperty);
   }
@@ -192,6 +229,9 @@ class _$_Initialized implements _Initialized {
     TResult nameChanged(String name),
     TResult descriptionChanged(String description),
     TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
     TResult save(),
     @required TResult orElse(),
   }) {
@@ -209,12 +249,18 @@ class _$_Initialized implements _Initialized {
     @required TResult nameChanged(_NameChanged value),
     @required TResult descriptionChanged(_DescriptionEvent value),
     @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
     @required TResult save(_SaveBtnPressed value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return initialized(this);
   }
@@ -226,6 +272,9 @@ class _$_Initialized implements _Initialized {
     TResult nameChanged(_NameChanged value),
     TResult descriptionChanged(_DescriptionEvent value),
     TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
     TResult save(_SaveBtnPressed value),
     @required TResult orElse(),
   }) {
@@ -310,12 +359,18 @@ class _$_NameChanged implements _NameChanged {
     @required TResult nameChanged(String name),
     @required TResult descriptionChanged(String description),
     @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
     @required TResult save(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return nameChanged(name);
   }
@@ -327,6 +382,9 @@ class _$_NameChanged implements _NameChanged {
     TResult nameChanged(String name),
     TResult descriptionChanged(String description),
     TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
     TResult save(),
     @required TResult orElse(),
   }) {
@@ -344,12 +402,18 @@ class _$_NameChanged implements _NameChanged {
     @required TResult nameChanged(_NameChanged value),
     @required TResult descriptionChanged(_DescriptionEvent value),
     @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
     @required TResult save(_SaveBtnPressed value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return nameChanged(this);
   }
@@ -361,6 +425,9 @@ class _$_NameChanged implements _NameChanged {
     TResult nameChanged(_NameChanged value),
     TResult descriptionChanged(_DescriptionEvent value),
     TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
     TResult save(_SaveBtnPressed value),
     @required TResult orElse(),
   }) {
@@ -446,12 +513,18 @@ class _$_DescriptionEvent implements _DescriptionEvent {
     @required TResult nameChanged(String name),
     @required TResult descriptionChanged(String description),
     @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
     @required TResult save(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return descriptionChanged(description);
   }
@@ -463,6 +536,9 @@ class _$_DescriptionEvent implements _DescriptionEvent {
     TResult nameChanged(String name),
     TResult descriptionChanged(String description),
     TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
     TResult save(),
     @required TResult orElse(),
   }) {
@@ -480,12 +556,18 @@ class _$_DescriptionEvent implements _DescriptionEvent {
     @required TResult nameChanged(_NameChanged value),
     @required TResult descriptionChanged(_DescriptionEvent value),
     @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
     @required TResult save(_SaveBtnPressed value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return descriptionChanged(this);
   }
@@ -497,6 +579,9 @@ class _$_DescriptionEvent implements _DescriptionEvent {
     TResult nameChanged(_NameChanged value),
     TResult descriptionChanged(_DescriptionEvent value),
     TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
     TResult save(_SaveBtnPressed value),
     @required TResult orElse(),
   }) {
@@ -581,12 +666,18 @@ class _$_DateChanged implements _DateChanged {
     @required TResult nameChanged(String name),
     @required TResult descriptionChanged(String description),
     @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
     @required TResult save(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return dateChanged(date);
   }
@@ -598,6 +689,9 @@ class _$_DateChanged implements _DateChanged {
     TResult nameChanged(String name),
     TResult descriptionChanged(String description),
     TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
     TResult save(),
     @required TResult orElse(),
   }) {
@@ -615,12 +709,18 @@ class _$_DateChanged implements _DateChanged {
     @required TResult nameChanged(_NameChanged value),
     @required TResult descriptionChanged(_DescriptionEvent value),
     @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
     @required TResult save(_SaveBtnPressed value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return dateChanged(this);
   }
@@ -632,6 +732,9 @@ class _$_DateChanged implements _DateChanged {
     TResult nameChanged(_NameChanged value),
     TResult descriptionChanged(_DescriptionEvent value),
     TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
     TResult save(_SaveBtnPressed value),
     @required TResult orElse(),
   }) {
@@ -649,6 +752,440 @@ abstract class _DateChanged implements PropertyFormEvent {
   DateTime get date;
   @JsonKey(ignore: true)
   _$DateChangedCopyWith<_DateChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class _$LiveStatusChangedCopyWith<$Res> {
+  factory _$LiveStatusChangedCopyWith(
+          _LiveStatusChanged value, $Res Function(_LiveStatusChanged) then) =
+      __$LiveStatusChangedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$LiveStatusChangedCopyWithImpl<$Res>
+    extends _$PropertyFormEventCopyWithImpl<$Res>
+    implements _$LiveStatusChangedCopyWith<$Res> {
+  __$LiveStatusChangedCopyWithImpl(
+      _LiveStatusChanged _value, $Res Function(_LiveStatusChanged) _then)
+      : super(_value, (v) => _then(v as _LiveStatusChanged));
+
+  @override
+  _LiveStatusChanged get _value => super._value as _LiveStatusChanged;
+}
+
+/// @nodoc
+class _$_LiveStatusChanged implements _LiveStatusChanged {
+  const _$_LiveStatusChanged();
+
+  @override
+  String toString() {
+    return 'PropertyFormEvent.liveStatusChanged()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _LiveStatusChanged);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<Property> initialProperty),
+    @required TResult nameChanged(String name),
+    @required TResult descriptionChanged(String description),
+    @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
+    @required TResult save(),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
+    assert(save != null);
+    return liveStatusChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<Property> initialProperty),
+    TResult nameChanged(String name),
+    TResult descriptionChanged(String description),
+    TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
+    TResult save(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (liveStatusChanged != null) {
+      return liveStatusChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult descriptionChanged(_DescriptionEvent value),
+    @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult save(_SaveBtnPressed value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
+    assert(save != null);
+    return liveStatusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult descriptionChanged(_DescriptionEvent value),
+    TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult save(_SaveBtnPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (liveStatusChanged != null) {
+      return liveStatusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LiveStatusChanged implements PropertyFormEvent {
+  const factory _LiveStatusChanged() = _$_LiveStatusChanged;
+}
+
+/// @nodoc
+abstract class _$ImageChangedCopyWith<$Res> {
+  factory _$ImageChangedCopyWith(
+          _ImageChanged value, $Res Function(_ImageChanged) then) =
+      __$ImageChangedCopyWithImpl<$Res>;
+  $Res call({String image});
+}
+
+/// @nodoc
+class __$ImageChangedCopyWithImpl<$Res>
+    extends _$PropertyFormEventCopyWithImpl<$Res>
+    implements _$ImageChangedCopyWith<$Res> {
+  __$ImageChangedCopyWithImpl(
+      _ImageChanged _value, $Res Function(_ImageChanged) _then)
+      : super(_value, (v) => _then(v as _ImageChanged));
+
+  @override
+  _ImageChanged get _value => super._value as _ImageChanged;
+
+  @override
+  $Res call({
+    Object image = freezed,
+  }) {
+    return _then(_ImageChanged(
+      image == freezed ? _value.image : image as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ImageChanged implements _ImageChanged {
+  const _$_ImageChanged(this.image) : assert(image != null);
+
+  @override
+  final String image;
+
+  @override
+  String toString() {
+    return 'PropertyFormEvent.imageChanged(image: $image)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ImageChanged &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(image);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ImageChangedCopyWith<_ImageChanged> get copyWith =>
+      __$ImageChangedCopyWithImpl<_ImageChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<Property> initialProperty),
+    @required TResult nameChanged(String name),
+    @required TResult descriptionChanged(String description),
+    @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
+    @required TResult save(),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
+    assert(save != null);
+    return imageChanged(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<Property> initialProperty),
+    TResult nameChanged(String name),
+    TResult descriptionChanged(String description),
+    TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
+    TResult save(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (imageChanged != null) {
+      return imageChanged(image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult descriptionChanged(_DescriptionEvent value),
+    @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult save(_SaveBtnPressed value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
+    assert(save != null);
+    return imageChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult descriptionChanged(_DescriptionEvent value),
+    TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult save(_SaveBtnPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (imageChanged != null) {
+      return imageChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImageChanged implements PropertyFormEvent {
+  const factory _ImageChanged(String image) = _$_ImageChanged;
+
+  String get image;
+  @JsonKey(ignore: true)
+  _$ImageChangedCopyWith<_ImageChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class _$LocationChangedCopyWith<$Res> {
+  factory _$LocationChangedCopyWith(
+          _LocationChanged value, $Res Function(_LocationChanged) then) =
+      __$LocationChangedCopyWithImpl<$Res>;
+  $Res call({GeoPoint location});
+}
+
+/// @nodoc
+class __$LocationChangedCopyWithImpl<$Res>
+    extends _$PropertyFormEventCopyWithImpl<$Res>
+    implements _$LocationChangedCopyWith<$Res> {
+  __$LocationChangedCopyWithImpl(
+      _LocationChanged _value, $Res Function(_LocationChanged) _then)
+      : super(_value, (v) => _then(v as _LocationChanged));
+
+  @override
+  _LocationChanged get _value => super._value as _LocationChanged;
+
+  @override
+  $Res call({
+    Object location = freezed,
+  }) {
+    return _then(_LocationChanged(
+      location == freezed ? _value.location : location as GeoPoint,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_LocationChanged implements _LocationChanged {
+  const _$_LocationChanged(this.location) : assert(location != null);
+
+  @override
+  final GeoPoint location;
+
+  @override
+  String toString() {
+    return 'PropertyFormEvent.locationChanged(location: $location)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LocationChanged &&
+            (identical(other.location, location) ||
+                const DeepCollectionEquality()
+                    .equals(other.location, location)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(location);
+
+  @JsonKey(ignore: true)
+  @override
+  _$LocationChangedCopyWith<_LocationChanged> get copyWith =>
+      __$LocationChangedCopyWithImpl<_LocationChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<Property> initialProperty),
+    @required TResult nameChanged(String name),
+    @required TResult descriptionChanged(String description),
+    @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
+    @required TResult save(),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
+    assert(save != null);
+    return locationChanged(location);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<Property> initialProperty),
+    TResult nameChanged(String name),
+    TResult descriptionChanged(String description),
+    TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
+    TResult save(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (locationChanged != null) {
+      return locationChanged(location);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult descriptionChanged(_DescriptionEvent value),
+    @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult save(_SaveBtnPressed value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
+    assert(save != null);
+    return locationChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult descriptionChanged(_DescriptionEvent value),
+    TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult save(_SaveBtnPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (locationChanged != null) {
+      return locationChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationChanged implements PropertyFormEvent {
+  const factory _LocationChanged(GeoPoint location) = _$_LocationChanged;
+
+  GeoPoint get location;
+  @JsonKey(ignore: true)
+  _$LocationChangedCopyWith<_LocationChanged> get copyWith;
 }
 
 /// @nodoc
@@ -694,12 +1231,18 @@ class _$_SaveBtnPressed implements _SaveBtnPressed {
     @required TResult nameChanged(String name),
     @required TResult descriptionChanged(String description),
     @required TResult dateChanged(DateTime date),
+    @required TResult liveStatusChanged(),
+    @required TResult imageChanged(String image),
+    @required TResult locationChanged(GeoPoint location),
     @required TResult save(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return save();
   }
@@ -711,6 +1254,9 @@ class _$_SaveBtnPressed implements _SaveBtnPressed {
     TResult nameChanged(String name),
     TResult descriptionChanged(String description),
     TResult dateChanged(DateTime date),
+    TResult liveStatusChanged(),
+    TResult imageChanged(String image),
+    TResult locationChanged(GeoPoint location),
     TResult save(),
     @required TResult orElse(),
   }) {
@@ -728,12 +1274,18 @@ class _$_SaveBtnPressed implements _SaveBtnPressed {
     @required TResult nameChanged(_NameChanged value),
     @required TResult descriptionChanged(_DescriptionEvent value),
     @required TResult dateChanged(_DateChanged value),
+    @required TResult liveStatusChanged(_LiveStatusChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult locationChanged(_LocationChanged value),
     @required TResult save(_SaveBtnPressed value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
+    assert(liveStatusChanged != null);
+    assert(imageChanged != null);
+    assert(locationChanged != null);
     assert(save != null);
     return save(this);
   }
@@ -745,6 +1297,9 @@ class _$_SaveBtnPressed implements _SaveBtnPressed {
     TResult nameChanged(_NameChanged value),
     TResult descriptionChanged(_DescriptionEvent value),
     TResult dateChanged(_DateChanged value),
+    TResult liveStatusChanged(_LiveStatusChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult locationChanged(_LocationChanged value),
     TResult save(_SaveBtnPressed value),
     @required TResult orElse(),
   }) {
@@ -771,9 +1326,7 @@ class _$PropertyFormStateTearOff {
       @required
           bool showErrors,
       @required
-          double uploadProgress,
-      @required
-          bool uploading,
+          bool hasLocation,
       @required
           bool isSaving,
       @required
@@ -784,8 +1337,7 @@ class _$PropertyFormStateTearOff {
     return _PropertyFormState(
       property: property,
       showErrors: showErrors,
-      uploadProgress: uploadProgress,
-      uploading: uploading,
+      hasLocation: hasLocation,
       isSaving: isSaving,
       isEditing: isEditing,
       propertyFailureOrSuccessOption: propertyFailureOrSuccessOption,
@@ -801,8 +1353,7 @@ const $PropertyFormState = _$PropertyFormStateTearOff();
 mixin _$PropertyFormState {
   Property get property;
   bool get showErrors;
-  double get uploadProgress;
-  bool get uploading;
+  bool get hasLocation;
   bool get isSaving;
   bool get isEditing;
   Option<Either<PropertyFailure, Unit>> get propertyFailureOrSuccessOption;
@@ -819,8 +1370,7 @@ abstract class $PropertyFormStateCopyWith<$Res> {
   $Res call(
       {Property property,
       bool showErrors,
-      double uploadProgress,
-      bool uploading,
+      bool hasLocation,
       bool isSaving,
       bool isEditing,
       Option<Either<PropertyFailure, Unit>> propertyFailureOrSuccessOption});
@@ -841,8 +1391,7 @@ class _$PropertyFormStateCopyWithImpl<$Res>
   $Res call({
     Object property = freezed,
     Object showErrors = freezed,
-    Object uploadProgress = freezed,
-    Object uploading = freezed,
+    Object hasLocation = freezed,
     Object isSaving = freezed,
     Object isEditing = freezed,
     Object propertyFailureOrSuccessOption = freezed,
@@ -851,10 +1400,8 @@ class _$PropertyFormStateCopyWithImpl<$Res>
       property: property == freezed ? _value.property : property as Property,
       showErrors:
           showErrors == freezed ? _value.showErrors : showErrors as bool,
-      uploadProgress: uploadProgress == freezed
-          ? _value.uploadProgress
-          : uploadProgress as double,
-      uploading: uploading == freezed ? _value.uploading : uploading as bool,
+      hasLocation:
+          hasLocation == freezed ? _value.hasLocation : hasLocation as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
       propertyFailureOrSuccessOption: propertyFailureOrSuccessOption == freezed
@@ -885,8 +1432,7 @@ abstract class _$PropertyFormStateCopyWith<$Res>
   $Res call(
       {Property property,
       bool showErrors,
-      double uploadProgress,
-      bool uploading,
+      bool hasLocation,
       bool isSaving,
       bool isEditing,
       Option<Either<PropertyFailure, Unit>> propertyFailureOrSuccessOption});
@@ -910,8 +1456,7 @@ class __$PropertyFormStateCopyWithImpl<$Res>
   $Res call({
     Object property = freezed,
     Object showErrors = freezed,
-    Object uploadProgress = freezed,
-    Object uploading = freezed,
+    Object hasLocation = freezed,
     Object isSaving = freezed,
     Object isEditing = freezed,
     Object propertyFailureOrSuccessOption = freezed,
@@ -920,10 +1465,8 @@ class __$PropertyFormStateCopyWithImpl<$Res>
       property: property == freezed ? _value.property : property as Property,
       showErrors:
           showErrors == freezed ? _value.showErrors : showErrors as bool,
-      uploadProgress: uploadProgress == freezed
-          ? _value.uploadProgress
-          : uploadProgress as double,
-      uploading: uploading == freezed ? _value.uploading : uploading as bool,
+      hasLocation:
+          hasLocation == freezed ? _value.hasLocation : hasLocation as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
       propertyFailureOrSuccessOption: propertyFailureOrSuccessOption == freezed
@@ -939,15 +1482,13 @@ class _$_PropertyFormState implements _PropertyFormState {
   const _$_PropertyFormState(
       {@required this.property,
       @required this.showErrors,
-      @required this.uploadProgress,
-      @required this.uploading,
+      @required this.hasLocation,
       @required this.isSaving,
       @required this.isEditing,
       @required this.propertyFailureOrSuccessOption})
       : assert(property != null),
         assert(showErrors != null),
-        assert(uploadProgress != null),
-        assert(uploading != null),
+        assert(hasLocation != null),
         assert(isSaving != null),
         assert(isEditing != null),
         assert(propertyFailureOrSuccessOption != null);
@@ -957,9 +1498,7 @@ class _$_PropertyFormState implements _PropertyFormState {
   @override
   final bool showErrors;
   @override
-  final double uploadProgress;
-  @override
-  final bool uploading;
+  final bool hasLocation;
   @override
   final bool isSaving;
   @override
@@ -969,7 +1508,7 @@ class _$_PropertyFormState implements _PropertyFormState {
 
   @override
   String toString() {
-    return 'PropertyFormState(property: $property, showErrors: $showErrors, uploadProgress: $uploadProgress, uploading: $uploading, isSaving: $isSaving, isEditing: $isEditing, propertyFailureOrSuccessOption: $propertyFailureOrSuccessOption)';
+    return 'PropertyFormState(property: $property, showErrors: $showErrors, hasLocation: $hasLocation, isSaving: $isSaving, isEditing: $isEditing, propertyFailureOrSuccessOption: $propertyFailureOrSuccessOption)';
   }
 
   @override
@@ -982,12 +1521,9 @@ class _$_PropertyFormState implements _PropertyFormState {
             (identical(other.showErrors, showErrors) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrors, showErrors)) &&
-            (identical(other.uploadProgress, uploadProgress) ||
+            (identical(other.hasLocation, hasLocation) ||
                 const DeepCollectionEquality()
-                    .equals(other.uploadProgress, uploadProgress)) &&
-            (identical(other.uploading, uploading) ||
-                const DeepCollectionEquality()
-                    .equals(other.uploading, uploading)) &&
+                    .equals(other.hasLocation, hasLocation)) &&
             (identical(other.isSaving, isSaving) ||
                 const DeepCollectionEquality()
                     .equals(other.isSaving, isSaving)) &&
@@ -1006,8 +1542,7 @@ class _$_PropertyFormState implements _PropertyFormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(property) ^
       const DeepCollectionEquality().hash(showErrors) ^
-      const DeepCollectionEquality().hash(uploadProgress) ^
-      const DeepCollectionEquality().hash(uploading) ^
+      const DeepCollectionEquality().hash(hasLocation) ^
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(propertyFailureOrSuccessOption);
@@ -1025,9 +1560,7 @@ abstract class _PropertyFormState implements PropertyFormState {
       @required
           bool showErrors,
       @required
-          double uploadProgress,
-      @required
-          bool uploading,
+          bool hasLocation,
       @required
           bool isSaving,
       @required
@@ -1041,9 +1574,7 @@ abstract class _PropertyFormState implements PropertyFormState {
   @override
   bool get showErrors;
   @override
-  double get uploadProgress;
-  @override
-  bool get uploading;
+  bool get hasLocation;
   @override
   bool get isSaving;
   @override

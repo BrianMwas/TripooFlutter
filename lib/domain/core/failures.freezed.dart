@@ -82,6 +82,15 @@ class _$ValueFailureTearOff {
       maxValue: maxValue,
     );
   }
+
+// ignore: unused_element
+  BelowMinLength<T> belowMinLength<T>(
+      {@required String failedValue, @required int min}) {
+    return BelowMinLength<T>(
+      failedValue: failedValue,
+      min: min,
+    );
+  }
 }
 
 /// @nodoc
@@ -102,6 +111,7 @@ mixin _$ValueFailure<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -114,6 +124,7 @@ mixin _$ValueFailure<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -127,6 +138,7 @@ mixin _$ValueFailure<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -139,6 +151,7 @@ mixin _$ValueFailure<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   });
 }
@@ -234,6 +247,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -244,6 +258,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidEmailAddress(failedValue);
   }
 
@@ -259,6 +274,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -280,6 +296,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -290,6 +307,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidEmailAddress(this);
   }
 
@@ -305,6 +323,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -398,6 +417,7 @@ class _$InvalidUsername<T> implements InvalidUsername<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -408,6 +428,7 @@ class _$InvalidUsername<T> implements InvalidUsername<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidUsername(failedValue);
   }
 
@@ -423,6 +444,7 @@ class _$InvalidUsername<T> implements InvalidUsername<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -444,6 +466,7 @@ class _$InvalidUsername<T> implements InvalidUsername<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -454,6 +477,7 @@ class _$InvalidUsername<T> implements InvalidUsername<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidUsername(this);
   }
 
@@ -469,6 +493,7 @@ class _$InvalidUsername<T> implements InvalidUsername<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -563,6 +588,7 @@ class _$_InvalidPhoneNumber<T> implements _InvalidPhoneNumber<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -573,6 +599,7 @@ class _$_InvalidPhoneNumber<T> implements _InvalidPhoneNumber<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidPhoneNumber(failedValue);
   }
 
@@ -588,6 +615,7 @@ class _$_InvalidPhoneNumber<T> implements _InvalidPhoneNumber<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -609,6 +637,7 @@ class _$_InvalidPhoneNumber<T> implements _InvalidPhoneNumber<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -619,6 +648,7 @@ class _$_InvalidPhoneNumber<T> implements _InvalidPhoneNumber<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidPhoneNumber(this);
   }
 
@@ -634,6 +664,7 @@ class _$_InvalidPhoneNumber<T> implements _InvalidPhoneNumber<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -727,6 +758,7 @@ class _$_InvalidURL<T> implements _InvalidURL<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -737,6 +769,7 @@ class _$_InvalidURL<T> implements _InvalidURL<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidURL(failedValue);
   }
 
@@ -752,6 +785,7 @@ class _$_InvalidURL<T> implements _InvalidURL<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -773,6 +807,7 @@ class _$_InvalidURL<T> implements _InvalidURL<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -783,6 +818,7 @@ class _$_InvalidURL<T> implements _InvalidURL<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidURL(this);
   }
 
@@ -798,6 +834,7 @@ class _$_InvalidURL<T> implements _InvalidURL<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -890,6 +927,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -900,6 +938,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidPassword(failedValue);
   }
 
@@ -915,6 +954,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -936,6 +976,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -946,6 +987,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return invalidPassword(this);
   }
 
@@ -961,6 +1003,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1050,6 +1093,7 @@ class _$Empty<T> implements Empty<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1060,6 +1104,7 @@ class _$Empty<T> implements Empty<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return empty(failedValue);
   }
 
@@ -1075,6 +1120,7 @@ class _$Empty<T> implements Empty<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1096,6 +1142,7 @@ class _$Empty<T> implements Empty<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1106,6 +1153,7 @@ class _$Empty<T> implements Empty<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return empty(this);
   }
 
@@ -1121,6 +1169,7 @@ class _$Empty<T> implements Empty<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1222,6 +1271,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1232,6 +1282,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -1247,6 +1298,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1268,6 +1320,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1278,6 +1331,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return exceedingLength(this);
   }
 
@@ -1293,6 +1347,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1387,6 +1442,7 @@ class _$WrongFormat<T> implements WrongFormat<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1397,6 +1453,7 @@ class _$WrongFormat<T> implements WrongFormat<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return wrongFormat(failedValue);
   }
 
@@ -1412,6 +1469,7 @@ class _$WrongFormat<T> implements WrongFormat<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1433,6 +1491,7 @@ class _$WrongFormat<T> implements WrongFormat<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1443,6 +1502,7 @@ class _$WrongFormat<T> implements WrongFormat<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return wrongFormat(this);
   }
 
@@ -1458,6 +1518,7 @@ class _$WrongFormat<T> implements WrongFormat<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1571,6 +1632,7 @@ class _$LowValue<T> implements LowValue<T> {
     @required TResult wrongFormat(T failedValue),
     @required
         TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1581,6 +1643,7 @@ class _$LowValue<T> implements LowValue<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return lowValue(failedValue, minValue, maxValue);
   }
 
@@ -1596,6 +1659,7 @@ class _$LowValue<T> implements LowValue<T> {
     TResult exceedingLength(String failedValue, int max),
     TResult wrongFormat(T failedValue),
     TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1617,6 +1681,7 @@ class _$LowValue<T> implements LowValue<T> {
     @required TResult exceedingLength(ExceedingLength<T> value),
     @required TResult wrongFormat(WrongFormat<T> value),
     @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
   }) {
     assert(invalidEmailAddress != null);
     assert(invalidUsername != null);
@@ -1627,6 +1692,7 @@ class _$LowValue<T> implements LowValue<T> {
     assert(exceedingLength != null);
     assert(wrongFormat != null);
     assert(lowValue != null);
+    assert(belowMinLength != null);
     return lowValue(this);
   }
 
@@ -1642,6 +1708,7 @@ class _$LowValue<T> implements LowValue<T> {
     TResult exceedingLength(ExceedingLength<T> value),
     TResult wrongFormat(WrongFormat<T> value),
     TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1663,4 +1730,184 @@ abstract class LowValue<T> implements ValueFailure<T> {
   double get maxValue;
   @JsonKey(ignore: true)
   $LowValueCopyWith<T, LowValue<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $BelowMinLengthCopyWith<T, $Res> {
+  factory $BelowMinLengthCopyWith(
+          BelowMinLength<T> value, $Res Function(BelowMinLength<T>) then) =
+      _$BelowMinLengthCopyWithImpl<T, $Res>;
+  $Res call({String failedValue, int min});
+}
+
+/// @nodoc
+class _$BelowMinLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $BelowMinLengthCopyWith<T, $Res> {
+  _$BelowMinLengthCopyWithImpl(
+      BelowMinLength<T> _value, $Res Function(BelowMinLength<T>) _then)
+      : super(_value, (v) => _then(v as BelowMinLength<T>));
+
+  @override
+  BelowMinLength<T> get _value => super._value as BelowMinLength<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+    Object min = freezed,
+  }) {
+    return _then(BelowMinLength<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as String,
+      min: min == freezed ? _value.min : min as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$BelowMinLength<T> implements BelowMinLength<T> {
+  const _$BelowMinLength({@required this.failedValue, @required this.min})
+      : assert(failedValue != null),
+        assert(min != null);
+
+  @override
+  final String failedValue;
+  @override
+  final int min;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.belowMinLength(failedValue: $failedValue, min: $min)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is BelowMinLength<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.min, min) ||
+                const DeepCollectionEquality().equals(other.min, min)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failedValue) ^
+      const DeepCollectionEquality().hash(min);
+
+  @JsonKey(ignore: true)
+  @override
+  $BelowMinLengthCopyWith<T, BelowMinLength<T>> get copyWith =>
+      _$BelowMinLengthCopyWithImpl<T, BelowMinLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmailAddress(String failedValue),
+    @required TResult invalidUsername(String failedValue),
+    @required TResult invalidPhoneNumber(String failedValue),
+    @required TResult invalidURL(String failedValue),
+    @required TResult invalidPassword(String failedValue),
+    @required TResult empty(T failedValue),
+    @required TResult exceedingLength(String failedValue, int max),
+    @required TResult wrongFormat(T failedValue),
+    @required
+        TResult lowValue(double failedValue, double minValue, double maxValue),
+    @required TResult belowMinLength(String failedValue, int min),
+  }) {
+    assert(invalidEmailAddress != null);
+    assert(invalidUsername != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidURL != null);
+    assert(invalidPassword != null);
+    assert(empty != null);
+    assert(exceedingLength != null);
+    assert(wrongFormat != null);
+    assert(lowValue != null);
+    assert(belowMinLength != null);
+    return belowMinLength(failedValue, min);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmailAddress(String failedValue),
+    TResult invalidUsername(String failedValue),
+    TResult invalidPhoneNumber(String failedValue),
+    TResult invalidURL(String failedValue),
+    TResult invalidPassword(String failedValue),
+    TResult empty(T failedValue),
+    TResult exceedingLength(String failedValue, int max),
+    TResult wrongFormat(T failedValue),
+    TResult lowValue(double failedValue, double minValue, double maxValue),
+    TResult belowMinLength(String failedValue, int min),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (belowMinLength != null) {
+      return belowMinLength(failedValue, min);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmailAddress(InvalidEmail<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult invalidPhoneNumber(_InvalidPhoneNumber<T> value),
+    @required TResult invalidURL(_InvalidURL<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult wrongFormat(WrongFormat<T> value),
+    @required TResult lowValue(LowValue<T> value),
+    @required TResult belowMinLength(BelowMinLength<T> value),
+  }) {
+    assert(invalidEmailAddress != null);
+    assert(invalidUsername != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidURL != null);
+    assert(invalidPassword != null);
+    assert(empty != null);
+    assert(exceedingLength != null);
+    assert(wrongFormat != null);
+    assert(lowValue != null);
+    assert(belowMinLength != null);
+    return belowMinLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmailAddress(InvalidEmail<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    TResult invalidPhoneNumber(_InvalidPhoneNumber<T> value),
+    TResult invalidURL(_InvalidURL<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult empty(Empty<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult wrongFormat(WrongFormat<T> value),
+    TResult lowValue(LowValue<T> value),
+    TResult belowMinLength(BelowMinLength<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (belowMinLength != null) {
+      return belowMinLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BelowMinLength<T> implements ValueFailure<T> {
+  const factory BelowMinLength(
+      {@required String failedValue, @required int min}) = _$BelowMinLength<T>;
+
+  String get failedValue;
+  int get min;
+  @JsonKey(ignore: true)
+  $BelowMinLengthCopyWith<T, BelowMinLength<T>> get copyWith;
 }

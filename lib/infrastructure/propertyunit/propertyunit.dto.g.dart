@@ -25,8 +25,8 @@ _$_PropertyUnitDTO _$_$_PropertyUnitDTOFromJson(Map<String, dynamic> json) {
         : PropertyUnitDetailDTO.fromJson(
             json['details'] as Map<String, dynamic>),
     features: (json['features'] as List)?.map((e) => e as String)?.toList(),
-    lat: (json['lat'] as num)?.toDouble(),
-    long: (json['long'] as num)?.toDouble(),
+    location: const GeoPointConverter()
+        .fromJson(json['location'] as Map<String, dynamic>),
     bookings: (json['bookings'] as List)
         ?.map((e) =>
             e == null ? null : BookingDTO.fromJson(e as Map<String, dynamic>))
@@ -47,7 +47,6 @@ Map<String, dynamic> _$_$_PropertyUnitDTOToJson(_$_PropertyUnitDTO instance) =>
       'analytics': instance.analytics,
       'details': instance.details,
       'features': instance.features,
-      'lat': instance.lat,
-      'long': instance.long,
+      'location': const GeoPointConverter().toJson(instance.location),
       'bookings': instance.bookings,
     };

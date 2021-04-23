@@ -30,8 +30,7 @@ class _$PropertyUnitDTOTearOff {
       List<AnalyticsDTO> analytics,
       PropertyUnitDetailDTO details,
       List<String> features,
-      double lat,
-      double long,
+      @GeoPointConverter() GeoPoint location,
       List<BookingDTO> bookings}) {
     return _PropertyUnitDTO(
       id: id,
@@ -46,8 +45,7 @@ class _$PropertyUnitDTOTearOff {
       analytics: analytics,
       details: details,
       features: features,
-      lat: lat,
-      long: long,
+      location: location,
       bookings: bookings,
     );
   }
@@ -77,8 +75,8 @@ mixin _$PropertyUnitDTO {
   List<AnalyticsDTO> get analytics;
   PropertyUnitDetailDTO get details;
   List<String> get features;
-  double get lat;
-  double get long;
+  @GeoPointConverter()
+  GeoPoint get location;
   List<BookingDTO> get bookings;
 
   Map<String, dynamic> toJson();
@@ -104,8 +102,7 @@ abstract class $PropertyUnitDTOCopyWith<$Res> {
       List<AnalyticsDTO> analytics,
       PropertyUnitDetailDTO details,
       List<String> features,
-      double lat,
-      double long,
+      @GeoPointConverter() GeoPoint location,
       List<BookingDTO> bookings});
 
   $PropertyUnitDetailDTOCopyWith<$Res> get details;
@@ -134,8 +131,7 @@ class _$PropertyUnitDTOCopyWithImpl<$Res>
     Object analytics = freezed,
     Object details = freezed,
     Object features = freezed,
-    Object lat = freezed,
-    Object long = freezed,
+    Object location = freezed,
     Object bookings = freezed,
   }) {
     return _then(_value.copyWith(
@@ -159,8 +155,7 @@ class _$PropertyUnitDTOCopyWithImpl<$Res>
           : details as PropertyUnitDetailDTO,
       features:
           features == freezed ? _value.features : features as List<String>,
-      lat: lat == freezed ? _value.lat : lat as double,
-      long: long == freezed ? _value.long : long as double,
+      location: location == freezed ? _value.location : location as GeoPoint,
       bookings:
           bookings == freezed ? _value.bookings : bookings as List<BookingDTO>,
     ));
@@ -197,8 +192,7 @@ abstract class _$PropertyUnitDTOCopyWith<$Res>
       List<AnalyticsDTO> analytics,
       PropertyUnitDetailDTO details,
       List<String> features,
-      double lat,
-      double long,
+      @GeoPointConverter() GeoPoint location,
       List<BookingDTO> bookings});
 
   @override
@@ -230,8 +224,7 @@ class __$PropertyUnitDTOCopyWithImpl<$Res>
     Object analytics = freezed,
     Object details = freezed,
     Object features = freezed,
-    Object lat = freezed,
-    Object long = freezed,
+    Object location = freezed,
     Object bookings = freezed,
   }) {
     return _then(_PropertyUnitDTO(
@@ -255,8 +248,7 @@ class __$PropertyUnitDTOCopyWithImpl<$Res>
           : details as PropertyUnitDetailDTO,
       features:
           features == freezed ? _value.features : features as List<String>,
-      lat: lat == freezed ? _value.lat : lat as double,
-      long: long == freezed ? _value.long : long as double,
+      location: location == freezed ? _value.location : location as GeoPoint,
       bookings:
           bookings == freezed ? _value.bookings : bookings as List<BookingDTO>,
     ));
@@ -280,8 +272,7 @@ class _$_PropertyUnitDTO extends _PropertyUnitDTO {
       this.analytics,
       this.details,
       this.features,
-      this.lat,
-      this.long,
+      @GeoPointConverter() this.location,
       this.bookings})
       : super._();
 
@@ -314,15 +305,14 @@ class _$_PropertyUnitDTO extends _PropertyUnitDTO {
   @override
   final List<String> features;
   @override
-  final double lat;
-  @override
-  final double long;
+  @GeoPointConverter()
+  final GeoPoint location;
   @override
   final List<BookingDTO> bookings;
 
   @override
   String toString() {
-    return 'PropertyUnitDTO(id: $id, name: $name, description: $description, thumbnail: $thumbnail, used: $used, unitType: $unitType, numberOfUnits: $numberOfUnits, images: $images, live: $live, analytics: $analytics, details: $details, features: $features, lat: $lat, long: $long, bookings: $bookings)';
+    return 'PropertyUnitDTO(id: $id, name: $name, description: $description, thumbnail: $thumbnail, used: $used, unitType: $unitType, numberOfUnits: $numberOfUnits, images: $images, live: $live, analytics: $analytics, details: $details, features: $features, location: $location, bookings: $bookings)';
   }
 
   @override
@@ -360,10 +350,9 @@ class _$_PropertyUnitDTO extends _PropertyUnitDTO {
             (identical(other.features, features) ||
                 const DeepCollectionEquality()
                     .equals(other.features, features)) &&
-            (identical(other.lat, lat) ||
-                const DeepCollectionEquality().equals(other.lat, lat)) &&
-            (identical(other.long, long) ||
-                const DeepCollectionEquality().equals(other.long, long)) &&
+            (identical(other.location, location) ||
+                const DeepCollectionEquality()
+                    .equals(other.location, location)) &&
             (identical(other.bookings, bookings) ||
                 const DeepCollectionEquality()
                     .equals(other.bookings, bookings)));
@@ -384,8 +373,7 @@ class _$_PropertyUnitDTO extends _PropertyUnitDTO {
       const DeepCollectionEquality().hash(analytics) ^
       const DeepCollectionEquality().hash(details) ^
       const DeepCollectionEquality().hash(features) ^
-      const DeepCollectionEquality().hash(lat) ^
-      const DeepCollectionEquality().hash(long) ^
+      const DeepCollectionEquality().hash(location) ^
       const DeepCollectionEquality().hash(bookings);
 
   @JsonKey(ignore: true)
@@ -414,8 +402,7 @@ abstract class _PropertyUnitDTO extends PropertyUnitDTO {
       List<AnalyticsDTO> analytics,
       PropertyUnitDetailDTO details,
       List<String> features,
-      double lat,
-      double long,
+      @GeoPointConverter() GeoPoint location,
       List<BookingDTO> bookings}) = _$_PropertyUnitDTO;
 
   factory _PropertyUnitDTO.fromJson(Map<String, dynamic> json) =
@@ -447,9 +434,8 @@ abstract class _PropertyUnitDTO extends PropertyUnitDTO {
   @override
   List<String> get features;
   @override
-  double get lat;
-  @override
-  double get long;
+  @GeoPointConverter()
+  GeoPoint get location;
   @override
   List<BookingDTO> get bookings;
   @override

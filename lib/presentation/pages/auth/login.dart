@@ -33,9 +33,6 @@ class _LoginState extends State<Login> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<SigninformBloc>(),),
-        BlocProvider(
-          create: (context) => getIt<SigninformBloc>(),
-        ),
       ],
       child: Scaffold(
         resizeToAvoidBottomPadding: true,
@@ -125,21 +122,23 @@ class LoginForm extends StatelessWidget {
                   margin: const EdgeInsets.all(8.0),
                   isDismissible: true,
                   borderRadius: 8,
+                  duration: const Duration(seconds: 2),
                   message: failure.map(
-                      emailAlreadyInUse: null,
+                      emailAlreadyInUse: (_) => "An account has been set up using the email",
                       userDisabled: (_) => "Account disabled.",
-                      userNotExist: (_) => "Account does not exist.",
+                      userNotExist: (_) => "Account does not exist. Try using google sign in if you signed in before.",
                       cancelledByUser: (_) => "Operation failed. It seems the process was cancelled before completion.",
                       serverError: (_) => "A server error occurred. Please try again after a short while.",
                       unexpectedError: (_) => "An unexpected error occurred.",
-                      passChangeFailed: null,
-                      invalidCredentials: (_) => "Invalid user email or password.",
+                      passChangeFailed: (_) => "Password change failed",
+                      invalidCredentials: (_) => "Invalid user email or password or account signed up using google",
                   ),
                   icon: const Icon(EvaIcons.alertTriangleOutline,
                       color: Colors.white),
                 ).show(context),
                 (r) {
-                    ExtendedNavigator.of(context).pushBaseLayout();
+                    _formKey.currentState.reset();
+                    ExtendedNavigator.of(context).replace(Routes.baseLayout);
                     context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());
                 },
             ),
@@ -180,11 +179,10 @@ class LoginForm extends StatelessWidget {
                         .email
                         .value
                         .fold(
-                          (l) =>
-                          l.maybeMap(
-                              empty: (_) => "An email address is required.",
-                              invalidEmailAddress: (
-                                  _) => "Invalid email address.",
+                          (f) =>
+                          f.maybeMap(
+                            empty: (_) => "Email is required.",
+                            invalidEmailAddress: (_) => "Email is invalid",
                               orElse: () => null),
                           (_) => null,),
               ),
@@ -207,13 +205,21 @@ class LoginForm extends StatelessWidget {
                   "Only alphanumeric and special characters allowed",
                   border: const OutlineInputBorder(),
                 ),
+                onChanged: (v) => context.read<SigninformBloc>()
+                .add(SigninformEvent.passwordChanged(v)),
                 obscureText: obscurePassword,
-                validator: (v) {
-                  if (v.isEmpty) {
-                    return "Please enter a valid password.";
-                  }
-                  return null;
-                },
+                validator: (v) => context.read<SigninformBloc>()
+                  .state
+                    .password
+                    .value
+                    .fold(
+                        (f) => f.maybeMap(
+                            empty: (_) => "Password is required",
+                            invalidPassword: (_) => "Please enter a stronger password",
+                            orElse: () => null,
+                        ),
+                        (_) => null,
+                ),
                 keyboardType: TextInputType.visiblePassword,
               ),
               const SizedBox(height: 10),
@@ -236,10 +242,17 @@ class LoginForm extends StatelessWidget {
                 color: Theme
                     .of(context)
                     .accentColor,
-                onPressed: () {
-                  ExtendedNavigator.of(context).pushBaseLayout();
+                onPressed: state.isSubmitting || state.signingInGoogle ? null : () {
+                  if(_formKey.currentState.validate()) {
+                    context.read<SigninformBloc>().add(const SigninformEvent.signinBtnPressed());
+                  }
+                  // ExtendedNavigator.of(context).pushBaseLayout();
                 },
-                child: const Text(
+                child: state.isSubmitting ? const SpinKitRing(
+                    size: 16,
+                    lineWidth: 2,
+                    color: Colors.white,
+                ) : const Text(
                   "Sign in",
                   style: TextStyle(
                       color: Colors.white,

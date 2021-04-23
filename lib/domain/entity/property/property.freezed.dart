@@ -16,26 +16,26 @@ class _$PropertyTearOff {
 // ignore: unused_element
   _Property call(
       {String id,
-      String name,
-      String description,
-      List<PropertyUnit> units,
+      PropertyName name,
+      PropertyDescription description,
       String imageURL,
-      List<Analytics> analytics,
-      List<PropertyAgent> agents,
-      DateTime createdAt,
+      DateTime completionDate,
       bool hidden,
-      LatLng position}) {
+      String creator,
+      bool live,
+      GeoPoint location,
+      DateTime createdAt}) {
     return _Property(
       id: id,
       name: name,
       description: description,
-      units: units,
       imageURL: imageURL,
-      analytics: analytics,
-      agents: agents,
-      createdAt: createdAt,
+      completionDate: completionDate,
       hidden: hidden,
-      position: position,
+      creator: creator,
+      live: live,
+      location: location,
+      createdAt: createdAt,
     );
   }
 }
@@ -47,15 +47,15 @@ const $Property = _$PropertyTearOff();
 /// @nodoc
 mixin _$Property {
   String get id;
-  String get name;
-  String get description;
-  List<PropertyUnit> get units;
+  PropertyName get name;
+  PropertyDescription get description;
   String get imageURL;
-  List<Analytics> get analytics;
-  List<PropertyAgent> get agents;
-  DateTime get createdAt;
+  DateTime get completionDate;
   bool get hidden;
-  LatLng get position;
+  String get creator;
+  bool get live;
+  GeoPoint get location;
+  DateTime get createdAt;
 
   @JsonKey(ignore: true)
   $PropertyCopyWith<Property> get copyWith;
@@ -67,15 +67,15 @@ abstract class $PropertyCopyWith<$Res> {
       _$PropertyCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String name,
-      String description,
-      List<PropertyUnit> units,
+      PropertyName name,
+      PropertyDescription description,
       String imageURL,
-      List<Analytics> analytics,
-      List<PropertyAgent> agents,
-      DateTime createdAt,
+      DateTime completionDate,
       bool hidden,
-      LatLng position});
+      String creator,
+      bool live,
+      GeoPoint location,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -91,29 +91,30 @@ class _$PropertyCopyWithImpl<$Res> implements $PropertyCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
-    Object units = freezed,
     Object imageURL = freezed,
-    Object analytics = freezed,
-    Object agents = freezed,
-    Object createdAt = freezed,
+    Object completionDate = freezed,
     Object hidden = freezed,
-    Object position = freezed,
+    Object creator = freezed,
+    Object live = freezed,
+    Object location = freezed,
+    Object createdAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      description:
-          description == freezed ? _value.description : description as String,
-      units: units == freezed ? _value.units : units as List<PropertyUnit>,
+      name: name == freezed ? _value.name : name as PropertyName,
+      description: description == freezed
+          ? _value.description
+          : description as PropertyDescription,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
-      analytics: analytics == freezed
-          ? _value.analytics
-          : analytics as List<Analytics>,
-      agents: agents == freezed ? _value.agents : agents as List<PropertyAgent>,
+      completionDate: completionDate == freezed
+          ? _value.completionDate
+          : completionDate as DateTime,
+      hidden: hidden == freezed ? _value.hidden : hidden as bool,
+      creator: creator == freezed ? _value.creator : creator as String,
+      live: live == freezed ? _value.live : live as bool,
+      location: location == freezed ? _value.location : location as GeoPoint,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
-      hidden: hidden == freezed ? _value.hidden : hidden as bool,
-      position: position == freezed ? _value.position : position as LatLng,
     ));
   }
 }
@@ -125,15 +126,15 @@ abstract class _$PropertyCopyWith<$Res> implements $PropertyCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      String name,
-      String description,
-      List<PropertyUnit> units,
+      PropertyName name,
+      PropertyDescription description,
       String imageURL,
-      List<Analytics> analytics,
-      List<PropertyAgent> agents,
-      DateTime createdAt,
+      DateTime completionDate,
       bool hidden,
-      LatLng position});
+      String creator,
+      bool live,
+      GeoPoint location,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -150,29 +151,30 @@ class __$PropertyCopyWithImpl<$Res> extends _$PropertyCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
-    Object units = freezed,
     Object imageURL = freezed,
-    Object analytics = freezed,
-    Object agents = freezed,
-    Object createdAt = freezed,
+    Object completionDate = freezed,
     Object hidden = freezed,
-    Object position = freezed,
+    Object creator = freezed,
+    Object live = freezed,
+    Object location = freezed,
+    Object createdAt = freezed,
   }) {
     return _then(_Property(
       id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      description:
-          description == freezed ? _value.description : description as String,
-      units: units == freezed ? _value.units : units as List<PropertyUnit>,
+      name: name == freezed ? _value.name : name as PropertyName,
+      description: description == freezed
+          ? _value.description
+          : description as PropertyDescription,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
-      analytics: analytics == freezed
-          ? _value.analytics
-          : analytics as List<Analytics>,
-      agents: agents == freezed ? _value.agents : agents as List<PropertyAgent>,
+      completionDate: completionDate == freezed
+          ? _value.completionDate
+          : completionDate as DateTime,
+      hidden: hidden == freezed ? _value.hidden : hidden as bool,
+      creator: creator == freezed ? _value.creator : creator as String,
+      live: live == freezed ? _value.live : live as bool,
+      location: location == freezed ? _value.location : location as GeoPoint,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
-      hidden: hidden == freezed ? _value.hidden : hidden as bool,
-      position: position == freezed ? _value.position : position as LatLng,
     ));
   }
 }
@@ -183,39 +185,39 @@ class _$_Property extends _Property {
       {this.id,
       this.name,
       this.description,
-      this.units,
       this.imageURL,
-      this.analytics,
-      this.agents,
-      this.createdAt,
+      this.completionDate,
       this.hidden,
-      this.position})
+      this.creator,
+      this.live,
+      this.location,
+      this.createdAt})
       : super._();
 
   @override
   final String id;
   @override
-  final String name;
+  final PropertyName name;
   @override
-  final String description;
-  @override
-  final List<PropertyUnit> units;
+  final PropertyDescription description;
   @override
   final String imageURL;
   @override
-  final List<Analytics> analytics;
-  @override
-  final List<PropertyAgent> agents;
-  @override
-  final DateTime createdAt;
+  final DateTime completionDate;
   @override
   final bool hidden;
   @override
-  final LatLng position;
+  final String creator;
+  @override
+  final bool live;
+  @override
+  final GeoPoint location;
+  @override
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Property(id: $id, name: $name, description: $description, units: $units, imageURL: $imageURL, analytics: $analytics, agents: $agents, createdAt: $createdAt, hidden: $hidden, position: $position)';
+    return 'Property(id: $id, name: $name, description: $description, imageURL: $imageURL, completionDate: $completionDate, hidden: $hidden, creator: $creator, live: $live, location: $location, createdAt: $createdAt)';
   }
 
   @override
@@ -229,24 +231,25 @@ class _$_Property extends _Property {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.units, units) ||
-                const DeepCollectionEquality().equals(other.units, units)) &&
             (identical(other.imageURL, imageURL) ||
                 const DeepCollectionEquality()
                     .equals(other.imageURL, imageURL)) &&
-            (identical(other.analytics, analytics) ||
+            (identical(other.completionDate, completionDate) ||
                 const DeepCollectionEquality()
-                    .equals(other.analytics, analytics)) &&
-            (identical(other.agents, agents) ||
-                const DeepCollectionEquality().equals(other.agents, agents)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
+                    .equals(other.completionDate, completionDate)) &&
             (identical(other.hidden, hidden) ||
                 const DeepCollectionEquality().equals(other.hidden, hidden)) &&
-            (identical(other.position, position) ||
+            (identical(other.creator, creator) ||
                 const DeepCollectionEquality()
-                    .equals(other.position, position)));
+                    .equals(other.creator, creator)) &&
+            (identical(other.live, live) ||
+                const DeepCollectionEquality().equals(other.live, live)) &&
+            (identical(other.location, location) ||
+                const DeepCollectionEquality()
+                    .equals(other.location, location)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)));
   }
 
   @override
@@ -255,13 +258,13 @@ class _$_Property extends _Property {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(units) ^
       const DeepCollectionEquality().hash(imageURL) ^
-      const DeepCollectionEquality().hash(analytics) ^
-      const DeepCollectionEquality().hash(agents) ^
-      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(completionDate) ^
       const DeepCollectionEquality().hash(hidden) ^
-      const DeepCollectionEquality().hash(position);
+      const DeepCollectionEquality().hash(creator) ^
+      const DeepCollectionEquality().hash(live) ^
+      const DeepCollectionEquality().hash(location) ^
+      const DeepCollectionEquality().hash(createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -273,36 +276,36 @@ abstract class _Property extends Property {
   const _Property._() : super._();
   const factory _Property(
       {String id,
-      String name,
-      String description,
-      List<PropertyUnit> units,
+      PropertyName name,
+      PropertyDescription description,
       String imageURL,
-      List<Analytics> analytics,
-      List<PropertyAgent> agents,
-      DateTime createdAt,
+      DateTime completionDate,
       bool hidden,
-      LatLng position}) = _$_Property;
+      String creator,
+      bool live,
+      GeoPoint location,
+      DateTime createdAt}) = _$_Property;
 
   @override
   String get id;
   @override
-  String get name;
+  PropertyName get name;
   @override
-  String get description;
-  @override
-  List<PropertyUnit> get units;
+  PropertyDescription get description;
   @override
   String get imageURL;
   @override
-  List<Analytics> get analytics;
-  @override
-  List<PropertyAgent> get agents;
-  @override
-  DateTime get createdAt;
+  DateTime get completionDate;
   @override
   bool get hidden;
   @override
-  LatLng get position;
+  String get creator;
+  @override
+  bool get live;
+  @override
+  GeoPoint get location;
+  @override
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$PropertyCopyWith<_Property> get copyWith;

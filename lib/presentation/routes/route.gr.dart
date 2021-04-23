@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/entity/property/property.dart';
 import '../pages/auth/check_auth.dart';
 import '../pages/auth/forgot_password.dart';
 import '../pages/auth/login.dart';
@@ -162,9 +163,12 @@ class Router extends RouterBase {
       );
     },
     PropertyDetail: (data) {
+      final args = data.getArgs<PropertyDetailArguments>(nullOk: false);
       return PageRouteBuilder<dynamic>(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            PropertyDetail(),
+        pageBuilder: (context, animation, secondaryAnimation) => PropertyDetail(
+          key: args.key,
+          property: args.property,
+        ),
         settings: data,
         transitionsBuilder: TransitionsBuilders.slideRightWithFade,
       );
@@ -177,7 +181,7 @@ class Router extends RouterBase {
     },
     CreateProperty: (data) {
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => CreateProperty(),
+        builder: (context) => const CreateProperty(),
         settings: data,
       );
     },
@@ -200,8 +204,11 @@ class Router extends RouterBase {
       );
     },
     NewProperty: (data) {
+      final args = data.getArgs<NewPropertyArguments>(
+        orElse: () => NewPropertyArguments(),
+      );
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => NewProperty(),
+        builder: (context) => NewProperty(key: args.key),
         settings: data,
       );
     },
@@ -275,7 +282,14 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushProfile() => push<dynamic>(Routes.profile);
 
-  Future<dynamic> pushPropertyDetail() => push<dynamic>(Routes.propertyDetail);
+  Future<dynamic> pushPropertyDetail({
+    Key key,
+    @required Property property,
+  }) =>
+      push<dynamic>(
+        Routes.propertyDetail,
+        arguments: PropertyDetailArguments(key: key, property: property),
+      );
 
   Future<dynamic> pushPropertyList() => push<dynamic>(Routes.propertyList);
 
@@ -288,7 +302,13 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushPropertyMapView() =>
       push<dynamic>(Routes.propertyMapView);
 
-  Future<dynamic> pushNewProperty() => push<dynamic>(Routes.newProperty);
+  Future<dynamic> pushNewProperty({
+    Key key,
+  }) =>
+      push<dynamic>(
+        Routes.newProperty,
+        arguments: NewPropertyArguments(key: key),
+      );
 
   Future<dynamic> pushPropertyDash() => push<dynamic>(Routes.propertyDash);
 
@@ -305,4 +325,21 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushMarketing() => push<dynamic>(Routes.marketing);
 
   Future<dynamic> pushCreateUnitView() => push<dynamic>(Routes.createUnitView);
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// PropertyDetail arguments holder class
+class PropertyDetailArguments {
+  final Key key;
+  final Property property;
+  PropertyDetailArguments({this.key, @required this.property});
+}
+
+/// NewProperty arguments holder class
+class NewPropertyArguments {
+  final Key key;
+  NewPropertyArguments({this.key});
 }

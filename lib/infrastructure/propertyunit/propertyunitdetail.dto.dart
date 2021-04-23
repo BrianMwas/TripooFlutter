@@ -19,6 +19,8 @@ abstract class PropertyUnitDetailDTO with _$PropertyUnitDetailDTO {
         bathrooms: detail.bathrooms);
   }
 
+  const PropertyUnitDetailDTO._();
+
   PropertyDetails toDomain() {
     return PropertyDetails(
         spaceSize: spaceSize, rooms: rooms, bathrooms: bathrooms);

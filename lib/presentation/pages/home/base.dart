@@ -8,6 +8,7 @@ import 'package:tripoo/presentation/pages/home/property/start_property.dart';
 import 'package:tripoo/presentation/pages/home/property/favorites.dart';
 import 'package:tripoo/presentation/routes/route.gr.dart';
 // Property widgets
+import '../../../injection.dart';
 import 'property/property_list.dart';
 
 class BaseLayout extends StatefulWidget {
@@ -22,7 +23,7 @@ class _BaseLayoutState extends State<BaseLayout> {
   // The pages that will be shown by tapping the bottom nav icons.
   final List<Widget> _pages = [
     const PropertyList(),
-    CreateProperty(),
+    const CreateProperty(),
     Favorites(),
   ];
 
@@ -34,63 +35,50 @@ class _BaseLayoutState extends State<BaseLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<AuthBloc, AuthState>(
-            listener: (context, state) {
-              state.maybeMap(
-                authenticated: (v) {
-                  print("user is authenticated");
-                },
-                orElse: () => null,);
-            }
-        )
-      ],
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        extendBody: true,
-        backgroundColor: Colors.white,
-        body: RepaintBoundary(
-          child: SafeArea(
-              child: _pages.elementAt(_selectedPage),
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      backgroundColor: Colors.white,
+      body: RepaintBoundary(
+        child: SafeArea(
+            child: _pages.elementAt(_selectedPage),
+        ),
+      ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButton: _selectedPage > 0 ? null :  FloatingActionButton(
+        onPressed: () {
+          ExtendedNavigator.of(context).push(Routes.propertyMapView);
+        },
+        backgroundColor: Colors.black87,
+        splashColor: Theme.of(context).accentColor,
+        child: const Icon(EvaIcons.pin, color: Colors.white),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(EvaIcons.grid),
+              label: "Home"
           ),
-        ),
-        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-        floatingActionButton: _selectedPage > 0 ? null :  FloatingActionButton(
-          onPressed: () {
-            ExtendedNavigator.of(context).push(Routes.propertyMapView);
-          },
-          backgroundColor: Colors.black87,
-          splashColor: Theme.of(context).accentColor,
-          child: const Icon(EvaIcons.pin, color: Colors.white),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(EvaIcons.grid),
-                label: "Home"
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(EvaIcons.plusCircle), label: "New"),
-            BottomNavigationBarItem(
-                icon: Icon(EvaIcons.heart),
-                label: "Favorite"
-            ),
-          ],
-          selectedItemColor: Theme.of(context).accentColor,
-          unselectedItemColor: Colors.black87,
-          type: BottomNavigationBarType.shifting,
-          backgroundColor: Colors.grey.withOpacity(0.15),
-          currentIndex: _selectedPage,
-          showUnselectedLabels: false,
-          selectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.w800,
-            fontFamily: "ProductSans",
-              fontSize: 11,
-              height: 2,
+          BottomNavigationBarItem(
+              icon: Icon(EvaIcons.plusCircle), label: "New"),
+          BottomNavigationBarItem(
+              icon: Icon(EvaIcons.heart),
+              label: "Favorite"
           ),
-          onTap: (i) => _onTapTab(i),
+        ],
+        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Colors.black87,
+        type: BottomNavigationBarType.shifting,
+        backgroundColor: Colors.grey.withOpacity(0.15),
+        currentIndex: _selectedPage,
+        showUnselectedLabels: false,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w800,
+          fontFamily: "ProductSans",
+            fontSize: 11,
+            height: 2,
         ),
+        onTap: (i) => _onTapTab(i),
       ),
     );
   }

@@ -116,8 +116,9 @@ class __$PropertyUnitDetailDTOCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_PropertyUnitDetailDTO implements _PropertyUnitDetailDTO {
-  const _$_PropertyUnitDetailDTO({this.spaceSize, this.rooms, this.bathrooms});
+class _$_PropertyUnitDetailDTO extends _PropertyUnitDetailDTO {
+  const _$_PropertyUnitDetailDTO({this.spaceSize, this.rooms, this.bathrooms})
+      : super._();
 
   factory _$_PropertyUnitDetailDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_PropertyUnitDetailDTOFromJson(json);
@@ -167,7 +168,8 @@ class _$_PropertyUnitDetailDTO implements _PropertyUnitDetailDTO {
   }
 }
 
-abstract class _PropertyUnitDetailDTO implements PropertyUnitDetailDTO {
+abstract class _PropertyUnitDetailDTO extends PropertyUnitDetailDTO {
+  const _PropertyUnitDetailDTO._() : super._();
   const factory _PropertyUnitDetailDTO(
       {double spaceSize, int rooms, int bathrooms}) = _$_PropertyUnitDetailDTO;
 

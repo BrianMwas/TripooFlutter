@@ -43,4 +43,8 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     @required double minValue,
     @required double maxValue
 }) = LowValue<T>;
+
+  const factory ValueFailure.belowMinLength({
+    @required String failedValue,
+    @required int min}) = BelowMinLength<T>;
 }

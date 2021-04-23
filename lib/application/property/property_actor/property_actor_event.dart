@@ -1,5 +1,6 @@
 part of 'property_actor_bloc.dart';
 
-abstract class PropertyActorEvent extends Equatable {
-  const PropertyActorEvent();
+@freezed
+abstract class PropertyActorEvent with _$PropertyActorEvent {
+  const factory PropertyActorEvent.deleted(Property property) = _Deleted;
 }

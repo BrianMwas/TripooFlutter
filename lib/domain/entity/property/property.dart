@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:tripoo/domain/entity/agent/property_agent.dart';
 import 'package:tripoo/domain/entity/analytics/analytics.dart';
+import 'package:tripoo/domain/entity/property/value_objects.dart';
 import 'package:tripoo/domain/entity/property_unit/property_unit.dart';
 
 part 'property.freezed.dart';
@@ -11,28 +12,27 @@ part 'property.freezed.dart';
 abstract class Property implements _$Property {
   const factory Property({
     String id,
-    String name,
-    String description,
-    List<PropertyUnit> units,
+    PropertyName name,
+    PropertyDescription description,
     String imageURL,
-    List<Analytics> analytics,
-    List<PropertyAgent> agents,
-    DateTime createdAt,
+    DateTime completionDate,
     bool hidden,
+    String creator,
+    bool live,
     GeoPoint location,
+    DateTime createdAt
   }) = _Property;
 
   const Property._();
 
   factory Property.empty() => Property(
         id: "",
-        name: "",
-        description: "",
-        units: [],
+        name: PropertyName(""),
+        description: PropertyDescription(""),
         imageURL: "",
-        analytics: [],
-        agents: [],
         hidden: false,
+        live: true,
         location: const GeoPoint(-1.2864389999999999, 36.973876),
+        createdAt: DateTime.now(),
       );
 }

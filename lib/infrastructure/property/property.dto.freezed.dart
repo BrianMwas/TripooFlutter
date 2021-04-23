@@ -21,23 +21,21 @@ class _$PropertyDTOTearOff {
       {String id,
       String name,
       String description,
-      List<PropertyUnitDTO> units,
       String imageURL,
-      List<AnalyticsDTO> analytics,
-      List<PropertyAgentDTO> agents,
-      double lat,
-      double long,
+      bool live = true,
+      @GeoPointConverter() GeoPoint location,
+      String creator,
+      DateTime completedAt,
       DateTime createdAt}) {
     return _PropertyDTO(
       id: id,
       name: name,
       description: description,
-      units: units,
       imageURL: imageURL,
-      analytics: analytics,
-      agents: agents,
-      lat: lat,
-      long: long,
+      live: live,
+      location: location,
+      creator: creator,
+      completedAt: completedAt,
       createdAt: createdAt,
     );
   }
@@ -57,12 +55,12 @@ mixin _$PropertyDTO {
   String get id;
   String get name;
   String get description;
-  List<PropertyUnitDTO> get units;
   String get imageURL;
-  List<AnalyticsDTO> get analytics;
-  List<PropertyAgentDTO> get agents;
-  double get lat;
-  double get long;
+  bool get live;
+  @GeoPointConverter()
+  GeoPoint get location;
+  String get creator;
+  DateTime get completedAt;
   DateTime get createdAt;
 
   Map<String, dynamic> toJson();
@@ -79,12 +77,11 @@ abstract class $PropertyDTOCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      List<PropertyUnitDTO> units,
       String imageURL,
-      List<AnalyticsDTO> analytics,
-      List<PropertyAgentDTO> agents,
-      double lat,
-      double long,
+      bool live,
+      @GeoPointConverter() GeoPoint location,
+      String creator,
+      DateTime completedAt,
       DateTime createdAt});
 }
 
@@ -101,12 +98,11 @@ class _$PropertyDTOCopyWithImpl<$Res> implements $PropertyDTOCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
-    Object units = freezed,
     Object imageURL = freezed,
-    Object analytics = freezed,
-    Object agents = freezed,
-    Object lat = freezed,
-    Object long = freezed,
+    Object live = freezed,
+    Object location = freezed,
+    Object creator = freezed,
+    Object completedAt = freezed,
     Object createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -114,15 +110,12 @@ class _$PropertyDTOCopyWithImpl<$Res> implements $PropertyDTOCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
-      units: units == freezed ? _value.units : units as List<PropertyUnitDTO>,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
-      analytics: analytics == freezed
-          ? _value.analytics
-          : analytics as List<AnalyticsDTO>,
-      agents:
-          agents == freezed ? _value.agents : agents as List<PropertyAgentDTO>,
-      lat: lat == freezed ? _value.lat : lat as double,
-      long: long == freezed ? _value.long : long as double,
+      live: live == freezed ? _value.live : live as bool,
+      location: location == freezed ? _value.location : location as GeoPoint,
+      creator: creator == freezed ? _value.creator : creator as String,
+      completedAt:
+          completedAt == freezed ? _value.completedAt : completedAt as DateTime,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
     ));
@@ -140,12 +133,11 @@ abstract class _$PropertyDTOCopyWith<$Res>
       {String id,
       String name,
       String description,
-      List<PropertyUnitDTO> units,
       String imageURL,
-      List<AnalyticsDTO> analytics,
-      List<PropertyAgentDTO> agents,
-      double lat,
-      double long,
+      bool live,
+      @GeoPointConverter() GeoPoint location,
+      String creator,
+      DateTime completedAt,
       DateTime createdAt});
 }
 
@@ -164,12 +156,11 @@ class __$PropertyDTOCopyWithImpl<$Res> extends _$PropertyDTOCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
-    Object units = freezed,
     Object imageURL = freezed,
-    Object analytics = freezed,
-    Object agents = freezed,
-    Object lat = freezed,
-    Object long = freezed,
+    Object live = freezed,
+    Object location = freezed,
+    Object creator = freezed,
+    Object completedAt = freezed,
     Object createdAt = freezed,
   }) {
     return _then(_PropertyDTO(
@@ -177,15 +168,12 @@ class __$PropertyDTOCopyWithImpl<$Res> extends _$PropertyDTOCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
-      units: units == freezed ? _value.units : units as List<PropertyUnitDTO>,
       imageURL: imageURL == freezed ? _value.imageURL : imageURL as String,
-      analytics: analytics == freezed
-          ? _value.analytics
-          : analytics as List<AnalyticsDTO>,
-      agents:
-          agents == freezed ? _value.agents : agents as List<PropertyAgentDTO>,
-      lat: lat == freezed ? _value.lat : lat as double,
-      long: long == freezed ? _value.long : long as double,
+      live: live == freezed ? _value.live : live as bool,
+      location: location == freezed ? _value.location : location as GeoPoint,
+      creator: creator == freezed ? _value.creator : creator as String,
+      completedAt:
+          completedAt == freezed ? _value.completedAt : completedAt as DateTime,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
     ));
@@ -200,14 +188,14 @@ class _$_PropertyDTO extends _PropertyDTO {
       {this.id,
       this.name,
       this.description,
-      this.units,
       this.imageURL,
-      this.analytics,
-      this.agents,
-      this.lat,
-      this.long,
+      this.live = true,
+      @GeoPointConverter() this.location,
+      this.creator,
+      this.completedAt,
       this.createdAt})
-      : super._();
+      : assert(live != null),
+        super._();
 
   factory _$_PropertyDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_PropertyDTOFromJson(json);
@@ -219,23 +207,23 @@ class _$_PropertyDTO extends _PropertyDTO {
   @override
   final String description;
   @override
-  final List<PropertyUnitDTO> units;
-  @override
   final String imageURL;
+  @JsonKey(defaultValue: true)
   @override
-  final List<AnalyticsDTO> analytics;
+  final bool live;
   @override
-  final List<PropertyAgentDTO> agents;
+  @GeoPointConverter()
+  final GeoPoint location;
   @override
-  final double lat;
+  final String creator;
   @override
-  final double long;
+  final DateTime completedAt;
   @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'PropertyDTO(id: $id, name: $name, description: $description, units: $units, imageURL: $imageURL, analytics: $analytics, agents: $agents, lat: $lat, long: $long, createdAt: $createdAt)';
+    return 'PropertyDTO(id: $id, name: $name, description: $description, imageURL: $imageURL, live: $live, location: $location, creator: $creator, completedAt: $completedAt, createdAt: $createdAt)';
   }
 
   @override
@@ -249,20 +237,20 @@ class _$_PropertyDTO extends _PropertyDTO {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.units, units) ||
-                const DeepCollectionEquality().equals(other.units, units)) &&
             (identical(other.imageURL, imageURL) ||
                 const DeepCollectionEquality()
                     .equals(other.imageURL, imageURL)) &&
-            (identical(other.analytics, analytics) ||
+            (identical(other.live, live) ||
+                const DeepCollectionEquality().equals(other.live, live)) &&
+            (identical(other.location, location) ||
                 const DeepCollectionEquality()
-                    .equals(other.analytics, analytics)) &&
-            (identical(other.agents, agents) ||
-                const DeepCollectionEquality().equals(other.agents, agents)) &&
-            (identical(other.lat, lat) ||
-                const DeepCollectionEquality().equals(other.lat, lat)) &&
-            (identical(other.long, long) ||
-                const DeepCollectionEquality().equals(other.long, long)) &&
+                    .equals(other.location, location)) &&
+            (identical(other.creator, creator) ||
+                const DeepCollectionEquality()
+                    .equals(other.creator, creator)) &&
+            (identical(other.completedAt, completedAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.completedAt, completedAt)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)));
@@ -274,12 +262,11 @@ class _$_PropertyDTO extends _PropertyDTO {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(units) ^
       const DeepCollectionEquality().hash(imageURL) ^
-      const DeepCollectionEquality().hash(analytics) ^
-      const DeepCollectionEquality().hash(agents) ^
-      const DeepCollectionEquality().hash(lat) ^
-      const DeepCollectionEquality().hash(long) ^
+      const DeepCollectionEquality().hash(live) ^
+      const DeepCollectionEquality().hash(location) ^
+      const DeepCollectionEquality().hash(creator) ^
+      const DeepCollectionEquality().hash(completedAt) ^
       const DeepCollectionEquality().hash(createdAt);
 
   @JsonKey(ignore: true)
@@ -299,12 +286,11 @@ abstract class _PropertyDTO extends PropertyDTO {
       {String id,
       String name,
       String description,
-      List<PropertyUnitDTO> units,
       String imageURL,
-      List<AnalyticsDTO> analytics,
-      List<PropertyAgentDTO> agents,
-      double lat,
-      double long,
+      bool live,
+      @GeoPointConverter() GeoPoint location,
+      String creator,
+      DateTime completedAt,
       DateTime createdAt}) = _$_PropertyDTO;
 
   factory _PropertyDTO.fromJson(Map<String, dynamic> json) =
@@ -317,17 +303,16 @@ abstract class _PropertyDTO extends PropertyDTO {
   @override
   String get description;
   @override
-  List<PropertyUnitDTO> get units;
-  @override
   String get imageURL;
   @override
-  List<AnalyticsDTO> get analytics;
+  bool get live;
   @override
-  List<PropertyAgentDTO> get agents;
+  @GeoPointConverter()
+  GeoPoint get location;
   @override
-  double get lat;
+  String get creator;
   @override
-  double get long;
+  DateTime get completedAt;
   @override
   DateTime get createdAt;
   @override

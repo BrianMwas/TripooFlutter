@@ -2,30 +2,37 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:number_slide_animation/number_slide_animation_widget.dart';
 import 'package:supercharged/supercharged.dart';
+import 'package:tripoo/domain/entity/property/property.dart';
 import 'package:tripoo/presentation/pages/home/property/homeunits/unit_card_widget.dart';
 
 class PropertyUnitsList extends StatelessWidget {
   final String photo = "https://source.unsplash.com/weekly?apartment";
+  final Property property;
+
+  const PropertyUnitsList({
+    Key key,
+    @required this.property,
+}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 2),
             child: Text(
-              "Muindi Properties",
-              style: TextStyle(
+              property.name.getOrCrash(),
+              style: const TextStyle(
                 color: Colors.black87,
                 fontSize: 24,
                 fontFamily: "ProductSans",
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-            child: Text("Muindi properties description"),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: Text(property.description.getOrCrash()),
           ),
           const Padding(
             padding: EdgeInsets.fromLTRB(16, 24, 16, 0),

@@ -4,6 +4,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tripoo/application/auth/sign_in/signinform_bloc.dart';
 import 'package:tripoo/application/auth/sign_up/signupform_bloc.dart';
 import 'package:tripoo/presentation/routes/route.gr.dart';
@@ -131,7 +132,15 @@ class SignupForm extends StatelessWidget {
                               invalidCredentials: (_) => "Invalid credentials",
                           )
                         ).show(context),
-                        (v) {
+                        (v) async {
+                          _formKey.currentState.reset();
+                          await Flushbar(
+                            message: "Please check email sent to verify your email.",
+                            borderRadius: 8.0,
+                            margin: const EdgeInsets.all(8.0),
+                            duration: const Duration(milliseconds: 800)
+                          )
+                          .show(context);
                             ExtendedNavigator.of(context).pushBaseLayout();
                         },
                 ),
@@ -228,10 +237,19 @@ class SignupForm extends StatelessWidget {
                 color: Theme
                     .of(context)
                     .accentColor,
-                onPressed: () {
-                  print("form good");
+                onPressed: state.isSubmitting ? null : () {
+                  if(_formKey.currentState.validate()) {
+                    context.read<SignupformBloc>()
+                        .add(
+                        const SignupformEvent.signupBtnPressed()
+                    );
+                  }
                 },
-                child: const Text(
+                child: state.isSubmitting ? const SpinKitRing(
+                  lineWidth: 2,
+                  size: 16,
+                  color: Colors.white,
+                ) : const Text(
                   "Sign Up",
                   style: TextStyle(
                       color: Colors.white,

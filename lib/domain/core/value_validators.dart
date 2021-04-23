@@ -1,5 +1,6 @@
 
 
+
 import 'package:dartz/dartz.dart';
 import 'package:fzregex/fzregex.dart';
 import 'package:fzregex/utils/pattern.dart';
@@ -8,10 +9,12 @@ import 'package:validators/validators.dart';
 import 'failures.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
-  if (isEmail(input)) {
-    return right(input);
-  } else {
+  if (isEmail(input) == false) {
+    print("isEmail ${isEmail(input)} an $input");
     return left(ValueFailure.invalidEmailAddress(failedValue: input));
+  } else {
+    print("yes");
+    return right(input);
   }
 }
 
@@ -49,6 +52,16 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
   }
 }
 
+Either<ValueFailure<String>, String> validateMinStringLength(
+    String input, int minLength) {
+  if (input.length > minLength) {
+    return right(input);
+  } else {
+    return left(
+      ValueFailure.belowMinLength(failedValue: input, min: minLength),
+    );
+  }
+}
 Either<ValueFailure<String>, String> validateEmptyString(
     String input,
     ) {

@@ -26,7 +26,7 @@ class _$PropertyUnitTearOff {
       bool live,
       PropertyDetails details,
       List<PropertyFeatures> features,
-      LatLng position,
+      GeoPoint position,
       List<Analytics> analytics,
       List<Booking> bookings}) {
     return _PropertyUnit(
@@ -65,7 +65,7 @@ mixin _$PropertyUnit {
   bool get live;
   PropertyDetails get details;
   List<PropertyFeatures> get features;
-  LatLng get position;
+  GeoPoint get position;
   List<Analytics> get analytics;
   List<Booking> get bookings;
 
@@ -90,7 +90,7 @@ abstract class $PropertyUnitCopyWith<$Res> {
       bool live,
       PropertyDetails details,
       List<PropertyFeatures> features,
-      LatLng position,
+      GeoPoint position,
       List<Analytics> analytics,
       List<Booking> bookings});
 
@@ -139,7 +139,7 @@ class _$PropertyUnitCopyWithImpl<$Res> implements $PropertyUnitCopyWith<$Res> {
       features: features == freezed
           ? _value.features
           : features as List<PropertyFeatures>,
-      position: position == freezed ? _value.position : position as LatLng,
+      position: position == freezed ? _value.position : position as GeoPoint,
       analytics: analytics == freezed
           ? _value.analytics
           : analytics as List<Analytics>,
@@ -178,7 +178,7 @@ abstract class _$PropertyUnitCopyWith<$Res>
       bool live,
       PropertyDetails details,
       List<PropertyFeatures> features,
-      LatLng position,
+      GeoPoint position,
       List<Analytics> analytics,
       List<Booking> bookings});
 
@@ -230,7 +230,7 @@ class __$PropertyUnitCopyWithImpl<$Res> extends _$PropertyUnitCopyWithImpl<$Res>
       features: features == freezed
           ? _value.features
           : features as List<PropertyFeatures>,
-      position: position == freezed ? _value.position : position as LatLng,
+      position: position == freezed ? _value.position : position as GeoPoint,
       analytics: analytics == freezed
           ? _value.analytics
           : analytics as List<Analytics>,
@@ -282,7 +282,7 @@ class _$_PropertyUnit extends _PropertyUnit {
   @override
   final List<PropertyFeatures> features;
   @override
-  final LatLng position;
+  final GeoPoint position;
   @override
   final List<Analytics> analytics;
   @override
@@ -374,7 +374,7 @@ abstract class _PropertyUnit extends PropertyUnit {
       bool live,
       PropertyDetails details,
       List<PropertyFeatures> features,
-      LatLng position,
+      GeoPoint position,
       List<Analytics> analytics,
       List<Booking> bookings}) = _$_PropertyUnit;
 
@@ -401,7 +401,7 @@ abstract class _PropertyUnit extends PropertyUnit {
   @override
   List<PropertyFeatures> get features;
   @override
-  LatLng get position;
+  GeoPoint get position;
   @override
   List<Analytics> get analytics;
   @override

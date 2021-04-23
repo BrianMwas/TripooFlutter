@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -87,10 +88,13 @@ class FirebaseAuthFacade implements IAuthFacade {
         return right(unit);
       });
     } on firebase.FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return left(const AuthFailure.invalidCredentials());
+      } else if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
-        return left(const AuthFailure.serverError());
+        return left(const AuthFailure.unexpectedError());
       }
     }
   }
@@ -101,19 +105,27 @@ class FirebaseAuthFacade implements IAuthFacade {
     try {
       final String email = emailAddress.getOrCrash();
       final String pass = password.getOrCrash();
-      return _firebaseAuth.signInWithEmailAndPassword(email: email, password: pass)
-      .then((value) {
-        print("user credentials are ${value.user}");
-        return right(unit);
-      });
-    } on firebase.FirebaseAuthException catch(e) {
+      print("email details $email | $pass");
+      firebase.UserCredential userCredential =  await _firebaseAuth.signInWithEmailAndPassword(email: email, password: pass);
+      return right(unit);
+    }
+    on firebase.FirebaseAuthException catch(e) {
       if(e.code == "USER_DISABLED") {
         return left(const AuthFailure.userDisabled());
-      } else if(e.code == "WRONG_PASSWORD" || e.code == "INVALID_CREDENTIAL") {
+
+      } else if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+        return left(const AuthFailure.userNotExist());
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
         return left(const AuthFailure.invalidCredentials());
       } else {
         return left(const AuthFailure.serverError());
       }
+    }
+    catch (e) {
+      print("unhandled $e");
+      return left(const AuthFailure.emailAlreadyInUse());
     }
   }
 

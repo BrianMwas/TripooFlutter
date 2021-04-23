@@ -2,11 +2,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:tripoo/domain/entity/property/property.dart';
 import 'package:tripoo/presentation/pages/home/property/property_detail_widgets/property_info_widgets.dart';
 import 'package:tripoo/presentation/pages/home/property/property_detail_widgets/property_units.dart';
 import 'package:tripoo/presentation/routes/route.gr.dart';
 
 class PropertyDetail extends StatefulWidget {
+  final Property property;
+  const PropertyDetail({
+     Key key,
+    @required this.property,
+  }): super(key: key);
   @override
   _PropertyDetailState createState() => _PropertyDetailState();
 }
@@ -14,12 +20,13 @@ class PropertyDetail extends StatefulWidget {
 class _PropertyDetailState extends State<PropertyDetail> {
   List<Widget> bottomWidgets;
 
+
   @override
   void initState() {
     super.initState();
     bottomWidgets = [
-      PropertyUnitsList(),
-      PropertyInfoWidget(),
+      PropertyUnitsList(property: widget.property),
+      PropertyInfoWidget(property: widget.property),
     ];
   }
 

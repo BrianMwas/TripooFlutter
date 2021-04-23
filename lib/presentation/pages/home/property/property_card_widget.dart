@@ -31,8 +31,8 @@ class PropertyCardWidget extends StatelessWidget {
                           children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: CachedNetworkImage(
-                            imageUrl: "https://source.unsplash.com/weekly?house",
+                          child: Image.network(
+                            "https://source.unsplash.com/weekly?house",
                             fit: BoxFit.cover,
                             height: 150,
                             width: MediaQuery.of(context).size.width * 0.75,
@@ -43,7 +43,7 @@ class PropertyCardWidget extends StatelessWidget {
                           right: 5.0,
                           child: LikeButton(
                             bubblesColor: BubblesColor(
-                              dotPrimaryColor: Theme.of(context).primaryColor,
+                              dotPrimaryColor: Colors.red,
                               dotSecondaryColor:
                                   Theme.of(context).primaryColorDark,
                             ),

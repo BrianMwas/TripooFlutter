@@ -1,16 +1,18 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tripoo/presentation/routes/route.gr.dart';
 
-class CreateProperty extends StatefulWidget {
-  @override
-  _CreatePropertyState createState() => _CreatePropertyState();
-}
+class CreateProperty extends HookWidget {
+  const CreateProperty({ Key key }): super(key: key);
 
-class _CreatePropertyState extends State<CreateProperty> {
   @override
   Widget build(BuildContext context) {
+    final authChange = useStream(FirebaseAuth.instance.authStateChanges());
+
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(
@@ -58,7 +60,18 @@ class _CreatePropertyState extends State<CreateProperty> {
                       padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
                       child: TextButton(
                           onPressed: () {
-                            ExtendedNavigator.of(context).push(Routes.newProperty);
+                            if(authChange.hasData) {
+                              ExtendedNavigator.of(context).push(Routes.newProperty);
+                            } else {
+                              Flushbar(
+                                borderRadius: 8,
+                                margin: const EdgeInsets.all(8.0),
+                                duration: const Duration(seconds: 2),
+                                dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                                message: "Please login before creating a property.",
+                              )
+                                  .show(context);
+                            }
                           },
                           child: Text(
                               "Get Started",
@@ -112,7 +125,18 @@ class _CreatePropertyState extends State<CreateProperty> {
                           padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
                           child: TextButton(
                               onPressed: () {
-                                ExtendedNavigator.of(context).pushPropertyDash();
+                                if(authChange.hasData) {
+                                  ExtendedNavigator.of(context).pushPropertyDash();
+                                } else {
+                                  Flushbar(
+                                    borderRadius: 8,
+                                    margin: const EdgeInsets.all(8.0),
+                                    duration: const Duration(seconds: 2),
+                                    dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                                    message: "Please login before managing your property.",
+                                  )
+                                      .show(context);
+                                }
                               },
                               child: Text(
                                   "Get Started",

@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tripoo/domain/entity/property/property.dart';
+import 'package:tripoo/domain/entity/property/value_objects.dart';
+import 'package:tripoo/infrastructure/core/firestore_helpers.dart';
 import 'package:tripoo/infrastructure/property/agent.dto.dart';
 import 'package:tripoo/infrastructure/property/analytics.dto.dart';
 import 'package:tripoo/infrastructure/propertyunit/propertyunit.dto.dart';
@@ -15,26 +16,25 @@ abstract class PropertyDTO with _$PropertyDTO {
       {String id,
       String name,
       String description,
-      List<PropertyUnitDTO> units,
       String imageURL,
-      List<AnalyticsDTO> analytics,
-      List<PropertyAgentDTO> agents,
-      GeoPoint location,
+        @Default(true)
+        bool live,
+      @GeoPointConverter() GeoPoint location,
+      String creator,
+      DateTime completedAt,
       DateTime createdAt}) = _PropertyDTO;
 
   const PropertyDTO._();
 
   factory PropertyDTO.fromDomain(Property property) {
     return PropertyDTO(
-      name: property.name,
-      description: property.description,
-      units: property.units.map((u) => PropertyUnitDTO.fromDomain(u)).toList(),
+      name: property.name.getOrCrash(),
+      description: property.description.getOrCrash(),
       imageURL: property.imageURL,
+      live: property.live,
+      creator: property.creator,
       createdAt: property.createdAt,
-      analytics:
-          property.analytics.map((a) => AnalyticsDTO.fromDomain(a)).toList(),
-      agents:
-          property.agents.map((ag) => PropertyAgentDTO.fromDomain(ag)).toList(),
+      completedAt: property.completionDate,
       location: property.location,
     );
   }
@@ -42,13 +42,13 @@ abstract class PropertyDTO with _$PropertyDTO {
   Property toDomain() {
     return Property(
       id: id,
-      name: name,
-      description: description,
+      name: PropertyName(name),
+      description: PropertyDescription(description),
       imageURL: imageURL,
-      units: units.map((u) => u.toDomain()).toList(),
-      analytics: analytics.map((a) => a.toDomain()).toList(),
-      agents: agents.map((a) => a.toDomain()).toList(),
       createdAt: createdAt,
+      live: live,
+      completionDate: completedAt,
+      creator: creator,
       location: location,
     );
   }

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tripoo/domain/entity/property_unit/property_features.dart';
 import 'package:tripoo/domain/entity/property_unit/property_unit.dart';
 import 'package:tripoo/infrastructure/booking/booking.dto.dart';
+import 'package:tripoo/infrastructure/core/firestore_helpers.dart';
 import 'package:tripoo/infrastructure/property/analytics.dto.dart';
 import 'package:tripoo/infrastructure/propertyunit/propertyunitdetail.dto.dart';
 
@@ -26,7 +26,7 @@ abstract class PropertyUnitDTO implements _$PropertyUnitDTO {
       List<AnalyticsDTO> analytics,
       PropertyUnitDetailDTO details,
       List<String> features,
-      GeoPoint location,
+      @GeoPointConverter() GeoPoint location,
       List<BookingDTO> bookings}) = _PropertyUnitDTO;
 
   const PropertyUnitDTO._();

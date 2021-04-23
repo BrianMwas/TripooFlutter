@@ -64,21 +64,14 @@ class SingleUnitView extends HookWidget {
             if (scrollNotification is ScrollStartNotification) {
               print("we started scrolling");
             } else if (scrollNotification is ScrollUpdateNotification) {
-              print("we updated scroll ${scrollNotification.metrics.pixels}");
-              var offsetPx = scrollNotification.metrics.pixels;
-              if (offsetPx >= 180) {
-
+              print("we updated scroll ${scrollNotification.metrics.pixels} and direction ${scrollNotification.metrics.axisDirection}");
+              final offsetPx = scrollNotification.metrics.pixels;
+              if (offsetPx >= 180 && scrollNotification.metrics.axisDirection == AxisDirection.down) {
                   _showAppBar.value = true;
-
               } else {
                 _showAppBar.value = false;
               }
-            } else if (scrollNotification is ScrollEndNotification) {
-              print("we have reached the end");
-            } else {
-              print("we are somewhere");
             }
-
             return true;
           },
           child: SingleChildScrollView(
