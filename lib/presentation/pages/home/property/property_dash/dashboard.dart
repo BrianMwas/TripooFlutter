@@ -213,7 +213,7 @@ class _PropertyDashState extends State<PropertyDash> {
                                     ExtendedNavigator.of(context)
                                         .pushNewProperty();
                                   },
-                                  child: Text("Add new"),
+                                  child: const Text("Add new"),
                                 ),
                               )
                             ],
@@ -284,8 +284,12 @@ class _PropertyDashState extends State<PropertyDash> {
                                     itemBuilder: (context, index) {
                                       return InkWell(
                                         onTap: () {
-                                          ExtendedNavigator.of(context)
-                                              .push(Routes.propertyDetail);
+                                          ExtendedNavigator.of(context).push(
+                                              Routes.propertyDetail,
+                                              arguments:
+                                                  PropertyDetailArguments(
+                                                      property:
+                                                          properties[index]));
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -310,7 +314,7 @@ class _PropertyDashState extends State<PropertyDash> {
                                                         image: NetworkImage(
                                                             properties[index]
                                                                 .imageURL),
-                                                        fit: BoxFit.fill,
+                                                        fit: BoxFit.cover,
                                                       ),
                                               ),
                                             ),

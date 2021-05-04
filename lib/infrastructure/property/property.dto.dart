@@ -28,6 +28,7 @@ abstract class PropertyDTO with _$PropertyDTO {
 
   factory PropertyDTO.fromDomain(Property property) {
     return PropertyDTO(
+      id: property.id,
       name: property.name.getOrCrash(),
       description: property.description.getOrCrash(),
       imageURL: property.imageURL,

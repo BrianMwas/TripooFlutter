@@ -22,9 +22,9 @@ class _$SinglePropertyEventTearOff {
 
 // ignore: unused_element
   _GetSingleProperty getSingleProperty(
-      Either<PropertyFailure, Property> property) {
+      Either<PropertyFailure, Property> failureOrSuccess) {
     return _GetSingleProperty(
-      property,
+      failureOrSuccess,
     );
   }
 }
@@ -39,12 +39,14 @@ mixin _$SinglePropertyEvent {
   TResult when<TResult extends Object>({
     @required TResult watchProperty(String propertyId),
     @required
-        TResult getSingleProperty(Either<PropertyFailure, Property> property),
+        TResult getSingleProperty(
+            Either<PropertyFailure, Property> failureOrSuccess),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchProperty(String propertyId),
-    TResult getSingleProperty(Either<PropertyFailure, Property> property),
+    TResult getSingleProperty(
+        Either<PropertyFailure, Property> failureOrSuccess),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -141,7 +143,8 @@ class _$_WatchProperty implements _WatchProperty {
   TResult when<TResult extends Object>({
     @required TResult watchProperty(String propertyId),
     @required
-        TResult getSingleProperty(Either<PropertyFailure, Property> property),
+        TResult getSingleProperty(
+            Either<PropertyFailure, Property> failureOrSuccess),
   }) {
     assert(watchProperty != null);
     assert(getSingleProperty != null);
@@ -152,7 +155,8 @@ class _$_WatchProperty implements _WatchProperty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchProperty(String propertyId),
-    TResult getSingleProperty(Either<PropertyFailure, Property> property),
+    TResult getSingleProperty(
+        Either<PropertyFailure, Property> failureOrSuccess),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -201,7 +205,7 @@ abstract class _$GetSinglePropertyCopyWith<$Res> {
   factory _$GetSinglePropertyCopyWith(
           _GetSingleProperty value, $Res Function(_GetSingleProperty) then) =
       __$GetSinglePropertyCopyWithImpl<$Res>;
-  $Res call({Either<PropertyFailure, Property> property});
+  $Res call({Either<PropertyFailure, Property> failureOrSuccess});
 }
 
 /// @nodoc
@@ -217,40 +221,42 @@ class __$GetSinglePropertyCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object property = freezed,
+    Object failureOrSuccess = freezed,
   }) {
     return _then(_GetSingleProperty(
-      property == freezed
-          ? _value.property
-          : property as Either<PropertyFailure, Property>,
+      failureOrSuccess == freezed
+          ? _value.failureOrSuccess
+          : failureOrSuccess as Either<PropertyFailure, Property>,
     ));
   }
 }
 
 /// @nodoc
 class _$_GetSingleProperty implements _GetSingleProperty {
-  const _$_GetSingleProperty(this.property) : assert(property != null);
+  const _$_GetSingleProperty(this.failureOrSuccess)
+      : assert(failureOrSuccess != null);
 
   @override
-  final Either<PropertyFailure, Property> property;
+  final Either<PropertyFailure, Property> failureOrSuccess;
 
   @override
   String toString() {
-    return 'SinglePropertyEvent.getSingleProperty(property: $property)';
+    return 'SinglePropertyEvent.getSingleProperty(failureOrSuccess: $failureOrSuccess)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _GetSingleProperty &&
-            (identical(other.property, property) ||
+            (identical(other.failureOrSuccess, failureOrSuccess) ||
                 const DeepCollectionEquality()
-                    .equals(other.property, property)));
+                    .equals(other.failureOrSuccess, failureOrSuccess)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(property);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -262,23 +268,25 @@ class _$_GetSingleProperty implements _GetSingleProperty {
   TResult when<TResult extends Object>({
     @required TResult watchProperty(String propertyId),
     @required
-        TResult getSingleProperty(Either<PropertyFailure, Property> property),
+        TResult getSingleProperty(
+            Either<PropertyFailure, Property> failureOrSuccess),
   }) {
     assert(watchProperty != null);
     assert(getSingleProperty != null);
-    return getSingleProperty(property);
+    return getSingleProperty(failureOrSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchProperty(String propertyId),
-    TResult getSingleProperty(Either<PropertyFailure, Property> property),
+    TResult getSingleProperty(
+        Either<PropertyFailure, Property> failureOrSuccess),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getSingleProperty != null) {
-      return getSingleProperty(property);
+      return getSingleProperty(failureOrSuccess);
     }
     return orElse();
   }
@@ -310,10 +318,11 @@ class _$_GetSingleProperty implements _GetSingleProperty {
 }
 
 abstract class _GetSingleProperty implements SinglePropertyEvent {
-  const factory _GetSingleProperty(Either<PropertyFailure, Property> property) =
+  const factory _GetSingleProperty(
+          Either<PropertyFailure, Property> failureOrSuccess) =
       _$_GetSingleProperty;
 
-  Either<PropertyFailure, Property> get property;
+  Either<PropertyFailure, Property> get failureOrSuccess;
   @JsonKey(ignore: true)
   _$GetSinglePropertyCopyWith<_GetSingleProperty> get copyWith;
 }

@@ -35,7 +35,10 @@ class PropertyListBloc extends Bloc<PropertyListEvent, PropertyListState> {
      propertiesReceived: (e) async* {
        yield e.failureOrProperties.fold(
                (failure) => PropertyListState.loadFailure(failure),
-               (properties) => PropertyListState.loadSuccess(properties),
+               (properties) {
+                 print("current property ${properties[0]}");
+                 return PropertyListState.loadSuccess(properties);
+                 },
        );
      }
    );

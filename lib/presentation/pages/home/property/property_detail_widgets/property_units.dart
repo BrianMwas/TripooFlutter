@@ -1,28 +1,32 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:number_slide_animation/number_slide_animation_widget.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:tripoo/domain/entity/property/property.dart';
 import 'package:tripoo/presentation/pages/home/property/homeunits/unit_card_widget.dart';
+import 'package:tripoo/presentation/routes/route.gr.dart';
 
-class PropertyUnitsList extends StatelessWidget {
+class PropertyUnitsList extends HookWidget {
   final String photo = "https://source.unsplash.com/weekly?apartment";
   final Property property;
-
   const PropertyUnitsList({
     Key key,
     @required this.property,
-}): super(key: key);
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _property = useState<Property>(property);
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 2),
             child: Text(
-              property.name.getOrCrash(),
+              _property.value.name.getOrCrash(),
               style: const TextStyle(
                 color: Colors.black87,
                 fontSize: 24,
@@ -32,7 +36,7 @@ class PropertyUnitsList extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-            child: Text(property.description.getOrCrash()),
+            child: Text(_property.value.description.getOrCrash()),
           ),
           const Padding(
             padding: EdgeInsets.fromLTRB(16, 24, 16, 0),
@@ -154,18 +158,18 @@ class PropertyUnitsList extends StatelessWidget {
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: Text("Delete?"),
-                          titleTextStyle: TextStyle(
+                          title: const Text("Delete?"),
+                          titleTextStyle: const TextStyle(
                             fontFamily: "ProductSans",
                             color: Colors.black87,
                           ),
-                          content: Text("Are you sure you want to delete the recent activities"),
+                          content: const Text("Are you sure you want to delete the recent activities"),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Padding(
+                              child: const Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text("Continue"),
                               ),
@@ -191,7 +195,7 @@ class PropertyUnitsList extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: 3,
               itemBuilder: (context, index) {
-                return ListTile(
+                return const ListTile(
                   leading: Icon(
                     EvaIcons.calendarOutline,
                     color: Colors.blueAccent
@@ -209,7 +213,18 @@ class PropertyUnitsList extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text("My units"),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("My units"),
+                TextButton(
+                  onPressed: () {
+                    ExtendedNavigator.of(context).push(Routes.createUnitView);
+                  },
+                  child: const Text("Add new unit")
+                )
+              ],
+            ),
           ),
           SizedBox(
             height: 220,

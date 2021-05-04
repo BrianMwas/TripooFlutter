@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tripoo/domain/entity/failures/class_failure.dart';
 import 'package:tripoo/domain/entity/property/property.dart';
@@ -21,8 +22,6 @@ class PropertyFacade implements IPropertyFacade {
       await _firestore.collection("properties").add(propertyDTO.toJson());
       return right(unit);
     } on FirebaseException catch  (e) {
-      print("Error message ${e.code}");
-      
       if(e.message.contains("PERMISSION_DENIED") || e.code == "permission-denied") {
         return left(const PropertyFailure.insufficientPermission());
       } else {
@@ -32,15 +31,45 @@ class PropertyFacade implements IPropertyFacade {
   }
 
   @override
-  Future<Either<PropertyFailure, Unit>> deleteProperty(Property property) {
-    // TODO: implement deleteProperty
-    throw UnimplementedError();
+  Future<Either<PropertyFailure, Unit>> deleteProperty(Property property) async {
+    try {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if(property.id != currentUser.uid) {
+        return left(const PropertyFailure.insufficientPermission());
+      }
+      final propertyDTO = PropertyDTO.fromDomain(property);
+
+      await _firestore.collection("properties").doc(propertyDTO.id).delete();
+
+      return right(unit);
+    } on FirebaseException catch(e) {
+      if(e.code == "permission-denied") {
+        return left(const PropertyFailure.unableToUpdate());
+      } else {
+        return left(const PropertyFailure.unExpected());
+      }
+    }
   }
 
   @override
-  Future<Either<PropertyFailure, Unit>> updateProperty(Property property) {
-    // TODO: implement updateProperty
-    throw UnimplementedError();
+  Future<Either<PropertyFailure, Unit>> updateProperty(Property property) async {
+    try {
+      final propertyDto = PropertyDTO.fromDomain(property);
+
+      await _firestore.collection("properties")
+          .doc(propertyDto.id)
+          .update(propertyDto.toJson());
+      return right(unit);
+    } on FirebaseException catch(e) {
+
+      if(e.code == "permission-denied") {
+        return left(const PropertyFailure.insufficientPermission());
+      } else if (e.code == "not-found") {
+        return left(const PropertyFailure.unableToUpdate());
+      } else {
+        return left(const PropertyFailure.unExpected());
+      }
+    }
   }
 
   @override
@@ -65,8 +94,18 @@ class PropertyFacade implements IPropertyFacade {
   }
 
   @override
-  Stream<Either<PropertyFailure, Property>> watchSingleProperty(String propertyId) {
-    // TODO: implement watchSingleProperty
-    throw UnimplementedError();
+  Stream<Either<PropertyFailure, Property>> watchSingleProperty(String propertyId) async* {
+    yield* _firestore.doc("properties/$propertyId")
+        .snapshots()
+        .map((snapshot) => right<PropertyFailure, Property>(PropertyDTO.fromFirestore(snapshot).toDomain()))
+        .onErrorReturnWith((e) {
+          if(e is FirebaseException && e.code == "permission-denied") {
+            return left(const PropertyFailure.insufficientPermission());
+          } else if (e is FirebaseException && e.code == "not-found") {
+            return left(const PropertyFailure.emptyDocuments());
+          } else {
+            return left(const PropertyFailure.unExpected());
+          }
+      });
   }
 }

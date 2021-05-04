@@ -16,11 +16,13 @@ import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'domain/entity/repository/i_property_facade.dart';
+import 'application/property/property_actor/property_actor_bloc.dart';
 import 'infrastructure/property/property_repository.dart';
 import 'application/property/create_property/bloc/property_form_bloc.dart';
 import 'application/property/list_properties/property_list_bloc.dart';
 import 'application/auth/sign_in/signinform_bloc.dart';
 import 'application/auth/sign_up/signupform_bloc.dart';
+import 'application/property/singleproperty/single_property_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -43,10 +45,14 @@ GetIt $initGetIt(
       ));
   gh.lazySingleton<IPropertyFacade>(
       () => PropertyFacade(get<FirebaseFirestore>()));
+  gh.factory<PropertyActorBloc>(
+      () => PropertyActorBloc(get<IPropertyFacade>()));
   gh.factory<PropertyFormBloc>(() => PropertyFormBloc(get<IPropertyFacade>()));
   gh.factory<PropertyListBloc>(() => PropertyListBloc(get<IPropertyFacade>()));
   gh.factory<SigninformBloc>(() => SigninformBloc(get<IAuthFacade>()));
   gh.factory<SignupformBloc>(() => SignupformBloc(get<IAuthFacade>()));
+  gh.factory<SinglePropertyBloc>(
+      () => SinglePropertyBloc(get<IPropertyFacade>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthFacade>()));
   return get;
 }

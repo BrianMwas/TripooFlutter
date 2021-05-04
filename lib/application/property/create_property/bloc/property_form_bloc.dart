@@ -17,12 +17,11 @@ part 'property_form_bloc.freezed.dart';
 @injectable
 class PropertyFormBloc extends Bloc<PropertyFormEvent, PropertyFormState> {
   final IPropertyFacade _propertyFacade;
+
   PropertyFormBloc(this._propertyFacade) : super(PropertyFormState.initial());
 
   @override
-  Stream<PropertyFormState> mapEventToState(
-    PropertyFormEvent event,
-  ) async* {
+  Stream<PropertyFormState> mapEventToState(PropertyFormEvent event,) async* {
     yield* event.map(
       dateChanged: (e) async* {
         yield state.copyWith(
@@ -44,19 +43,20 @@ class PropertyFormBloc extends Bloc<PropertyFormEvent, PropertyFormState> {
         );
       },
       imageChanged: (e) async* {
+        print("image changed ${e.image}");
         yield state.copyWith(
           property: state.property.copyWith(imageURL: e.image),
           propertyFailureOrSuccessOption: none(),
         );
       },
       initialized: (e) async* {
-        yield e.initialProperty.fold(
-            () => state,
-            (initialProperty) => state.copyWith(
-                  property: initialProperty,
-                  isEditing: true,
-                  propertyFailureOrSuccessOption: none(),
-                ));
+        yield e.initialProperty.fold(() => state, (initialProperty) {
+          return state.copyWith(
+            property: initialProperty,
+            isEditing: true,
+            propertyFailureOrSuccessOption: none(),
+          );
+        });
       },
       liveStatusChanged: (e) async* {
         yield state.copyWith(

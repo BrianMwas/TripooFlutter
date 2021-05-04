@@ -26,11 +26,7 @@ void mainCommon(String env) async {
   await Firebase.initializeApp();
 
   HydratedBloc.storage = await HydratedStorage.build();
-
-
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-
   //Required to show development in process or in production
   //By using the debug badge.
   bool inDevelopment;

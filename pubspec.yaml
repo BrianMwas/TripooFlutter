@@ -69,6 +69,7 @@ dependencies:
   validators: ^2.0.0
   modal_bottom_sheet: ^1.0.0+1
   hydrated_bloc: ^6.1.0
+  percent_indicator: ^2.1.7+2
 
 dev_dependencies:
   freezed: ^0.12.7

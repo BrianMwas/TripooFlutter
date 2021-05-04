@@ -14,8 +14,8 @@ class FloatingModal extends StatelessWidget {
       top: false,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 5,
-          vertical: 10,
+          horizontal: 10,
+          vertical: 20,
         ),
         child: Material(
           color: backgroundColor,

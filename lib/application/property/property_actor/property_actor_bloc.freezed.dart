@@ -500,6 +500,8 @@ abstract class _$DeleteFailureCopyWith<$Res> {
           _DeleteFailure value, $Res Function(_DeleteFailure) then) =
       __$DeleteFailureCopyWithImpl<$Res>;
   $Res call({PropertyFailure failure});
+
+  $PropertyFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -520,6 +522,16 @@ class __$DeleteFailureCopyWithImpl<$Res>
     return _then(_DeleteFailure(
       failure == freezed ? _value.failure : failure as PropertyFailure,
     ));
+  }
+
+  @override
+  $PropertyFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $PropertyFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
   }
 }
 
